@@ -9,7 +9,6 @@
     </info>
     <section>
         <title>Titulo para la seccion 1</title>
-		<imageobject><imagedata fileref:"http://google.com/"/></imageobject>
     <para>
         Esto es un parrafo
     </para>

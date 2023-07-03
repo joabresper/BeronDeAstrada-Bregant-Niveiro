@@ -25,14 +25,14 @@ def logicaMenu(
             option = int(input('Ingrese la opción: '))
         except:
             cls()
-            print('Opción inválida. Por favor, ingrese un número ...')
+            print('Opción inválida. Por favor, ingrese una de las opciones disponibles...')
         cls()
         if option == 1:
             opcionUna()
         elif option == 2:
             opcionDos()
         elif (option == 3):
-            print('Terminando ejecución...')
+            print('Ejecucion finalizada.')
             exit()
         else:
             print('Opción incorrecta. Por favor, ingresar un número del 1 al 3.')
