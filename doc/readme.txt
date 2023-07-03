@@ -1,0 +1,1 @@
+!----- Consideraciones para la ejecución del programa -----!
