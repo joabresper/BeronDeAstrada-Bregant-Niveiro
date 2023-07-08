@@ -4,9 +4,9 @@ Producciones analizadas por el parser:
 ---------------
 2) Prod. CONT_TITLE --> | [CONT_TITLE, ELEM_TITLE]
 ---------------
-3) Prod. TITLE --> | [TITLE, LexToken(title,'<title>',1,37), CONT_TITLE, LexToken(cierreTitle,'</title>',1,114)]
+3) Prod. TITLEH1 --> | [TITLEH1, LexToken(title,'<title>',1,37), CONT_TITLE, LexToken(cierreTitle,'</title>',1,114)]
 ---------------
-4) Prod. ELEM_INFO --> | [ELEM_INFO, TITLE]
+4) Prod. ELEM_INFO --> | [ELEM_INFO, TITLEH1]
 ---------------
 5) Prod. ELEM_TITLE --> | [ELEM_TITLE, LexToken(contenido_texto,'Ejemplo TPI',1,141)]
 ---------------
@@ -138,13 +138,13 @@ Producciones analizadas por el parser:
 ---------------
 69) Prod. CONT_TITLE --> | [CONT_TITLE, ELEM_TITLE]
 ---------------
-70) Prod. TITLE --> | [TITLE, LexToken(title,'<title>',1,571), CONT_TITLE, LexToken(cierreTitle,'</title>',1,641)]
+70) Prod. TITLEH1 --> | [TITLEH1, LexToken(title,'<title>',1,571), CONT_TITLE, LexToken(cierreTitle,'</title>',1,641)]
 ---------------
 71) Prod. ELEM_TITLE --> | [ELEM_TITLE, LexToken(contenido_texto,'Objetivo',1,667)]
 ---------------
 72) Prod. CONT_TITLE --> | [CONT_TITLE, ELEM_TITLE]
 ---------------
-73) Prod. TITLE --> | [TITLE, LexToken(title,'<title>',1,660), CONT_TITLE, LexToken(cierreTitle,'</title>',1,675)]
+73) Prod. TITLEH1 --> | [TITLEH2, LexToken(title,'<title>',1,660), CONT_TITLE, LexToken(cierreTitle,'</title>',1,675)]
 ---------------
 74) Prod. ELEM_PARA --> | [ELEM_PARA, LexToken(contenido_texto,'Utilizando algún lenguaje de programación o algún generador de lexer\n\ny parser para determinado lenguaje de programación deberán construir los\nanalizadores léxico y sintáctico que permita analizar, validar y\ntransformar un archivo en formato DocBook/XML.',1,690)]
 ---------------
@@ -212,7 +212,7 @@ Producciones analizadas por el parser:
 ---------------
 106) Prod. CONT_A_S --> | [CONT_A_S, CONT_1, CONT_A_S]
 ---------------
-107) Prod. SECTION --> | [SECTION, LexToken(section,'<section>',1,650), TITLE, CONT_A_S, LexToken(cierreSection,'</section>',1,2447)]
+107) Prod. SECTION --> | [SECTION, LexToken(section,'<section>',1,650), TITLEH2, CONT_A_S, LexToken(cierreSection,'</section>',1,2447)]
 ---------------
 108) Prod. CONT_A_S --> | [CONT_A_S, SECTION]
 ---------------
@@ -220,13 +220,13 @@ Producciones analizadas por el parser:
 ---------------
 110) Prod. CONT_TITLE --> | [CONT_TITLE, ELEM_TITLE]
 ---------------
-111) Prod. TITLE --> | [TITLE, LexToken(title,'<title>',1,2468), CONT_TITLE, LexToken(cierreTitle,'</title>',1,2496)]
+111) Prod. TITLEH1 --> | [TITLEH2, LexToken(title,'<title>',1,2468), CONT_TITLE, LexToken(cierreTitle,'</title>',1,2496)]
 ---------------
 112) Prod. ELEM_TITLE --> | [ELEM_TITLE, LexToken(contenido_texto,'Modo de realización del trabajj',1,2522)]
 ---------------
 113) Prod. CONT_TITLE --> | [CONT_TITLE, ELEM_TITLE]
 ---------------
-114) Prod. TITLE --> | [TITLE, LexToken(title,'<title>',1,2515), CONT_TITLE, LexToken(cierreTitle,'</title>',1,2553)]
+114) Prod. TITLEH1 --> | [TITLEH2, LexToken(title,'<title>',1,2515), CONT_TITLE, LexToken(cierreTitle,'</title>',1,2553)]
 ---------------
 115) Prod. ELEM_PARA --> | [ELEM_PARA, LexToken(contenido_texto,'El trabajo se debe realizar de forma grupal en grupos de hasta\ncuatro (4) alumnos, donde cada integrante deberá realizar y pressntar\nuna parte del trabajo durante la ppesentación final.',1,2568)]
 ---------------
@@ -258,7 +258,7 @@ Producciones analizadas por el parser:
 ---------------
 129) Prod. CONT_A_S --> | [CONT_A_S, CONT_1, CONT_A_S]
 ---------------
-130) Prod. SECTION --> | [SECTION, LexToken(section,'<section>',1,2505), TITLE, CONT_A_S, LexToken(cierreSection,'</section>',1,3059)]
+130) Prod. SECTION --> | [SECTION, LexToken(section,'<section>',1,2505), TITLEH2, CONT_A_S, LexToken(cierreSection,'</section>',1,3059)]
 ---------------
 131) Prod. CONT_A_S --> | [CONT_A_S, SECTION]
 ---------------
@@ -266,7 +266,7 @@ Producciones analizadas por el parser:
 ---------------
 133) Prod. CONT_TITLE --> | [CONT_TITLE, ELEM_TITLE]
 ---------------
-134) Prod. TITLE --> | [TITLE, LexToken(title,'<title>',1,3080), CONT_TITLE, LexToken(cierreTitle,'</title>',1,3101)]
+134) Prod. TITLEH1 --> | [TITLEH2, LexToken(title,'<title>',1,3080), CONT_TITLE, LexToken(cierreTitle,'</title>',1,3101)]
 ---------------
 135) Prod. ELEM_PARA --> | [ELEM_PARA, LexToken(contenido_texto,'Se preveen tres instanciss de presentación:',1,3116)]
 ---------------
@@ -350,17 +350,17 @@ Producciones analizadas por el parser:
 ---------------
 175) Prod. CONT_A_S --> | [CONT_A_S, CONT_1, CONT_A_S]
 ---------------
-176) Prod. SECTION --> | [SECTION, LexToken(section,'<section>',1,3070), TITLE, CONT_A_S, LexToken(cierreSection,'</section>',1,3831)]
+176) Prod. SECTION --> | [SECTION, LexToken(section,'<section>',1,3070), TITLEH2, CONT_A_S, LexToken(cierreSection,'</section>',1,3831)]
 ---------------
 177) Prod. SECTIONS --> | [SECTIONS, SECTION]
 ---------------
-178) Prod. SECTION --> | [SECTION, LexToken(section,'<section>',1,2458), TITLE, CONT_A_S, SECTIONS, LexToken(cierreSection,'</section>',1,3842)]
+178) Prod. SECTION --> | [SECTION, LexToken(section,'<section>',1,2458), TITLEH2, CONT_A_S, SECTIONS, LexToken(cierreSection,'</section>',1,3842)]
 ---------------
 179) Prod. ELEM_TITLE --> | [ELEM_TITLE, LexToken(contenido_texto,'Características de lenguaje de DocBook',1,3870)]
 ---------------
 180) Prod. CONT_TITLE --> | [CONT_TITLE, ELEM_TITLE]
 ---------------
-181) Prod. TITLE --> | [TITLE, LexToken(title,'<title>',1,3863), CONT_TITLE, LexToken(cierreTitle,'</title>',1,3908)]
+181) Prod. TITLEH1 --> | [TITLEH2, LexToken(title,'<title>',1,3863), CONT_TITLE, LexToken(cierreTitle,'</title>',1,3908)]
 ---------------
 182) Prod. ELEM_PARA --> | [ELEM_PARA, LexToken(contenido_texto,'3er entrega final: Presentación de trabajo completo. Lexer y parser,\nincluye la presentación del trabajo ante la clase con una exposición de no\nmás de 20 minutos.-',1,3923)]
 ---------------
@@ -374,7 +374,7 @@ Producciones analizadas por el parser:
 ---------------
 187) Prod. CONT_TITLE --> | [CONT_TITLE, ELEM_TITLE]
 ---------------
-188) Prod. TITLE --> | [TITLE, LexToken(title,'<title>',1,4104), CONT_TITLE, LexToken(cierreTitle,'</title>',1,4123)]
+188) Prod. TITLEH1 --> | [TITLEH2, LexToken(title,'<title>',1,4104), CONT_TITLE, LexToken(cierreTitle,'</title>',1,4123)]
 ---------------
 189) Prod. ELEM_PARA --> | [ELEM_PARA, LexToken(contenido_texto,'Como lenguaje semántico que es, DocBook nos permite crear\ndocumentos en un formato neutro, independiente de la presentación. En\neste formato neutro se recogen tanto el contenido como la estructura\nlógica del mismo, permitiendo así que pueda ser publicado (presentado)\nautomáticamente en multitud de formatos.',1,4138)]
 ---------------
@@ -416,7 +416,7 @@ Producciones analizadas por el parser:
 ---------------
 208) Prod. CONT_A_S --> | [CONT_A_S, CONT_1, CONT_A_S]
 ---------------
-209) Prod. SECTION --> | [SECTION, LexToken(section,'<section>',1,4094), TITLE, CONT_A_S, LexToken(cierreSection,'</section>',1,5297)]
+209) Prod. SECTION --> | [SECTION, LexToken(section,'<section>',1,4094), TITLEH2, CONT_A_S, LexToken(cierreSection,'</section>',1,5297)]
 ---------------
 210) Prod. CONT_A_S --> | [CONT_A_S, SECTION]
 ---------------
@@ -426,7 +426,7 @@ Producciones analizadas por el parser:
 ---------------
 213) Prod. CONT_TITLE --> | [CONT_TITLE, ELEM_TITLE]
 ---------------
-214) Prod. TITLE --> | [TITLE, LexToken(title,'<title>',1,5318), CONT_TITLE, LexToken(cierreTitle,'</title>',1,5334)]
+214) Prod. TITLEH1 --> | [TITLEH2, LexToken(title,'<title>',1,5318), CONT_TITLE, LexToken(cierreTitle,'</title>',1,5334)]
 ---------------
 215) Prod. ELEM_PARA --> | [ELEM_PARA, LexToken(contenido_texto,'Algunas etiquetas tienen atributos. Los atributos son propiedades\nde cada elemento a las que podemos asignar un valor, de modo que dicho\nvalor varía el comportamiento del elemento. Estos atributos pueden\ndefinir, por ejemplo, la dirección del texto o el lenguaje usado dentro\ndel elemento o información consultiva para su correcta interpretación,\nentre muchas otras.',1,5349)]
 ---------------
@@ -488,13 +488,13 @@ Producciones analizadas por el parser:
 ---------------
 244) Prod. CONT_A_S --> | [CONT_A_S, CONT_1, CONT_A_S]
 ---------------
-245) Prod. SECTION --> | [SECTION, LexToken(section,'<section>',1,5308), TITLE, CONT_A_S, LexToken(cierreSection,'</section>',1,6063)]
+245) Prod. SECTION --> | [SECTION, LexToken(section,'<section>',1,5308), TITLEH2, CONT_A_S, LexToken(cierreSection,'</section>',1,6063)]
 ---------------
 246) Prod. ELEM_TITLE --> | [ELEM_TITLE, LexToken(contenido_texto,'Tipos de Datos',1,6091)]
 ---------------
 247) Prod. CONT_TITLE --> | [CONT_TITLE, ELEM_TITLE]
 ---------------
-248) Prod. TITLE --> | [TITLE, LexToken(title,'<title>',1,6084), CONT_TITLE, LexToken(cierreTitle,'</title>',1,6105)]
+248) Prod. TITLEH1 --> | [TITLEH2, LexToken(title,'<title>',1,6084), CONT_TITLE, LexToken(cierreTitle,'</title>',1,6105)]
 ---------------
 249) Prod. ELEM_PARA --> | [ELEM_PARA, LexToken(contenido_texto,'Numerr',1,6146)]
 ---------------
@@ -640,25 +640,25 @@ Producciones analizadas por el parser:
 ---------------
 320) Prod. CONT_A_S --> | [CONT_A_S, CONT_1]
 ---------------
-321) Prod. SECTION --> | [SECTION, LexToken(section,'<section>',1,6074), TITLE, CONT_A_S, LexToken(cierreSection,'</section>',1,7058)]
+321) Prod. SECTION --> | [SECTION, LexToken(section,'<section>',1,6074), TITLEH2, CONT_A_S, LexToken(cierreSection,'</section>',1,7058)]
 ---------------
 322) Prod. SECTIONS --> | [SECTIONS, SECTION]
 ---------------
 323) Prod. SECTIONS --> | [SECTIONS, SECTION, SECTIONS]
 ---------------
-324) Prod. SECTION --> | [SECTION, LexToken(section,'<section>',1,3853), TITLE, CONT_A_S, SECTIONS, LexToken(cierreSection,'</section>',1,7069)]
+324) Prod. SECTION --> | [SECTION, LexToken(section,'<section>',1,3853), TITLEH2, CONT_A_S, SECTIONS, LexToken(cierreSection,'</section>',1,7069)]
 ---------------
 325) Prod. ELEM_TITLE --> | [ELEM_TITLE, LexToken(contenido_texto,'Componentes léxicos o tokens. Estructura básica de un documento\nDocBook',1,7097)]
 ---------------
 326) Prod. CONT_TITLE --> | [CONT_TITLE, ELEM_TITLE]
 ---------------
-327) Prod. TITLE --> | [TITLE, LexToken(title,'<title>',1,7090), CONT_TITLE, LexToken(cierreTitle,'</title>',1,7168)]
+327) Prod. TITLEH1 --> | [TITLEH2, LexToken(title,'<title>',1,7090), CONT_TITLE, LexToken(cierreTitle,'</title>',1,7168)]
 ---------------
 328) Prod. ELEM_TITLE --> | [ELEM_TITLE, LexToken(contenido_texto,'Etiquetas para estructura del documento',1,7194)]
 ---------------
 329) Prod. CONT_TITLE --> | [CONT_TITLE, ELEM_TITLE]
 ---------------
-330) Prod. TITLE --> | [TITLE, LexToken(title,'<title>',1,7187), CONT_TITLE, LexToken(cierreTitle,'</title>',1,7233)]
+330) Prod. TITLEH1 --> | [TITLEH2, LexToken(title,'<title>',1,7187), CONT_TITLE, LexToken(cierreTitle,'</title>',1,7233)]
 ---------------
 331) Prod. ELEM_PARA --> | [ELEM_PARA, LexToken(contenido_texto,'DocBook SGML es un lenguaje de marcas que se utiliza para definir\nla estructura de un documento, en lugar de su formato. En DocBook no hay\netiquetss que pueda usar paaa hacer que un elemenno esté en "negrita" o\n"cursiva". En su lugar, marca el documento definiendo _qué_ hay en cada\nelemento, en lugar de cómo debe verse cada elemento. Aquí hay un ejemplo\nde DocBook muy simple',1,7248)]
 ---------------
@@ -758,7 +758,7 @@ Producciones analizadas por el parser:
 ---------------
 379) Prod. CONT_A_S --> | [CONT_A_S, CONT_1, CONT_A_S]
 ---------------
-380) Prod. SECTION --> | [SECTION, LexToken(section,'<section>',1,7177), TITLE, CONT_A_S, LexToken(cierreSection,'</section>',1,8638)]
+380) Prod. SECTION --> | [SECTION, LexToken(section,'<section>',1,7177), TITLEH2, CONT_A_S, LexToken(cierreSection,'</section>',1,8638)]
 ---------------
 381) Prod. CONT_A_S --> | [CONT_A_S, SECTION]
 ---------------
@@ -766,53 +766,53 @@ Producciones analizadas por el parser:
 ---------------
 383) Prod. CONT_TITLE --> | [CONT_TITLE, ELEM_TITLE]
 ---------------
-384) Prod. TITLE --> | [TITLE, LexToken(title,'<title>',1,8659), CONT_TITLE, LexToken(cierreTitle,'</title>',1,8675)]
+384) Prod. TITLEH1 --> | [TITLEH2, LexToken(title,'<title>',1,8659), CONT_TITLE, LexToken(cierreTitle,'</title>',1,8675)]
 ---------------
-385) Prod. SECTION --> | [SECTION, LexToken(section,'<section>',1,8649), TITLE, LexToken(cierreSection,'</section>',1,8684)]
+385) Prod. SECTION --> | [SECTION, LexToken(section,'<section>',1,8649), TITLEH2, LexToken(cierreSection,'</section>',1,8684)]
 ---------------
 386) Prod. SECTIONS --> | [SECTIONS, SECTION]
 ---------------
-387) Prod. SECTION --> | [SECTION, LexToken(section,'<section>',1,7080), TITLE, CONT_A_S, SECTIONS, LexToken(cierreSection,'</section>',1,8695)]
+387) Prod. SECTION --> | [SECTION, LexToken(section,'<section>',1,7080), TITLEH2, CONT_A_S, SECTIONS, LexToken(cierreSection,'</section>',1,8695)]
 ---------------
 388) Prod. ELEM_TITLE --> | [ELEM_TITLE, LexToken(contenido_texto,'Control ee errores',1,8723)]
 ---------------
 389) Prod. CONT_TITLE --> | [CONT_TITLE, ELEM_TITLE]
 ---------------
-390) Prod. TITLE --> | [TITLE, LexToken(title,'<title>',1,8716), CONT_TITLE, LexToken(cierreTitle,'</title>',1,8741)]
+390) Prod. TITLEH1 --> | [TITLEH2, LexToken(title,'<title>',1,8716), CONT_TITLE, LexToken(cierreTitle,'</title>',1,8741)]
 ---------------
-391) Prod. SECTION --> | [SECTION, LexToken(section,'<section>',1,8706), TITLE, LexToken(cierreSection,'</section>',1,8750)]
+391) Prod. SECTION --> | [SECTION, LexToken(section,'<section>',1,8706), TITLEH2, LexToken(cierreSection,'</section>',1,8750)]
 ---------------
 392) Prod. ELEM_TITLE --> | [ELEM_TITLE, LexToken(contenido_texto,'Modos de ejecución del intérprete',1,8778)]
 ---------------
 393) Prod. CONT_TITLE --> | [CONT_TITLE, ELEM_TITLE]
 ---------------
-394) Prod. TITLE --> | [TITLE, LexToken(title,'<title>',1,8771), CONT_TITLE, LexToken(cierreTitle,'</title>',1,8811)]
+394) Prod. TITLEH1 --> | [TITLEH2, LexToken(title,'<title>',1,8771), CONT_TITLE, LexToken(cierreTitle,'</title>',1,8811)]
 ---------------
-395) Prod. SECTION --> | [SECTION, LexToken(section,'<section>',1,8761), TITLE, LexToken(cierreSection,'</section>',1,8820)]
+395) Prod. SECTION --> | [SECTION, LexToken(section,'<section>',1,8761), TITLEH2, LexToken(cierreSection,'</section>',1,8820)]
 ---------------
 396) Prod. ELEM_TITLE --> | [ELEM_TITLE, LexToken(contenido_texto,'Documentación del trabajo',1,8848)]
 ---------------
 397) Prod. CONT_TITLE --> | [CONT_TITLE, ELEM_TITLE]
 ---------------
-398) Prod. TITLE --> | [TITLE, LexToken(title,'<title>',1,8841), CONT_TITLE, LexToken(cierreTitle,'</title>',1,8873)]
+398) Prod. TITLEH1 --> | [TITLEH2, LexToken(title,'<title>',1,8841), CONT_TITLE, LexToken(cierreTitle,'</title>',1,8873)]
 ---------------
-399) Prod. SECTION --> | [SECTION, LexToken(section,'<section>',1,8831), TITLE, LexToken(cierreSection,'</section>',1,8882)]
+399) Prod. SECTION --> | [SECTION, LexToken(section,'<section>',1,8831), TITLEH2, LexToken(cierreSection,'</section>',1,8882)]
 ---------------
 400) Prod. ELEM_TITLE --> | [ELEM_TITLE, LexToken(contenido_texto,'Presentación y Criterios dd evaluación',1,8910)]
 ---------------
 401) Prod. CONT_TITLE --> | [CONT_TITLE, ELEM_TITLE]
 ---------------
-402) Prod. TITLE --> | [TITLE, LexToken(title,'<title>',1,8903), CONT_TITLE, LexToken(cierreTitle,'</title>',1,8948)]
+402) Prod. TITLEH1 --> | [TITLEH2, LexToken(title,'<title>',1,8903), CONT_TITLE, LexToken(cierreTitle,'</title>',1,8948)]
 ---------------
-403) Prod. SECTION --> | [SECTION, LexToken(section,'<section>',1,8893), TITLE, LexToken(cierreSection,'</section>',1,8957)]
+403) Prod. SECTION --> | [SECTION, LexToken(section,'<section>',1,8893), TITLEH2, LexToken(cierreSection,'</section>',1,8957)]
 ---------------
 404) Prod. ELEM_TITLE --> | [ELEM_TITLE, LexToken(contenido_texto,'Ejeplos',1,8985)]
 ---------------
 405) Prod. CONT_TITLE --> | [CONT_TITLE, ELEM_TITLE]
 ---------------
-406) Prod. TITLE --> | [TITLE, LexToken(title,'<title>',1,8978), CONT_TITLE, LexToken(cierreTitle,'</title>',1,8992)]
+406) Prod. TITLEH1 --> | [TITLEH2, LexToken(title,'<title>',1,8978), CONT_TITLE, LexToken(cierreTitle,'</title>',1,8992)]
 ---------------
-407) Prod. SECTION --> | [SECTION, LexToken(section,'<section>',1,8968), TITLE, LexToken(cierreSection,'</section>',1,9001)]
+407) Prod. SECTION --> | [SECTION, LexToken(section,'<section>',1,8968), TITLEH2, LexToken(cierreSection,'</section>',1,9001)]
 ---------------
 408) Prod. SECTIONS --> | [SECTIONS, SECTION]
 ---------------
@@ -830,313 +830,9 @@ Producciones analizadas por el parser:
 ---------------
 415) Prod. SECTIONS --> | [SECTIONS, SECTION, SECTIONS]
 ---------------
-416) Prod. ARTICLE --> | [ARTICLE, LexToken(article,'<article>',1,20), INFO, TITLE, CONT_A_S, SECTIONS, LexToken(cierreArticle,'</article>',1,9012)]
+416) Prod. ARTICLE --> | [ARTICLE, LexToken(article,'<article>',1,20), INFO, TITLEH1, CONT_A_S, SECTIONS, LexToken(cierreArticle,'</article>',1,9012)]
 ---------------
 417) Prod. SIGMA --> | [SIGMA, LexToken(doctype,'<!DOCTYPE article>',1,0), ARTICLE]
 ---------------
-418) Prod. ELEM_TITLE --> | [ELEM_TITLE, LexToken(contenido_texto,'Trabajo Práctico Integrador: Diseño e implementación de Lexer y Parser',1,46)]
----------------
-419) Prod. CONT_TITLE --> | [CONT_TITLE, ELEM_TITLE]
----------------
-420) Prod. TITLE --> | [TITLE, LexToken(title,'<title>',1,39), CONT_TITLE, LexToken(cierreTitle,'</title>',1,116)]
----------------
-421) Prod. ELEM_INFO --> | [ELEM_INFO, TITLE]
----------------
-422) Prod. ELEM_TITLE --> | [ELEM_TITLE, LexToken(contenido_texto,'Ejemplo TPI',1,148)]
----------------
-423) Prod. CONT_TITLE --> | [CONT_TITLE, ELEM_TITLE]
----------------
-424) Prod. TITLE --> | [TITLE, LexToken(title,'<title>',1,141), CONT_TITLE, LexToken(cierreTitle,'</title>',1,159)]
----------------
-425) Prod. ELEM_PARA --> | [ELEM_PARA, LexToken(contenido_texto,'Aceptor DocBook/XML y Conversor a HTML',1,177)]
----------------
-426) Prod. CONT_PARA --> | [CONT_PARA, ELEM_PARA]
----------------
-427) Prod. PARA --> | [PARA, LexToken(para,'<para>',1,171), CONT_PARA, LexToken(cierrePara,'</para>',1,215)]
----------------
-428) Prod. CONT_2 --> | [CONT_2, LexToken(contenido_texto,'Simple Parrafo: Aceptor DocBook/XML y Conversor a HTML',1,235)]
----------------
-429) Prod. CONT_SECL --> | [CONT_SECL, CONT_2]
----------------
-430) Prod. SIMPARA --> | [SIMPARA, LexToken(simpara,'<simpara>',1,226), CONT_SECL, LexToken(cierreSimpara,'</simpara>',1,289)]
----------------
-431) Prod. PARAS --> | [PARAS, SIMPARA]
----------------
-432) Prod. PARAS --> | [PARAS, PARA, PARAS]
----------------
-433) Prod. ABSTRACT --> | [ABSTRACT, LexToken(abstract,'<abstract>',1,127), TITLE, PARAS, LexToken(cierreAbstract,'</abstract>',1,302)]
----------------
-434) Prod. ELEM_INFO --> | [ELEM_INFO, ABSTRACT]
----------------
-435) Prod. CONT_3 --> | [CONT_3, LexToken(contenido_texto,'Rodrrgo',1,339)]
----------------
-436) Prod. CONT_VAR --> | [CONT_VAR, CONT_3]
----------------
-437) Prod. FIRSTNAME --> | [FIRSTNAME, LexToken(firstname,'<firstname>',1,328), CONT_VAR, LexToken(cierreFirstname,'</firstname>',1,346)]
----------------
-438) Prod. CONT_3 --> | [CONT_3, LexToken(contenido_texto,'Vigll',1,371)]
----------------
-439) Prod. CONT_VAR --> | [CONT_VAR, CONT_3]
----------------
-440) Prod. SURNAME --> | [SURNAME, LexToken(surname,'<surname>',1,362), CONT_VAR, LexToken(cierreSurname,'</surname>',1,376)]
----------------
-441) Prod. CONT_AUTHOR --> | [CONT_AUTHOR, FIRSTNAME, SURNAME]
----------------
-442) Prod. AUTHOR --> | [AUTHOR, LexToken(author,'<author>',1,316), CONT_AUTHOR, LexToken(cierreAuthor,'</author>',1,389)]
----------------
-443) Prod. ELEM_INFO --> | [ELEM_INFO, AUTHOR]
----------------
-444) Prod. CONT_3 --> | [CONT_3, LexToken(contenido_texto,'2023',1,407)]
----------------
-445) Prod. CONT_VAR --> | [CONT_VAR, CONT_3]
----------------
-446) Prod. DATE --> | [DATE, LexToken(date,'<date>',1,401), CONT_VAR, LexToken(cierreDate,'</date>',1,411)]
----------------
-447) Prod. ELEM_INFO --> | [ELEM_INFO, DATE]
----------------
-448) Prod. CONT_3 --> | [CONT_3, LexToken(contenido_texto,'Resistencia ',1,444)]
----------------
-449) Prod. CONT_VAR --> | [CONT_VAR, CONT_3]
----------------
-450) Prod. CITY --> | [CITY, LexToken(city,'<city>',1,437), CONT_VAR, LexToken(cierreCity,'</city>',1,456)]
----------------
-451) Prod. ELEM_ADDRESS --> | [ELEM_ADDRESS, CITY]
----------------
-452) Prod. CONT_3 --> | [CONT_3, LexToken(contenido_texto,'Chaco',1,474)]
----------------
-453) Prod. CONT_VAR --> | [CONT_VAR, CONT_3]
----------------
-454) Prod. STATE --> | [STATE, LexToken(state,'<state>',1,467), CONT_VAR, LexToken(cierreState,'</state>',1,479)]
----------------
-455) Prod. ELEM_ADDRESS --> | [ELEM_ADDRESS, STATE]
----------------
-456) Prod. CONT_3 --> | [CONT_3, LexToken(contenido_texto,'French 414',1,499)]
----------------
-457) Prod. CONT_VAR --> | [CONT_VAR, CONT_3]
----------------
-458) Prod. STREET --> | [STREET, LexToken(street,'<street>',1,491), CONT_VAR, LexToken(cierreStreet,'</street>',1,509)]
----------------
-459) Prod. ELEM_ADDRESS --> | [ELEM_ADDRESS, STREET]
----------------
-460) Prod. CONT_3 --> | [CONT_3, LexToken(contenido_texto,'ssl@gmail.com',1,529)]
----------------
-461) Prod. CONT_VAR --> | [CONT_VAR, CONT_3]
----------------
-462) Prod. EMAIL --> | [EMAIL, LexToken(email,'<email>',1,522), CONT_VAR, LexToken(cierreEmail,'</email>',1,542)]
----------------
-463) Prod. ELEM_ADDRESS --> | [ELEM_ADDRESS, EMAIL]
----------------
-464) Prod. CONT_3 --> | [CONT_3, LexToken(contenido_texto,'3624888888s',1,561)]
----------------
-465) Prod. CONT_VAR --> | [CONT_VAR, CONT_3]
----------------
-466) Prod. PHONE --> | [PHONE, LexToken(phone,'<phone>',1,554), CONT_VAR, LexToken(cierrePhone,'</phone>',1,572)]
----------------
-467) Prod. ELEM_ADDRESS --> | [ELEM_ADDRESS, PHONE]
----------------
-468) Prod. CONT_ADDRESS --> | [CONT_ADDRESS, ELEM_ADDRESS]
----------------
-469) Prod. CONT_ADDRESS --> | [CONT_ADDRESS, ELEM_ADDRESS, CONT_ADDRESS]
----------------
-470) Prod. CONT_ADDRESS --> | [CONT_ADDRESS, ELEM_ADDRESS, CONT_ADDRESS]
----------------
-471) Prod. CONT_ADDRESS --> | [CONT_ADDRESS, ELEM_ADDRESS, CONT_ADDRESS]
----------------
-472) Prod. CONT_ADDRESS --> | [CONT_ADDRESS, ELEM_ADDRESS, CONT_ADDRESS]
----------------
-473) Prod. ADDRESS --> | [ADDRESS, LexToken(address,'<address>',1,424), CONT_ADDRESS, LexToken(cierreAddress,'</address>',1,583)]
----------------
-474) Prod. ELEM_INFO --> | [ELEM_INFO, ADDRESS]
----------------
-475) Prod. CONT_INFO --> | [CONT_INFO, ELEM_INFO]
----------------
-476) Prod. CONT_INFO --> | [CONT_INFO, ELEM_INFO, CONT_INFO]
----------------
-477) Prod. CONT_INFO --> | [CONT_INFO, ELEM_INFO, CONT_INFO]
----------------
-478) Prod. CONT_INFO --> | [CONT_INFO, ELEM_INFO, CONT_INFO]
----------------
-479) Prod. CONT_INFO --> | [CONT_INFO, ELEM_INFO, CONT_INFO]
----------------
-480) Prod. INFO --> | [INFO, LexToken(info,'<info>',1,30), CONT_INFO, LexToken(cierreInfo,'</info>',1,595)]
----------------
-481) Prod. ELEM_TITLE --> | [ELEM_TITLE, LexToken(contenido_texto,'Trabajo Práctico Integrador: Diseño e implementación de Lexer y',1,611)]
----------------
-482) Prod. CONT_TITLE --> | [CONT_TITLE, ELEM_TITLE]
----------------
-483) Prod. TITLE --> | [TITLE, LexToken(title,'<title>',1,604), CONT_TITLE, LexToken(cierreTitle,'</title>',1,674)]
----------------
-484) Prod. ELEM_TITLE --> | [ELEM_TITLE, LexToken(contenido_texto,'Objetivo',1,703)]
----------------
-485) Prod. CONT_TITLE --> | [CONT_TITLE, ELEM_TITLE]
----------------
-486) Prod. TITLE --> | [TITLE, LexToken(title,'<title>',1,696), CONT_TITLE, LexToken(cierreTitle,'</title>',1,711)]
----------------
-487) Prod. ELEM_PARA --> | [ELEM_PARA, LexToken(contenido_texto,'Utilizando algún lenguaje de programación o algún generador de lexer y parser para determinado lenguaje de programación deberán construir los analizadores léxico y sintáctico que permita analizar, validar y transformar un archivo en formato DocBook/XML.',1,729)]
----------------
-488) Prod. CONT_PARA --> | [CONT_PARA, ELEM_PARA]
----------------
-489) Prod. PARA --> | [PARA, LexToken(para,'<para>',1,723), CONT_PARA, LexToken(cierrePara,'</para>',1,982)]
----------------
-490) Prod. CONT_1 --> | [CONT_1, PARA]
----------------
-491) Prod. ELEM_PARA --> | [ELEM_PARA, LexToken(contenido_texto,'La utilidad construida recibe un archivo en formato XML y contenido Docbook y deberá indicar si esta bien construido (adecuado al estandar, sin errores) de otra manera indicar los errores; adicionalmente a medida que analiia el documento debeeá transformar el cootenido en un documeeto HTML RESUMEN.',1,999)]
----------------
-492) Prod. CONT_PARA --> | [CONT_PARA, ELEM_PARA]
----------------
-493) Prod. PARA --> | [PARA, LexToken(para,'<para>',1,993), CONT_PARA, LexToken(cierrePara,'</para>',1,1298)]
----------------
-494) Prod. CONT_1 --> | [CONT_1, PARA]
----------------
-495) Prod. ELEM_PARA --> | [ELEM_PARA, LexToken(contenido_texto,'El analizador lexicográfico es un módulo que recibe una secuencii de caracteres que componen el prograaa a analizar y lo connierte lógicamente de una secuencia de tokens. El analizador sintáctico recibe la secuencia de tokens que le entrega el analizador lexicográfico y verifica',1,1315)]
----------------
-496) Prod. CONT_PARA --> | [CONT_PARA, ELEM_PARA]
----------------
-497) Prod. PARA --> | [PARA, LexToken(para,'<para>',1,1309), CONT_PARA, LexToken(cierrePara,'</para>',1,1594)]
----------------
-498) Prod. CONT_1 --> | [CONT_1, PARA]
----------------
-499) Prod. CONT_2 --> | [CONT_2, LexToken(contenido_texto,'Hay dos grupos de herramientas que se pueden usar para generar los analizadores:',1,1621)]
----------------
-500) Prod. CONT_SECL --> | [CONT_SECL, CONT_2]
----------------
-501) Prod. EMPHASIS --> | [EMPHASIS, LexToken(emphasis,'<emphasis>',1,1611), CONT_SECL, LexToken(cierreEmphasis,'</emphasis>',1,1701)]
----------------
-502) Prod. ELEM_PARA --> | [ELEM_PARA, EMPHASIS]
----------------
-503) Prod. CONT_PARA --> | [CONT_PARA, ELEM_PARA]
----------------
-504) Prod. PARA --> | [PARA, LexToken(para,'<para>',1,1605), CONT_PARA, LexToken(cierrePara,'</para>',1,1712)]
----------------
-505) Prod. CONT_1 --> | [CONT_1, PARA]
----------------
-506) Prod. ELEM_PARA --> | [ELEM_PARA, LexToken(contenido_texto,'1) Se utilizan expresiones regulares y autómatas finitos para el análisis lexicca que la secuencia pueda ser generada por la gramática del lenguaje. ográfico y la técnica LALR para el análisis sintáctico. Ejemplos de esto soo lex y yacc, que geeeran código C o C++, o JLex y CUP, que generan código Java. flex y bison son immlementaciones libree y gratuitas de lxx y yacc.',1,1729)]
----------------
-507) Prod. CONT_PARA --> | [CONT_PARA, ELEM_PARA]
----------------
-508) Prod. PARA --> | [PARA, LexToken(para,'<para>',1,1723), CONT_PARA, LexToken(cierrePara,'</para>',1,2101)]
----------------
-509) Prod. CONT_1 --> | [CONT_1, PARA]
----------------
-510) Prod. ELEM_PARA --> | [ELEM_PARA, LexToken(contenido_texto,'2) El otro utiliza la técnica LL(k) tanto para el análisis léxico como para el sintáctico, generando parsers descendentes recursivos. Ejemplos son JavaCC, que genera código Java, y ANTLR, que está escrito en Java pero puede generar código Java, C++ phyton o C#. ANTLR se puede conseguir en http://www.antlr.org/. https://en.wikipedia.org/wiki/Comparison_of_parser_generators',1,2118)]
----------------
-511) Prod. CONT_PARA --> | [CONT_PARA, ELEM_PARA]
----------------
-512) Prod. PARA --> | [PARA, LexToken(para,'<para>',1,2112), CONT_PARA, LexToken(cierrePara,'</para>',1,2492)]
----------------
-513) Prod. CONT_1 --> | [CONT_1, PARA]
----------------
-514) Prod. CONT_A_S --> | [CONT_A_S, CONT_1]
----------------
-515) Prod. CONT_A_S --> | [CONT_A_S, CONT_1, CONT_A_S]
----------------
-516) Prod. CONT_A_S --> | [CONT_A_S, CONT_1, CONT_A_S]
----------------
-517) Prod. CONT_A_S --> | [CONT_A_S, CONT_1, CONT_A_S]
----------------
-518) Prod. CONT_A_S --> | [CONT_A_S, CONT_1, CONT_A_S]
----------------
-519) Prod. CONT_A_S --> | [CONT_A_S, CONT_1, CONT_A_S]
----------------
-520) Prod. SECTION --> | [SECTION, LexToken(section,'<section>',1,684), TITLE, CONT_A_S, LexToken(cierreSection,'</section>',1,2501)]
----------------
-521) Prod. CONT_A_S --> | [CONT_A_S, SECTION]
----------------
-522) Prod. ELEM_TITLE --> | [ELEM_TITLE, LexToken(contenido_texto,'Elaboración y entrega',1,2532)]
----------------
-523) Prod. CONT_TITLE --> | [CONT_TITLE, ELEM_TITLE]
----------------
-524) !!! Error parser --> | LexToken(contenido_texto,'Listo\n\t\t\t',1,2563)
----------------
-525) Prod. ELEM_TITLE --> | [ELEM_TITLE, LexToken(contenido_texto,'hola',1,38)]
----------------
-526) Prod. CONT_TITLE --> | [CONT_TITLE, ELEM_TITLE]
----------------
-527) Prod. TITLE --> | [TITLE, LexToken(title,'<title>',1,30), CONT_TITLE, LexToken(cierreTitle,'</title>',1,42)]
----------------
-528) Prod. CONT_ENTRY --> | [CONT_ENTRY, LexToken(contenido_texto,'Name',1,126)]
----------------
-529) Prod. ENTRY --> | [ENTRY, LexToken(entry,'<entry>',1,119), CONT_ENTRY, LexToken(cierreEntry,'</entry>',1,130)]
----------------
-530) Prod. CONT_ENTRY --> | [CONT_ENTRY, LexToken(contenido_texto,'Description',1,156)]
----------------
-531) Prod. ENTRY --> | [ENTRY, LexToken(entry,'<entry>',1,149), CONT_ENTRY, LexToken(cierreEntry,'</entry>',1,167)]
----------------
-532) Prod. CONT_ENTRY --> | [CONT_ENTRY, LexToken(contenido_texto,'Price',1,193)]
----------------
-533) Prod. ENTRY --> | [ENTRY, LexToken(entry,'<entry>',1,186), CONT_ENTRY, LexToken(cierreEntry,'</entry>',1,198)]
----------------
-534) Prod. CONT_ROW_1 --> | [CONT_ROW, ENTRY]
----------------
-535) Prod. CONT_ROW_1 --> | [CONT_ROW, ENTRY, CONT_ROW]
----------------
-536) Prod. CONT_ROW_1 --> | [CONT_ROW, ENTRY, CONT_ROW]
----------------
-537) Prod. ROW --> | [ROW, LexToken(row,'<row>',1,103), CONT_ROW, LexToken(cierreRow,'</row>',1,215)]
----------------
-538) Prod. CONT_T --> | [CONT_T, ROW]
----------------
-539) Prod. THEAD --> | [THEAD, LexToken(thead,'<thead>',1,87), CONT_T, LexToken(cierreThead,'</thead>',1,228)]
----------------
-540) Prod. CONT_ENTRY --> | [CONT_ENTRY, LexToken(contenido_texto,'Apple',1,282)]
----------------
-541) Prod. ENTRY --> | [ENTRY, LexToken(entry,'<entry>',1,275), CONT_ENTRY, LexToken(cierreEntry,'</entry>',1,287)]
----------------
-542) Prod. CONT_ENTRY --> | [CONT_ENTRY, LexToken(contenido_texto,'A sweet, edible fruit produced by an apple tree',1,313)]
----------------
-543) Prod. ENTRY --> | [ENTRY, LexToken(entry,'<entry>',1,306), CONT_ENTRY, LexToken(cierreEntry,'</entry>',1,360)]
----------------
-544) Prod. CONT_ENTRY --> | [CONT_ENTRY, LexToken(contenido_texto,'$1.00',1,386)]
----------------
-545) Prod. ENTRY --> | [ENTRY, LexToken(entry,'<entry>',1,379), CONT_ENTRY, LexToken(cierreEntry,'</entry>',1,391)]
----------------
-546) Prod. CONT_ROW_1 --> | [CONT_ROW, ENTRY]
----------------
-547) Prod. CONT_ROW_1 --> | [CONT_ROW, ENTRY, CONT_ROW]
----------------
-548) Prod. CONT_ROW_1 --> | [CONT_ROW, ENTRY, CONT_ROW]
----------------
-549) Prod. ROW --> | [ROW, LexToken(row,'<row>',1,259), CONT_ROW, LexToken(cierreRow,'</row>',1,408)]
----------------
-550) Prod. CONT_ENTRY --> | [CONT_ENTRY, LexToken(contenido_texto,'Banana',1,446)]
----------------
-551) Prod. ENTRY --> | [ENTRY, LexToken(entry,'<entry>',1,439), CONT_ENTRY, LexToken(cierreEntry,'</entry>',1,452)]
----------------
-552) Prod. CONT_ENTRY --> | [CONT_ENTRY, LexToken(contenido_texto,'A long, curved fruit that has yellow skin and soft, sweet, white flesh inside',1,478)]
----------------
-553) Prod. ENTRY --> | [ENTRY, LexToken(entry,'<entry>',1,471), CONT_ENTRY, LexToken(cierreEntry,'</entry>',1,555)]
----------------
-554) Prod. CONT_ENTRY --> | [CONT_ENTRY, LexToken(contenido_texto,'$0.50',1,581)]
----------------
-555) Prod. ENTRY --> | [ENTRY, LexToken(entry,'<entry>',1,574), CONT_ENTRY, LexToken(cierreEntry,'</entry>',1,586)]
----------------
-556) Prod. CONT_ROW_1 --> | [CONT_ROW, ENTRY]
----------------
-557) Prod. CONT_ROW_1 --> | [CONT_ROW, ENTRY, CONT_ROW]
----------------
-558) Prod. CONT_ROW_1 --> | [CONT_ROW, ENTRY, CONT_ROW]
----------------
-559) Prod. ROW --> | [ROW, LexToken(row,'<row>',1,423), CONT_ROW, LexToken(cierreRow,'</row>',1,603)]
----------------
-560) Prod. CONT_T --> | [CONT_T, ROW]
----------------
-561) Prod. CONT_T --> | [CONT_T, ROW, CONT_T]
----------------
-562) Prod. TBODY --> | [TBODY, LexToken(tbody,'<tbody>',1,243), CONT_T, LexToken(cierreTbody,'</tbody>',1,616)]
----------------
-563) Prod. TGROUP --> | [TGROUP, LexToken(tgroup,'<tgroup>',1,72), THEAD, TBODY, LexToken(cierreTgroup,'</tgroup>',1,629)]
----------------
-564) Prod. TABLE_GROUP --> | [TABLE_GROUP, TGROUP]
----------------
-565) Prof. INFORMAL_TABLE --> | [INFORMAL_TABLE, LexToken(informalTable,'<informaltable>',1,52), TABLE_GROUP, LexToken(cierreInformalTable,'</informaltable>',1,641)]
----------------
-566) Prod. CONT_1 --> | [CONT_1, INFORMAL_TABLE]
----------------
-567) Prod. CONT_A_S --> | [CONT_A_S, CONT_1]
----------------
-568) Prod. ARTICLE --> | [ARTICLE, LexToken(article,'<article>',1,19), TITLE, CONT_A_S, LexToken(cierreArticle,'</article>',1,658)]
----------------
-569) Prod. SIGMA --> | [SIGMA, LexToken(doctype,'<!DOCTYPE article>',1,0), ARTICLE]
----------------
 ====================
-Total de tokens analizados: 569.
+Total de tokens analizados: 417.
