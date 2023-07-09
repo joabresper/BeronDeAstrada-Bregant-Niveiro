@@ -7,6 +7,7 @@ import lexer
 from lexer import tokens
 
 from importlib import reload
+import re
 
 exportarTxt = list()
 contadorErrores = 0
@@ -34,14 +35,11 @@ def p_ARTICLE(p):                                                           # SI
     if(len(p) == 4):
         p[0] = f'{p[2]}'
     elif(len(p) == 5):
-        p[0] = f'{p[2]}{p[3]}'
+        p[0] = f'{p[2]}\n{p[3]}'
     elif(len(p) == 6):
-        p[0] = f'{p[2]}{p[3]}{p[4]}'
+        p[0] = f'{p[2]}\n{p[3]}\n{p[4]}'
     elif(len(p) == 7):
-        p[0] = f'{p[2]}{p[3]}{p[4]}{p[5]}'
-
-        
-        
+        p[0] = f'{p[2]}\n{p[3]}\n{p[4]}\n{p[5]}'   
     exportarTxt.append(['Prod. ARTICLE -->', p.slice])
     
 def p_INFO(p):
@@ -55,7 +53,7 @@ def p_CONT_INFO(p):
 				| ELEM_INFO
     '''
     if(len(p) == 3):                    #CONSIDERO QUE CUALQUIER ETIQUETA DENTRO DE UN INFO, ES UN CONTENIDO DE INFO
-        p[0] = f'<p style="background-color:green; color: white; font-size:8px">{p[1]}</p>{p[2]}'    # EN CASO QUE SEA RECURSIVO, EL PRIMERO SE DERIVA EN UN INFO, Y EL SIGUIENTE COMO ES RECURSIVOP, SE LE APLICARA EN EL SEGUNDO CASO CUANDO SE DECIDA TERMINAR LA RECURSIVDAD          
+        p[0] = f'<p style="background-color:green; color: white; font-size:8px">{p[1]}</p>\n{p[2]}'    # EN CASO QUE SEA RECURSIVO, EL PRIMERO SE DERIVA EN UN INFO, Y EL SIGUIENTE COMO ES RECURSIVOP, SE LE APLICARA EN EL SEGUNDO CASO CUANDO SE DECIDA TERMINAR LA RECURSIVDAD          
     elif(len(p) == 2):
         p[0] = f'<p style="background-color:green; color: white; font-size:8px">{p[1]}</p>'
         
@@ -85,14 +83,13 @@ def p_SECTION(p):                                                   # TODO TITUL
                 | section TITLEH2 cierreSection
     '''
     if(len(p) == 4):
-        p[0] = f'{p[2]}'
+        p[0] = f'<div>{p[2]}</div'
     elif(len(p) == 5):
-        p[0] = f'{p[2]}{p[3]}'
+        p[0] = f'<div>{p[2]}\n{p[3]}</div>'
     elif(len(p) == 6):
-        p[0] = f'{p[2]}{p[3]}{p[4]}'
+        p[0] = f'<div>{p[2]}\n{p[3]}\n{p[4]}</div>'
     elif(len(p) == 7):
-        p[0] = f'{p[2]}{p[3]}{p[4]}{p[5]}'
-        
+        p[0] = f'<div>{p[2]}\n{p[3]}\n{p[4]}\n{p[5]}</div>'
     exportarTxt.append(['Prod. SECTION -->', p.slice])
 
 def p_SECTIONS(p):
@@ -104,7 +101,7 @@ def p_SECTIONS(p):
     if(len(p) == 2):
         p[0] = f'{p[1]}'
     elif(len(p)==3):
-        p[0] = f'{p[1]}{p[2]}'
+        p[0] = f'{p[1]}\n{p[2]}'
     exportarTxt.append(['Prod. SECTIONS -->', p.slice])
 
 def p_CONT_A_S(p):
@@ -115,7 +112,7 @@ def p_CONT_A_S(p):
     if(len(p) == 2):
         p[0] = f'{p[1]}'
     elif(len(p)==3):
-        p[0] = f'{p[1]}{p[2]}'
+        p[0] = f'{p[1]}\n{p[2]}'
     exportarTxt.append(['Prod. CONT_A_S -->', p.slice])
 
 def p_CONT_1(p):
@@ -138,12 +135,22 @@ def p_SIMPLE_SEC(p):
                 | simpleSection TITLE CONT_SS cierreSimpleSection
                 | simpleSection INFO TITLE CONT_SS cierreSimpleSection
     '''
+    if len(p)==4:
+        p[0] = f'<div>{p[2]}</div'
+    elif len(p)==5:
+        p[0] = f'<div>{p[2]}\n{p[3]}</div'
+    else:
+        p[0] = f'<div>{p[2]}\n{p[3]}\n{p[4]}</div'
     exportarTxt.append(['Prod. SIMPLE_SEC -->', p.slice])
 
 def p_CONT_SS(p):
     '''CONT_SS : CONT_1
 				| CONT_1 CONT_SS
     '''
+    if len(p)==2:
+        p[0] = f'{p[1]}'
+    else:
+        p[0] = f'{p[1]}\n{p[2]}'
     exportarTxt.append(['Prod. CONT_SS -->', p.slice])
 
 def p_ABSTRACT(p):
@@ -154,13 +161,12 @@ def p_ABSTRACT(p):
         p[0] = f'{p[2]}'
     elif(len(p)==5):
         p[0] = f'{p[2]}{p[3]}'
-        
     exportarTxt.append(['Prod. ABSTRACT -->', p.slice])
 
 def p_TITLE(p):
     '''TITLE : title CONT_TITLE cierreTitle
     '''
-    p[0] = f'{p[2]}'
+    p[0] = f'<h3>{p[2]}</h3>'
     exportarTxt.append(['Prod. TITLE -->', p.slice])
     
 def p_TITLEH1(p):
@@ -191,8 +197,8 @@ def p_ELEM_TITLE(p):
                 | LINK
                 | EMAIL
     '''
-    exportarTxt.append(['Prod. ELEM_TITLE -->', p.slice])
     p[0] = f'{p[1]}'
+    exportarTxt.append(['Prod. ELEM_TITLE -->', p.slice])
     
 def p_PARAS(p):
     '''PARAS : PARA
@@ -203,14 +209,12 @@ def p_PARAS(p):
     if(len(p) == 2):
         p[0] = f'{p[1]}'
     elif(len(p)==3):
-        p[0] = f'{p[1]}{p[2]}'
-
+        p[0] = f'{p[1]}\n{p[2]}'
     exportarTxt.append(['Prod. PARAS -->', p.slice])
 
 def p_PARA(p):
     '''PARA : para CONT_PARA cierrePara
     '''
-    
     p[0] = f'<p>{p[2]}</p>'
     exportarTxt.append(['Prod. PARA -->', p.slice])
 
@@ -221,8 +225,7 @@ def p_CONT_PARA(p):
     if(len(p) == 2):
         p[0] = f'{p[1]}'
     elif(len(p)==3):
-        p[0] = f'{p[1]}{p[2]}'
-
+        p[0] = f'{p[1]}\n{p[2]}'
     exportarTxt.append(['Prod. CONT_PARA -->', p.slice])
 
 def p_ELEM_PARA(p):
@@ -244,15 +247,37 @@ def p_ELEM_PARA(p):
 def p_ITEMIZED_LIST(p):
     '''ITEMIZED_LIST : itemizedlist LIST_ITEM cierreItemizedlist
     '''
+    p[0] = f'<ul>\n\t{p[2]}\n</ul>'
     exportarTxt.append(['Prod. ITEMIZED_LIST -->', p.slice])
+
+def p_LIST_ITEM(p):
+    '''LIST_ITEM : listItem CONT_ITEM cierreListItem
+                |  LIST_ITEM listItem CONT_ITEM cierreListItem
+    '''
+    if len(p)==4:
+        p[0] = f'<li>\n\t{p[2]}\n</li>'
+    else:
+        p[0] = f'{p[1]}\n<li>\v{p[3]}\n</li>'
+    exportarTxt.append(['Prod. LIST_ITEM -->', p.slice])
+
+def p_CONT_ITEM(p):
+    '''CONT_ITEM : CONT_1
+				| CONT_1 CONT_ITEM
+    '''
+    if len(p)==2:
+        p[0] = f'{p[1]}'
+    else:
+        p[0] = f'{p[1]}{p[2]}'
+    exportarTxt.append(['Prod. CONT_ITEM -->', p.slice])
 
 def p_MEDIA_OBJECT(p):
     '''MEDIA_OBJECT : mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
 				| mediaObject CONT_MEDIA_OBJECT cierreMediaObject
     '''
-    f''
-
-
+    if len(p)==4:
+        p[0] = f'<p>{p[2]}</p>'
+    else:
+        p[0] = f'<p>{p[2]}{p[3]}</p>'
     exportarTxt.append(['Prod. MEDIA_OBJECT -->', p.slice])
 
 def p_CONT_MEDIA_OBJECT(p):
@@ -261,32 +286,34 @@ def p_CONT_MEDIA_OBJECT(p):
                 | IMAGE_OBJECT MEDIA_OBJECT
                 | VIDEO_OBJECT MEDIA_OBJECT
     '''
-    
+    p[0] = f'{p[1]}'
     exportarTxt.append(['Prod. CONT_MEDIA_OBJECT -->', p.slice])
 
 def p_IMAGE_OBJECT(p):
     '''IMAGE_OBJECT : imageObject INFO imageData cierreImageObject
 				| imageObject imageData cierreImageObject
     '''
+    pattern = r'<imagedata\s+fileref=["\']((?:(http[s]?|ftp[s]?)://)?(?:[\w.-]+/)*[\w.-]+\.[\w.-]+(?:\S+)?)["\']\s*/>'
+    if len(p)==4:
+        atrr_value = re.match(pattern, p[2])
+        p[0] = f'<img src="{atrr_value}">'
+    else:
+        atrr_value = re.match(pattern, p[3])
+        p[0] = f'<img src="{atrr_value}">{p[2]}</img>'
     exportarTxt.append(['Prod. IMAGE_OBJECT -->', p.slice])
 
 def p_VIDEO_OBJECT(p):
     '''VIDEO_OBJECT : videoObject INFO imageData cierreVideoObject
 				| videoObject videoData cierreVideoObject
     '''
+    pattern = r'<videodata\s+fileref=["\']((?:(http[s]?|ftp[s]?)://)?(?:[\w.-]+/)*[\w.-]+\.[\w.-]+(?:\S+)?)["\']\s*/>'
+    if len(p)==4:
+        atrr_value = re.match(pattern, p[2]).group(2)
+        p[0] = f'<video src="{atrr_value}"></video>'
+    else:
+        atrr_value = re.match(pattern, p[3]).group(2)
+        p[0] = f'<video src="{atrr_value}">{p[2]}</video>'
     exportarTxt.append(['Prod. VIDEO_OBJECT -->', p.slice])
-
-def p_LIST_ITEM(p):
-    '''LIST_ITEM : listItem CONT_ITEM cierreListItem
-                |  LIST_ITEM listItem CONT_ITEM cierreListItem
-    '''
-    exportarTxt.append(['Prod. LIST_ITEM -->', p.slice])
-
-def p_CONT_ITEM(p):
-    '''CONT_ITEM : CONT_1
-				| CONT_1 CONT_ITEM
-    '''
-    exportarTxt.append(['Prod. CONT_ITEM -->', p.slice])
 
 def p_AUTHOR(p):
     '''AUTHOR : author CONT_AUTHOR cierreAuthor
@@ -306,9 +333,9 @@ def p_CONT_AUTHOR(p):
     if(len(p) == 2):
         p[0] = f'{p[1]}'
     elif(len(p)==3):
-        p[0] = f'{p[1]}{p[2]}'
+        p[0] = f'{p[1]}\n{p[2]}'
     elif(len(p)==4):
-        p[0] = f'{p[1]}{p[2]}{p[3]}'
+        p[0] = f'{p[1]}\n{p[2]}\n{p[3]}'
         
     exportarTxt.append(['Prod. CONT_AUTHOR -->', p.slice])
 
@@ -327,7 +354,7 @@ def p_CONT_ADDRESS(p):
     if(len(p) == 2):
         p[0] = f'{p[1]}'
     elif(len(p)==3):
-        p[0] = f'{p[1]}{p[2]}'
+        p[0] = f'{p[1]}\n{p[2]}'
         
     exportarTxt.append(['Prod. CONT_ADDRESS -->', p.slice])
 
@@ -346,12 +373,10 @@ def p_COPYRIGHT(p):
     '''COPYRIGHT : copyright YEAR cierreCopyright
 				| copyright YEAR HOLDER cierreCopyright 
     '''
-
     if(len(p) == 4):
         p[0] = f'{p[2]}'
     elif(len(p)==5):
-        p[0] = f'{p[2]}{p[3]}'
-        
+        p[0] = f'{p[2]}\n{p[3]}'
     exportarTxt.append(['Prod. COPYRIGHT -->', p.slice])
 
 def p_SIMPARA(p):
@@ -363,19 +388,21 @@ def p_SIMPARA(p):
 def p_EMPHASIS(p):
     '''EMPHASIS : emphasis CONT_SECL cierreEmphasis
     '''
-    p[0] = f'{p[2]}'
+    p[0] = f'<strong>{p[2]}</strong>'
     exportarTxt.append(['Prod. EMPHASIS -->', p.slice])
 
 def p_COMMENT(p):
     '''COMMENT : comment CONT_SECL cierreComment
     '''
-    p[0] = f'{p[2]}'
+    p[0] = f'<i>{p[2]}</i>'
     exportarTxt.append(['Prod. COMMENT -->', p.slice])
 
 def p_LINK(p):
     '''LINK : link CONT_SECL cierreLink
     '''
-    p[0] = f'{p[2]}'
+    pattern = r'(<link\s+xlink:href=["\'])((?:(http[s]?|ftp[s]?)://)?(?:[\w.-]+/)*[\w.-]+\.[\w.-]+(?:\S+)?)["\']\s*>'
+    attr_value = re.match(pattern, p[1]).group(2)
+    p[0] = f'<a href="{attr_value}">{p[2]}</a>'
     exportarTxt.append(['Prod. LINK -->', p.slice])
 
 def p_CONT_SECL(p):
@@ -386,7 +413,6 @@ def p_CONT_SECL(p):
         p[0] = f'{p[1]}'
     elif(len(p) == 3):
         p[0] = f'{p[1]}{p[2]}'
-        
     exportarTxt.append(['Prod. CONT_SECL -->', p.slice])
     
 def p_CONT_2(p):
@@ -404,7 +430,6 @@ def p_IMPORTANT(p):
     '''IMPORTANT : important TITLE CONT_IMPORTANT cierreImportant
 				| important CONT_IMPORTANT cierreImportant
     '''
-
     if(len(p) == 4):
         p[0] = f'<div style="background-color: red; color:white;">{p[2]}</div>'
     elif(len(p)==5):
@@ -482,7 +507,7 @@ def p_PHONE(p):
 def p_EMAIL(p):
     '''EMAIL : email CONT_VAR cierreEmail
     '''
-    p[0]=f'{p[2]}'
+    p[0]=f'<a href="{p[2]}'
     exportarTxt.append(['Prod. EMAIL -->', p.slice])
 
 def p_DATE(p):
@@ -509,52 +534,121 @@ def p_INFORMAL_TABLE(p):
     '''INFORMAL_TABLE : informalTable TABLE_MEDIA cierreInformalTable
 				| informalTable TABLE_GROUP cierreInformalTable
     '''
+    p[0] = f'<table>{p[2]}</table>'
     exportarTxt.append(['Prof. INFORMAL_TABLE -->', p.slice])
 
 def p_TABLE_MEDIA(p):
     '''TABLE_MEDIA : MEDIA_OBJECT
 				| MEDIA_OBJECT TABLE_MEDIA
     '''
+    if len(p)==2:
+        p[0] = f'{p[1]}'
+    else:
+        p[0] = f'{p[1]}{p[2]}'
     exportarTxt.append(['Prod. TABLE_MEDIA -->', p.slice])
 
 def p_TABLE_GROUP(p):
     '''TABLE_GROUP : TGROUP
 				| TGROUP TABLE_GROUP
     '''
+    if len(p)==2:
+        p[0] = f'<div>{p[1]}</div>'
+    else:
+        p[0] = f'<div>{p[1]}</div>\n{p[2]}'
     exportarTxt.append(['Prod. TABLE_GROUP -->', p.slice])
 
 def p_TGROUP(p):
-    '''TGROUP : tgroup THEAD TFOOT TBODY cierreTgroup
+    '''TGROUP : tgroup THEAD TBODY TFOOT cierreTgroup
 				| tgroup THEAD TBODY cierreTgroup
-                | tgroup TFOOT TBODY cierreTgroup
+                | tgroup TBODY TFOOT cierreTgroup
                 | tgroup TBODY cierreTgroup
     '''
+    if len(p)==4:   #Si la tabla solo tiene cuerpo
+        p[0] = f'{p[2]}'
+    elif len(p)==5:
+        p[0] = f'{p[2]}\n{p[3]}'
+    else:
+        p[0] = f'{p[2]}\n{p[3]}\n{p[4]}'
     exportarTxt.append(['Prod. TGROUP -->', p.slice])
+
+#-------------- Header table
+def p_THEAD(p):
+    '''THEAD : thead CONT_TH cierreThead
+    '''
+    p[0] = f'{p[2]}'
+    exportarTxt.append(['Prod. THEAD -->', p.slice])
+
+def p_CONT_TH(p):
+    '''CONT_TH : ROWH
+				| ROWH CONT_TH
+    '''
+    if len(p)==2:
+        p[0] = f'{p[1]}'
+    else:
+        p[0] = f'{p[1]}\n{p[2]}'
+    exportarTxt.append(['Prod. CONT_TH -->', p.slice])
+
+def p_ROWH(p):
+    '''ROWH : row CONT_ROWH cierreRow
+    '''
+    p[0] = f'<tr>{p[2]}</tr>'
+    exportarTxt.append(['Prod. ROWH -->', p.slice])
+
+def p_CONT_ROWH(p):
+    '''CONT_ROWH : ENTRYH
+				| ENTRYH CONT_ROWH
+                | ENTRYTBLH
+				| ENTRYTBLH CONT_ROWH
+    '''
+    if len(p)==2:
+        p[0] = f'{p[1]}'
+    else:
+        p[0] = f'{p[1]}{p[2]}'
+    exportarTxt.append(['Prod. CONT_ROWH -->', p.slice])
+
+def p_ENTRYH(p):
+    '''ENTRYH : entry CONT_ENTRY cierreEntry
+    '''
+    p[0] = f'<th>{p[2]}</th>'
+    exportarTxt.append(['Prod. ENTRYH -->', p.slice])
+
+def p_ENTRYTBLH(p):
+    '''ENTRYTBLH : entrytbl THEAD TBODY cierreEntrytbl
+				| entrytbl TBODY cierreEntrytbl
+    '''
+    if len(p)==4:
+        p[0] = f'<th><div>{p[2]}</div></th>'
+    else:
+        p[0] = f'<th>{p[2]}\n{p[3]}</th>'
+    exportarTxt.append(['Prod. ENTRYTBL -->', p.slice])
+#----------- fin header table
 
 def p_CONT_T(p):
     '''CONT_T : ROW
 				| ROW CONT_T
     '''
+    if len(p)==2:
+        p[0] = f'{p[1]}'
+    else:
+        p[0] = f'{p[1]}\n{p[2]}'
     exportarTxt.append(['Prod. CONT_T -->', p.slice])
-
-def p_THEAD(p):
-    '''THEAD : thead CONT_T cierreThead
-    '''
-    exportarTxt.append(['Prod. THEAD -->', p.slice])
 
 def p_TFOOT(p):
     '''TFOOT : tfoot CONT_T cierreTfoot
     '''
+    p[0] = f'{p[2]}'
     exportarTxt.append(['Prod. TFOOT -->', p.slice])
     
 def p_TBODY(p):
     '''TBODY : tbody CONT_T cierreTbody
     '''
+    p[0] = f'{p[2]}'
     exportarTxt.append(['Prod. TBODY -->', p.slice])
 
 def p_ROW(p):
     '''ROW : row CONT_ROW cierreRow
     '''
+    p[0] = f'<tr>{p[2]}</tr>'
     exportarTxt.append(['Prod. ROW -->', p.slice])
 
 def p_CONT_ROW(p):
@@ -563,17 +657,26 @@ def p_CONT_ROW(p):
                 | ENTRYTBL
 				| ENTRYTBL CONT_ROW
     '''
-    exportarTxt.append(['Prod. CONT_ROW_1 -->', p.slice])
+    if len(p)==2:
+        p[0] = f'{p[1]}'
+    else:
+        p[0] = f'{p[1]}{p[2]}'
+    exportarTxt.append(['Prod. CONT_ROW -->', p.slice])
 
 def p_ENTRY(p):
     '''ENTRY : entry CONT_ENTRY cierreEntry
     '''
+    p[0] = f'<td>{p[2]}</td>'
     exportarTxt.append(['Prod. ENTRY -->', p.slice])
 
 def p_ENTRYTBL(p):
     '''ENTRYTBL : entrytbl THEAD TBODY cierreEntrytbl
 				| entrytbl TBODY cierreEntrytbl
     '''
+    if len(p)==4:
+        p[0] = f'<td><div>{p[2]}</div></td>'
+    else:
+        p[0] = f'<td><div>{p[2]}\n{p[3]}</div></td>'
     exportarTxt.append(['Prod. ENTRYTBL -->', p.slice])
 
 def p_CONT_ENTRY(p):
@@ -594,6 +697,10 @@ def p_CONT_ENTRY(p):
                 | MEDIA_OBJECT
                 | MEDIA_OBJECT CONT_ENTRY
     '''
+    if len(p)==2:
+        p[0] = f'{p[1]}'
+    else:
+        p[0] = f'{p[1]}{p[2]}'
     exportarTxt.append(['Prod. CONT_ENTRY -->', p.slice])
 
 
@@ -626,7 +733,7 @@ def analizarPorRuta():
         strings = file.read()
         file.close()
         result = parser.parse(strings)
-        print("Esto es lo q se encuentra", result) 
+        print("Esto es lo q se encuentra\n", result) 
         try:
             with open(f'producciones-analizadas.txt', 'w', encoding='UTF8') as f:
                 f.write('Producciones analizadas por el parser:\n====================\n')
@@ -654,7 +761,7 @@ def analizarPorRuta():
             fileName = rawFileName.split('.xml')[0]  # Obtengo el nombre del archivo sin la extensión
             contentArr = []  # Lista para almacenar el contenido del archivo HTML
             contentArr.append(
-                f'''<!DOCTYPE html>\n<html>\n<head>\n\t<meta charset="utf-8">\n\t<title>{fileName}</title>\n</head>\n<body>'''
+                f'''<!DOCTYPE html>\n<html>\n<head>\n\t<meta charset="utf-8">\n\t<title>{fileName}</title>\n</head>\n<body>\n'''
             )
             contentArr.append(result)
 

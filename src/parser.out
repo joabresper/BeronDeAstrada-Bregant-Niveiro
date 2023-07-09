@@ -82,20 +82,20 @@ Rule 76    ELEM_PARA -> ADDRESS
 Rule 77    ELEM_PARA -> MEDIA_OBJECT
 Rule 78    ELEM_PARA -> INFORMAL_TABLE
 Rule 79    ITEMIZED_LIST -> itemizedlist LIST_ITEM cierreItemizedlist
-Rule 80    MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-Rule 81    MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject
-Rule 82    CONT_MEDIA_OBJECT -> IMAGE_OBJECT
-Rule 83    CONT_MEDIA_OBJECT -> VIDEO_OBJECT
-Rule 84    CONT_MEDIA_OBJECT -> IMAGE_OBJECT MEDIA_OBJECT
-Rule 85    CONT_MEDIA_OBJECT -> VIDEO_OBJECT MEDIA_OBJECT
-Rule 86    IMAGE_OBJECT -> imageObject INFO imageData cierreImageObject
-Rule 87    IMAGE_OBJECT -> imageObject imageData cierreImageObject
-Rule 88    VIDEO_OBJECT -> videoObject INFO imageData cierreVideoObject
-Rule 89    VIDEO_OBJECT -> videoObject videoData cierreVideoObject
-Rule 90    LIST_ITEM -> listItem CONT_ITEM cierreListItem
-Rule 91    LIST_ITEM -> LIST_ITEM listItem CONT_ITEM cierreListItem
-Rule 92    CONT_ITEM -> CONT_1
-Rule 93    CONT_ITEM -> CONT_1 CONT_ITEM
+Rule 80    LIST_ITEM -> listItem CONT_ITEM cierreListItem
+Rule 81    LIST_ITEM -> LIST_ITEM listItem CONT_ITEM cierreListItem
+Rule 82    CONT_ITEM -> CONT_1
+Rule 83    CONT_ITEM -> CONT_1 CONT_ITEM
+Rule 84    MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+Rule 85    MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+Rule 86    CONT_MEDIA_OBJECT -> IMAGE_OBJECT
+Rule 87    CONT_MEDIA_OBJECT -> VIDEO_OBJECT
+Rule 88    CONT_MEDIA_OBJECT -> IMAGE_OBJECT MEDIA_OBJECT
+Rule 89    CONT_MEDIA_OBJECT -> VIDEO_OBJECT MEDIA_OBJECT
+Rule 90    IMAGE_OBJECT -> imageObject INFO imageData cierreImageObject
+Rule 91    IMAGE_OBJECT -> imageObject imageData cierreImageObject
+Rule 92    VIDEO_OBJECT -> videoObject INFO imageData cierreVideoObject
+Rule 93    VIDEO_OBJECT -> videoObject videoData cierreVideoObject
 Rule 94    AUTHOR -> author CONT_AUTHOR cierreAuthor
 Rule 95    CONT_AUTHOR -> FIRSTNAME
 Rule 96    CONT_AUTHOR -> SURNAME
@@ -154,39 +154,49 @@ Rule 148   TABLE_MEDIA -> MEDIA_OBJECT
 Rule 149   TABLE_MEDIA -> MEDIA_OBJECT TABLE_MEDIA
 Rule 150   TABLE_GROUP -> TGROUP
 Rule 151   TABLE_GROUP -> TGROUP TABLE_GROUP
-Rule 152   TGROUP -> tgroup THEAD TFOOT TBODY cierreTgroup
+Rule 152   TGROUP -> tgroup THEAD TBODY TFOOT cierreTgroup
 Rule 153   TGROUP -> tgroup THEAD TBODY cierreTgroup
-Rule 154   TGROUP -> tgroup TFOOT TBODY cierreTgroup
+Rule 154   TGROUP -> tgroup TBODY TFOOT cierreTgroup
 Rule 155   TGROUP -> tgroup TBODY cierreTgroup
-Rule 156   CONT_T -> ROW
-Rule 157   CONT_T -> ROW CONT_T
-Rule 158   THEAD -> thead CONT_T cierreThead
-Rule 159   TFOOT -> tfoot CONT_T cierreTfoot
-Rule 160   TBODY -> tbody CONT_T cierreTbody
-Rule 161   ROW -> row CONT_ROW cierreRow
-Rule 162   CONT_ROW -> ENTRY
-Rule 163   CONT_ROW -> ENTRY CONT_ROW
-Rule 164   CONT_ROW -> ENTRYTBL
-Rule 165   CONT_ROW -> ENTRYTBL CONT_ROW
-Rule 166   ENTRY -> entry CONT_ENTRY cierreEntry
-Rule 167   ENTRYTBL -> entrytbl THEAD TBODY cierreEntrytbl
-Rule 168   ENTRYTBL -> entrytbl TBODY cierreEntrytbl
-Rule 169   CONT_ENTRY -> contenido_texto
-Rule 170   CONT_ENTRY -> contenido_texto CONT_ENTRY
-Rule 171   CONT_ENTRY -> ITEMIZED_LIST
-Rule 172   CONT_ENTRY -> ITEMIZED_LIST CONT_ENTRY
-Rule 173   CONT_ENTRY -> IMPORTANT
-Rule 174   CONT_ENTRY -> IMPORTANT CONT_ENTRY
-Rule 175   CONT_ENTRY -> PARA
-Rule 176   CONT_ENTRY -> PARA CONT_ENTRY
-Rule 177   CONT_ENTRY -> SIMPARA
-Rule 178   CONT_ENTRY -> SIMPARA CONT_ENTRY
-Rule 179   CONT_ENTRY -> COMMENT
-Rule 180   CONT_ENTRY -> COMMENT CONT_ENTRY
-Rule 181   CONT_ENTRY -> ABSTRACT
-Rule 182   CONT_ENTRY -> ABSTRACT CONT_ENTRY
-Rule 183   CONT_ENTRY -> MEDIA_OBJECT
-Rule 184   CONT_ENTRY -> MEDIA_OBJECT CONT_ENTRY
+Rule 156   THEAD -> thead CONT_TH cierreThead
+Rule 157   CONT_TH -> ROWH
+Rule 158   CONT_TH -> ROWH CONT_TH
+Rule 159   ROWH -> row CONT_ROWH cierreRow
+Rule 160   CONT_ROWH -> ENTRYH
+Rule 161   CONT_ROWH -> ENTRYH CONT_ROWH
+Rule 162   CONT_ROWH -> ENTRYTBLH
+Rule 163   CONT_ROWH -> ENTRYTBLH CONT_ROWH
+Rule 164   ENTRYH -> entry CONT_ENTRY cierreEntry
+Rule 165   ENTRYTBLH -> entrytbl THEAD TBODY cierreEntrytbl
+Rule 166   ENTRYTBLH -> entrytbl TBODY cierreEntrytbl
+Rule 167   CONT_T -> ROW
+Rule 168   CONT_T -> ROW CONT_T
+Rule 169   TFOOT -> tfoot CONT_T cierreTfoot
+Rule 170   TBODY -> tbody CONT_T cierreTbody
+Rule 171   ROW -> row CONT_ROW cierreRow
+Rule 172   CONT_ROW -> ENTRY
+Rule 173   CONT_ROW -> ENTRY CONT_ROW
+Rule 174   CONT_ROW -> ENTRYTBL
+Rule 175   CONT_ROW -> ENTRYTBL CONT_ROW
+Rule 176   ENTRY -> entry CONT_ENTRY cierreEntry
+Rule 177   ENTRYTBL -> entrytbl THEAD TBODY cierreEntrytbl
+Rule 178   ENTRYTBL -> entrytbl TBODY cierreEntrytbl
+Rule 179   CONT_ENTRY -> contenido_texto
+Rule 180   CONT_ENTRY -> contenido_texto CONT_ENTRY
+Rule 181   CONT_ENTRY -> ITEMIZED_LIST
+Rule 182   CONT_ENTRY -> ITEMIZED_LIST CONT_ENTRY
+Rule 183   CONT_ENTRY -> IMPORTANT
+Rule 184   CONT_ENTRY -> IMPORTANT CONT_ENTRY
+Rule 185   CONT_ENTRY -> PARA
+Rule 186   CONT_ENTRY -> PARA CONT_ENTRY
+Rule 187   CONT_ENTRY -> SIMPARA
+Rule 188   CONT_ENTRY -> SIMPARA CONT_ENTRY
+Rule 189   CONT_ENTRY -> COMMENT
+Rule 190   CONT_ENTRY -> COMMENT CONT_ENTRY
+Rule 191   CONT_ENTRY -> ABSTRACT
+Rule 192   CONT_ENTRY -> ABSTRACT CONT_ENTRY
+Rule 193   CONT_ENTRY -> MEDIA_OBJECT
+Rule 194   CONT_ENTRY -> MEDIA_OBJECT CONT_ENTRY
 
 Terminals, with rules where they appear
 
@@ -204,98 +214,100 @@ cierreCopyright      : 112 113
 cierreDate           : 143
 cierreEmail          : 142
 cierreEmphasis       : 115
-cierreEntry          : 166
-cierreEntrytbl       : 167 168
+cierreEntry          : 164 176
+cierreEntrytbl       : 165 166 177 178
 cierreFirstname      : 136
 cierreHolder         : 145
-cierreImageObject    : 86 87
+cierreImageObject    : 90 91
 cierreImportant      : 126 127
 cierreInfo           : 9
 cierreInformalTable  : 146 147
 cierreItemizedlist   : 79
 cierreLink           : 117
-cierreListItem       : 90 91
-cierreMediaObject    : 80 81
+cierreListItem       : 80 81
+cierreMediaObject    : 84 85
 cierrePara           : 65
 cierrePhone          : 141
-cierreRow            : 161
+cierreRow            : 159 171
 cierreSection        : 19 20 21 22 23 24 25 26 27
 cierreSimpara        : 114
 cierreSimpleSection  : 44 45 46 47
 cierreState          : 140
 cierreStreet         : 138
 cierreSurname        : 137
-cierreTbody          : 160
-cierreTfoot          : 159
+cierreTbody          : 170
+cierreTfoot          : 169
 cierreTgroup         : 152 153 154 155
-cierreThead          : 158
+cierreThead          : 156
 cierreTitle          : 52 53 54
-cierreVideoObject    : 88 89
+cierreVideoObject    : 92 93
 cierreYear           : 144
 city                 : 139
 comment              : 116
-contenido_texto      : 57 68 111 120 132 169 170
+contenido_texto      : 57 68 111 120 132 179 180
 copyright            : 112 113
 date                 : 143
 doctype              : 1
 email                : 142
 emphasis             : 115
-entry                : 166
-entrytbl             : 167 168
+entry                : 164 176
+entrytbl             : 165 166 177 178
 error                : 
 firstname            : 136
 holder               : 145
-imageData            : 86 87 88
-imageObject          : 86 87
+imageData            : 90 91 92
+imageObject          : 90 91
 important            : 126 127
 info                 : 9
 informalTable        : 146 147
 itemizedlist         : 79
 link                 : 117
-listItem             : 90 91
-mediaObject          : 80 81
+listItem             : 80 81
+mediaObject          : 84 85
 para                 : 65
 phone                : 141
-row                  : 161
+row                  : 159 171
 section              : 19 20 21 22 23 24 25 26 27
 simpara              : 114
 simpleSection        : 44 45 46 47
 state                : 140
 street               : 138
 surname              : 137
-tbody                : 160
-tfoot                : 159
+tbody                : 170
+tfoot                : 169
 tgroup               : 152 153 154 155
-thead                : 158
+thead                : 156
 title                : 52 53 54
-videoData            : 89
-videoObject          : 88 89
+videoData            : 93
+videoObject          : 92 93
 year                 : 144
 
 Nonterminals, with rules where they appear
 
-ABSTRACT             : 13 43 181 182
+ABSTRACT             : 13 43 191 192
 ADDRESS              : 14 39 76
 ARTICLE              : 1
 AUTHOR               : 15 72 124
 CITY                 : 107
-COMMENT              : 42 73 125 135 179 180
-CONT_1               : 32 33 48 49 92 93 128 129
+COMMENT              : 42 73 125 135 189 190
+CONT_1               : 32 33 48 49 82 83 128 129
 CONT_2               : 118 119
 CONT_3               : 130 131
 CONT_ADDRESS         : 103 105
 CONT_AUTHOR          : 94
 CONT_A_S             : 2 3 4 5 6 7 8 19 20 21 22 23 24 25 26 33
-CONT_ENTRY           : 166 170 172 174 176 178 180 182 184
+CONT_ENTRY           : 164 176 180 182 184 186 188 190 192 194
 CONT_IMPORTANT       : 126 127 129
 CONT_INFO            : 9 10
-CONT_ITEM            : 90 91 93
-CONT_MEDIA_OBJECT    : 80 81
+CONT_ITEM            : 80 81 83
+CONT_MEDIA_OBJECT    : 84 85
 CONT_PARA            : 65 67
-CONT_ROW             : 161 163 165
+CONT_ROW             : 171 173 175
+CONT_ROWH            : 159 161 163
 CONT_SECL            : 114 115 116 117 119
 CONT_SS              : 44 45 46 47 49
-CONT_T               : 157 158 159 160
+CONT_T               : 168 169 170
+CONT_TH              : 156 158
 CONT_TITLE           : 52 53 54 56
 CONT_VAR             : 131 136 137 138 139 140 141 142 143 144 145
 COPYRIGHT            : 17
@@ -306,40 +318,43 @@ ELEM_PARA            : 66 67
 ELEM_TITLE           : 55 56
 EMAIL                : 60 71 97 99 100 101 110 123
 EMPHASIS             : 58 69 121 134
-ENTRY                : 162 163
-ENTRYTBL             : 164 165
+ENTRY                : 172 173
+ENTRYH               : 160 161
+ENTRYTBL             : 174 175
+ENTRYTBLH            : 162 163
 FIRSTNAME            : 95 98 99 101
 HOLDER               : 113
-IMAGE_OBJECT         : 82 84
-IMPORTANT            : 36 75 173 174
-INFO                 : 2 3 6 7 21 22 25 26 45 47 80 86 88
+IMAGE_OBJECT         : 86 88
+IMPORTANT            : 36 75 183 184
+INFO                 : 2 3 6 7 21 22 25 26 45 47 84 90 92
 INFORMAL_TABLE       : 41 78
-ITEMIZED_LIST        : 35 74 171 172
+ITEMIZED_LIST        : 35 74 181 182
 LINK                 : 59 70 122 133
-LIST_ITEM            : 79 91
-MEDIA_OBJECT         : 12 40 77 84 85 148 149 183 184
-PARA                 : 37 61 63 175 176
+LIST_ITEM            : 79 81
+MEDIA_OBJECT         : 12 40 77 88 89 148 149 193 194
+PARA                 : 37 61 63 185 186
 PARAS                : 51 63 64
 PHONE                : 109
-ROW                  : 156 157
+ROW                  : 167 168
+ROWH                 : 157 158
 SECTION              : 28 29 34
 SECTIONS             : 3 5 7 20 22 24 26 29 31
 SIGMA                : 0
-SIMPARA              : 38 62 64 177 178
+SIMPARA              : 38 62 64 187 188
 SIMPLE_SEC           : 30 31
 STATE                : 108
 STREET               : 106
 SURNAME              : 96 98 100 101
 TABLE_GROUP          : 147 151
 TABLE_MEDIA          : 146 149
-TBODY                : 152 153 154 155 167 168
+TBODY                : 152 153 154 155 165 166 177 178
 TFOOT                : 152 154
 TGROUP               : 150 151
-THEAD                : 152 153 167
+THEAD                : 152 153 165 177
 TITLE                : 46 47 50 51 126
 TITLEH1              : 2 3 4 5 18
 TITLEH2              : 23 24 25 26 27
-VIDEO_OBJECT         : 83 85
+VIDEO_OBJECT         : 87 89
 YEAR                 : 112 113
 
 Parsing method: LALR
@@ -420,8 +435,8 @@ state 4
     (114) SIMPARA -> . simpara CONT_SECL cierreSimpara
     (102) ADDRESS -> . address cierreAddress
     (103) ADDRESS -> . address CONT_ADDRESS cierreAddress
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
     (146) INFORMAL_TABLE -> . informalTable TABLE_MEDIA cierreInformalTable
     (147) INFORMAL_TABLE -> . informalTable TABLE_GROUP cierreInformalTable
     (116) COMMENT -> . comment CONT_SECL cierreComment
@@ -491,8 +506,8 @@ state 5
     (114) SIMPARA -> . simpara CONT_SECL cierreSimpara
     (102) ADDRESS -> . address cierreAddress
     (103) ADDRESS -> . address CONT_ADDRESS cierreAddress
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
     (146) INFORMAL_TABLE -> . informalTable TABLE_MEDIA cierreInformalTable
     (147) INFORMAL_TABLE -> . informalTable TABLE_GROUP cierreInformalTable
     (116) COMMENT -> . comment CONT_SECL cierreComment
@@ -557,8 +572,8 @@ state 6
     (114) SIMPARA -> . simpara CONT_SECL cierreSimpara
     (102) ADDRESS -> . address cierreAddress
     (103) ADDRESS -> . address CONT_ADDRESS cierreAddress
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
     (146) INFORMAL_TABLE -> . informalTable TABLE_MEDIA cierreInformalTable
     (147) INFORMAL_TABLE -> . informalTable TABLE_GROUP cierreInformalTable
     (116) COMMENT -> . comment CONT_SECL cierreComment
@@ -608,8 +623,8 @@ state 8
     (16) ELEM_INFO -> . DATE
     (17) ELEM_INFO -> . COPYRIGHT
     (18) ELEM_INFO -> . TITLEH1
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
     (50) ABSTRACT -> . abstract TITLE cierreAbstract
     (51) ABSTRACT -> . abstract TITLE PARAS cierreAbstract
     (102) ADDRESS -> . address cierreAddress
@@ -694,8 +709,8 @@ state 10
     (114) SIMPARA -> . simpara CONT_SECL cierreSimpara
     (102) ADDRESS -> . address cierreAddress
     (103) ADDRESS -> . address CONT_ADDRESS cierreAddress
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
     (146) INFORMAL_TABLE -> . informalTable TABLE_MEDIA cierreInformalTable
     (147) INFORMAL_TABLE -> . informalTable TABLE_GROUP cierreInformalTable
     (116) COMMENT -> . comment CONT_SECL cierreComment
@@ -981,8 +996,8 @@ state 21
     (114) SIMPARA -> . simpara CONT_SECL cierreSimpara
     (102) ADDRESS -> . address cierreAddress
     (103) ADDRESS -> . address CONT_ADDRESS cierreAddress
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
     (146) INFORMAL_TABLE -> . informalTable TABLE_MEDIA cierreInformalTable
     (147) INFORMAL_TABLE -> . informalTable TABLE_GROUP cierreInformalTable
     (116) COMMENT -> . comment CONT_SECL cierreComment
@@ -1020,8 +1035,8 @@ state 21
 state 22
 
     (79) ITEMIZED_LIST -> itemizedlist . LIST_ITEM cierreItemizedlist
-    (90) LIST_ITEM -> . listItem CONT_ITEM cierreListItem
-    (91) LIST_ITEM -> . LIST_ITEM listItem CONT_ITEM cierreListItem
+    (80) LIST_ITEM -> . listItem CONT_ITEM cierreListItem
+    (81) LIST_ITEM -> . LIST_ITEM listItem CONT_ITEM cierreListItem
 
     listItem        shift and go to state 62
 
@@ -1050,8 +1065,8 @@ state 23
     (114) SIMPARA -> . simpara CONT_SECL cierreSimpara
     (102) ADDRESS -> . address cierreAddress
     (103) ADDRESS -> . address CONT_ADDRESS cierreAddress
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
     (146) INFORMAL_TABLE -> . informalTable TABLE_MEDIA cierreInformalTable
     (147) INFORMAL_TABLE -> . informalTable TABLE_GROUP cierreInformalTable
     (116) COMMENT -> . comment CONT_SECL cierreComment
@@ -1108,8 +1123,8 @@ state 24
     (127) IMPORTANT -> . important CONT_IMPORTANT cierreImportant
     (102) ADDRESS -> . address cierreAddress
     (103) ADDRESS -> . address CONT_ADDRESS cierreAddress
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
     (146) INFORMAL_TABLE -> . informalTable TABLE_MEDIA cierreInformalTable
     (147) INFORMAL_TABLE -> . informalTable TABLE_GROUP cierreInformalTable
 
@@ -1206,17 +1221,17 @@ state 26
 
 state 27
 
-    (80) MEDIA_OBJECT -> mediaObject . INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> mediaObject . CONT_MEDIA_OBJECT cierreMediaObject
+    (84) MEDIA_OBJECT -> mediaObject . INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> mediaObject . CONT_MEDIA_OBJECT cierreMediaObject
     (9) INFO -> . info CONT_INFO cierreInfo
-    (82) CONT_MEDIA_OBJECT -> . IMAGE_OBJECT
-    (83) CONT_MEDIA_OBJECT -> . VIDEO_OBJECT
-    (84) CONT_MEDIA_OBJECT -> . IMAGE_OBJECT MEDIA_OBJECT
-    (85) CONT_MEDIA_OBJECT -> . VIDEO_OBJECT MEDIA_OBJECT
-    (86) IMAGE_OBJECT -> . imageObject INFO imageData cierreImageObject
-    (87) IMAGE_OBJECT -> . imageObject imageData cierreImageObject
-    (88) VIDEO_OBJECT -> . videoObject INFO imageData cierreVideoObject
-    (89) VIDEO_OBJECT -> . videoObject videoData cierreVideoObject
+    (86) CONT_MEDIA_OBJECT -> . IMAGE_OBJECT
+    (87) CONT_MEDIA_OBJECT -> . VIDEO_OBJECT
+    (88) CONT_MEDIA_OBJECT -> . IMAGE_OBJECT MEDIA_OBJECT
+    (89) CONT_MEDIA_OBJECT -> . VIDEO_OBJECT MEDIA_OBJECT
+    (90) IMAGE_OBJECT -> . imageObject INFO imageData cierreImageObject
+    (91) IMAGE_OBJECT -> . imageObject imageData cierreImageObject
+    (92) VIDEO_OBJECT -> . videoObject INFO imageData cierreVideoObject
+    (93) VIDEO_OBJECT -> . videoObject videoData cierreVideoObject
 
     info            shift and go to state 8
     imageObject     shift and go to state 105
@@ -1235,11 +1250,11 @@ state 28
     (149) TABLE_MEDIA -> . MEDIA_OBJECT TABLE_MEDIA
     (150) TABLE_GROUP -> . TGROUP
     (151) TABLE_GROUP -> . TGROUP TABLE_GROUP
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
-    (152) TGROUP -> . tgroup THEAD TFOOT TBODY cierreTgroup
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (152) TGROUP -> . tgroup THEAD TBODY TFOOT cierreTgroup
     (153) TGROUP -> . tgroup THEAD TBODY cierreTgroup
-    (154) TGROUP -> . tgroup TFOOT TBODY cierreTgroup
+    (154) TGROUP -> . tgroup TBODY TFOOT cierreTgroup
     (155) TGROUP -> . tgroup TBODY cierreTgroup
 
     mediaObject     shift and go to state 27
@@ -1324,8 +1339,8 @@ state 31
     (114) SIMPARA -> . simpara CONT_SECL cierreSimpara
     (102) ADDRESS -> . address cierreAddress
     (103) ADDRESS -> . address CONT_ADDRESS cierreAddress
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
     (146) INFORMAL_TABLE -> . informalTable TABLE_MEDIA cierreInformalTable
     (147) INFORMAL_TABLE -> . informalTable TABLE_GROUP cierreInformalTable
     (116) COMMENT -> . comment CONT_SECL cierreComment
@@ -1443,8 +1458,8 @@ state 36
     (16) ELEM_INFO -> . DATE
     (17) ELEM_INFO -> . COPYRIGHT
     (18) ELEM_INFO -> . TITLEH1
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
     (50) ABSTRACT -> . abstract TITLE cierreAbstract
     (51) ABSTRACT -> . abstract TITLE PARAS cierreAbstract
     (102) ADDRESS -> . address cierreAddress
@@ -1869,8 +1884,8 @@ state 58
     (114) SIMPARA -> . simpara CONT_SECL cierreSimpara
     (102) ADDRESS -> . address cierreAddress
     (103) ADDRESS -> . address CONT_ADDRESS cierreAddress
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
     (146) INFORMAL_TABLE -> . informalTable TABLE_MEDIA cierreInformalTable
     (147) INFORMAL_TABLE -> . informalTable TABLE_GROUP cierreInformalTable
     (116) COMMENT -> . comment CONT_SECL cierreComment
@@ -1936,8 +1951,8 @@ state 59
     (114) SIMPARA -> . simpara CONT_SECL cierreSimpara
     (102) ADDRESS -> . address cierreAddress
     (103) ADDRESS -> . address CONT_ADDRESS cierreAddress
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
     (146) INFORMAL_TABLE -> . informalTable TABLE_MEDIA cierreInformalTable
     (147) INFORMAL_TABLE -> . informalTable TABLE_GROUP cierreInformalTable
     (116) COMMENT -> . comment CONT_SECL cierreComment
@@ -1996,7 +2011,7 @@ state 60
 state 61
 
     (79) ITEMIZED_LIST -> itemizedlist LIST_ITEM . cierreItemizedlist
-    (91) LIST_ITEM -> LIST_ITEM . listItem CONT_ITEM cierreListItem
+    (81) LIST_ITEM -> LIST_ITEM . listItem CONT_ITEM cierreListItem
 
     cierreItemizedlist shift and go to state 150
     listItem        shift and go to state 151
@@ -2004,9 +2019,9 @@ state 61
 
 state 62
 
-    (90) LIST_ITEM -> listItem . CONT_ITEM cierreListItem
-    (92) CONT_ITEM -> . CONT_1
-    (93) CONT_ITEM -> . CONT_1 CONT_ITEM
+    (80) LIST_ITEM -> listItem . CONT_ITEM cierreListItem
+    (82) CONT_ITEM -> . CONT_1
+    (83) CONT_ITEM -> . CONT_1 CONT_ITEM
     (35) CONT_1 -> . ITEMIZED_LIST
     (36) CONT_1 -> . IMPORTANT
     (37) CONT_1 -> . PARA
@@ -2023,8 +2038,8 @@ state 62
     (114) SIMPARA -> . simpara CONT_SECL cierreSimpara
     (102) ADDRESS -> . address cierreAddress
     (103) ADDRESS -> . address CONT_ADDRESS cierreAddress
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
     (146) INFORMAL_TABLE -> . informalTable TABLE_MEDIA cierreInformalTable
     (147) INFORMAL_TABLE -> . informalTable TABLE_GROUP cierreInformalTable
     (116) COMMENT -> . comment CONT_SECL cierreComment
@@ -2074,8 +2089,8 @@ state 63
     (114) SIMPARA -> . simpara CONT_SECL cierreSimpara
     (102) ADDRESS -> . address cierreAddress
     (103) ADDRESS -> . address CONT_ADDRESS cierreAddress
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
     (146) INFORMAL_TABLE -> . informalTable TABLE_MEDIA cierreInformalTable
     (147) INFORMAL_TABLE -> . informalTable TABLE_GROUP cierreInformalTable
     (116) COMMENT -> . comment CONT_SECL cierreComment
@@ -2157,8 +2172,8 @@ state 66
     (114) SIMPARA -> . simpara CONT_SECL cierreSimpara
     (102) ADDRESS -> . address cierreAddress
     (103) ADDRESS -> . address CONT_ADDRESS cierreAddress
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
     (146) INFORMAL_TABLE -> . informalTable TABLE_MEDIA cierreInformalTable
     (147) INFORMAL_TABLE -> . informalTable TABLE_GROUP cierreInformalTable
     (116) COMMENT -> . comment CONT_SECL cierreComment
@@ -2222,8 +2237,8 @@ state 68
     (127) IMPORTANT -> . important CONT_IMPORTANT cierreImportant
     (102) ADDRESS -> . address cierreAddress
     (103) ADDRESS -> . address CONT_ADDRESS cierreAddress
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
     (146) INFORMAL_TABLE -> . informalTable TABLE_MEDIA cierreInformalTable
     (147) INFORMAL_TABLE -> . informalTable TABLE_GROUP cierreInformalTable
 
@@ -2840,15 +2855,15 @@ state 100
 
 state 101
 
-    (80) MEDIA_OBJECT -> mediaObject INFO . CONT_MEDIA_OBJECT cierreMediaObject
-    (82) CONT_MEDIA_OBJECT -> . IMAGE_OBJECT
-    (83) CONT_MEDIA_OBJECT -> . VIDEO_OBJECT
-    (84) CONT_MEDIA_OBJECT -> . IMAGE_OBJECT MEDIA_OBJECT
-    (85) CONT_MEDIA_OBJECT -> . VIDEO_OBJECT MEDIA_OBJECT
-    (86) IMAGE_OBJECT -> . imageObject INFO imageData cierreImageObject
-    (87) IMAGE_OBJECT -> . imageObject imageData cierreImageObject
-    (88) VIDEO_OBJECT -> . videoObject INFO imageData cierreVideoObject
-    (89) VIDEO_OBJECT -> . videoObject videoData cierreVideoObject
+    (84) MEDIA_OBJECT -> mediaObject INFO . CONT_MEDIA_OBJECT cierreMediaObject
+    (86) CONT_MEDIA_OBJECT -> . IMAGE_OBJECT
+    (87) CONT_MEDIA_OBJECT -> . VIDEO_OBJECT
+    (88) CONT_MEDIA_OBJECT -> . IMAGE_OBJECT MEDIA_OBJECT
+    (89) CONT_MEDIA_OBJECT -> . VIDEO_OBJECT MEDIA_OBJECT
+    (90) IMAGE_OBJECT -> . imageObject INFO imageData cierreImageObject
+    (91) IMAGE_OBJECT -> . imageObject imageData cierreImageObject
+    (92) VIDEO_OBJECT -> . videoObject INFO imageData cierreVideoObject
+    (93) VIDEO_OBJECT -> . videoObject videoData cierreVideoObject
 
     imageObject     shift and go to state 105
     videoObject     shift and go to state 106
@@ -2859,39 +2874,39 @@ state 101
 
 state 102
 
-    (81) MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT . cierreMediaObject
+    (85) MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT . cierreMediaObject
 
     cierreMediaObject shift and go to state 169
 
 
 state 103
 
-    (82) CONT_MEDIA_OBJECT -> IMAGE_OBJECT .
-    (84) CONT_MEDIA_OBJECT -> IMAGE_OBJECT . MEDIA_OBJECT
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (86) CONT_MEDIA_OBJECT -> IMAGE_OBJECT .
+    (88) CONT_MEDIA_OBJECT -> IMAGE_OBJECT . MEDIA_OBJECT
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
 
-    cierreMediaObject reduce using rule 82 (CONT_MEDIA_OBJECT -> IMAGE_OBJECT .)
+    cierreMediaObject reduce using rule 86 (CONT_MEDIA_OBJECT -> IMAGE_OBJECT .)
     mediaObject     shift and go to state 27
 
     MEDIA_OBJECT                   shift and go to state 170
 
 state 104
 
-    (83) CONT_MEDIA_OBJECT -> VIDEO_OBJECT .
-    (85) CONT_MEDIA_OBJECT -> VIDEO_OBJECT . MEDIA_OBJECT
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (87) CONT_MEDIA_OBJECT -> VIDEO_OBJECT .
+    (89) CONT_MEDIA_OBJECT -> VIDEO_OBJECT . MEDIA_OBJECT
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
 
-    cierreMediaObject reduce using rule 83 (CONT_MEDIA_OBJECT -> VIDEO_OBJECT .)
+    cierreMediaObject reduce using rule 87 (CONT_MEDIA_OBJECT -> VIDEO_OBJECT .)
     mediaObject     shift and go to state 27
 
     MEDIA_OBJECT                   shift and go to state 171
 
 state 105
 
-    (86) IMAGE_OBJECT -> imageObject . INFO imageData cierreImageObject
-    (87) IMAGE_OBJECT -> imageObject . imageData cierreImageObject
+    (90) IMAGE_OBJECT -> imageObject . INFO imageData cierreImageObject
+    (91) IMAGE_OBJECT -> imageObject . imageData cierreImageObject
     (9) INFO -> . info CONT_INFO cierreInfo
 
     imageData       shift and go to state 173
@@ -2901,8 +2916,8 @@ state 105
 
 state 106
 
-    (88) VIDEO_OBJECT -> videoObject . INFO imageData cierreVideoObject
-    (89) VIDEO_OBJECT -> videoObject . videoData cierreVideoObject
+    (92) VIDEO_OBJECT -> videoObject . INFO imageData cierreVideoObject
+    (93) VIDEO_OBJECT -> videoObject . videoData cierreVideoObject
     (9) INFO -> . info CONT_INFO cierreInfo
 
     videoData       shift and go to state 175
@@ -2930,8 +2945,8 @@ state 109
     (149) TABLE_MEDIA -> MEDIA_OBJECT . TABLE_MEDIA
     (148) TABLE_MEDIA -> . MEDIA_OBJECT
     (149) TABLE_MEDIA -> . MEDIA_OBJECT TABLE_MEDIA
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
 
     cierreInformalTable reduce using rule 148 (TABLE_MEDIA -> MEDIA_OBJECT .)
     mediaObject     shift and go to state 27
@@ -2945,9 +2960,9 @@ state 110
     (151) TABLE_GROUP -> TGROUP . TABLE_GROUP
     (150) TABLE_GROUP -> . TGROUP
     (151) TABLE_GROUP -> . TGROUP TABLE_GROUP
-    (152) TGROUP -> . tgroup THEAD TFOOT TBODY cierreTgroup
+    (152) TGROUP -> . tgroup THEAD TBODY TFOOT cierreTgroup
     (153) TGROUP -> . tgroup THEAD TBODY cierreTgroup
-    (154) TGROUP -> . tgroup TFOOT TBODY cierreTgroup
+    (154) TGROUP -> . tgroup TBODY TFOOT cierreTgroup
     (155) TGROUP -> . tgroup TBODY cierreTgroup
 
     cierreInformalTable reduce using rule 150 (TABLE_GROUP -> TGROUP .)
@@ -2958,27 +2973,24 @@ state 110
 
 state 111
 
-    (152) TGROUP -> tgroup . THEAD TFOOT TBODY cierreTgroup
+    (152) TGROUP -> tgroup . THEAD TBODY TFOOT cierreTgroup
     (153) TGROUP -> tgroup . THEAD TBODY cierreTgroup
-    (154) TGROUP -> tgroup . TFOOT TBODY cierreTgroup
+    (154) TGROUP -> tgroup . TBODY TFOOT cierreTgroup
     (155) TGROUP -> tgroup . TBODY cierreTgroup
-    (158) THEAD -> . thead CONT_T cierreThead
-    (159) TFOOT -> . tfoot CONT_T cierreTfoot
-    (160) TBODY -> . tbody CONT_T cierreTbody
+    (156) THEAD -> . thead CONT_TH cierreThead
+    (170) TBODY -> . tbody CONT_T cierreTbody
 
-    thead           shift and go to state 183
-    tfoot           shift and go to state 184
-    tbody           shift and go to state 185
+    thead           shift and go to state 182
+    tbody           shift and go to state 183
 
     THEAD                          shift and go to state 180
-    TFOOT                          shift and go to state 181
-    TBODY                          shift and go to state 182
+    TBODY                          shift and go to state 181
 
 state 112
 
     (116) COMMENT -> comment CONT_SECL . cierreComment
 
-    cierreComment   shift and go to state 186
+    cierreComment   shift and go to state 184
 
 
 state 113
@@ -2992,13 +3004,13 @@ state 113
     (65) PARA -> . para CONT_PARA cierrePara
     (114) SIMPARA -> . simpara CONT_SECL cierreSimpara
 
-    cierreAbstract  shift and go to state 187
+    cierreAbstract  shift and go to state 185
     para            shift and go to state 24
     simpara         shift and go to state 25
 
-    PARAS                          shift and go to state 188
-    PARA                           shift and go to state 189
-    SIMPARA                        shift and go to state 190
+    PARAS                          shift and go to state 186
+    PARA                           shift and go to state 187
+    SIMPARA                        shift and go to state 188
 
 state 114
 
@@ -3022,11 +3034,11 @@ state 114
     (46) SIMPLE_SEC -> . simpleSection TITLE CONT_SS cierreSimpleSection
     (47) SIMPLE_SEC -> . simpleSection INFO TITLE CONT_SS cierreSimpleSection
 
-    cierreArticle   shift and go to state 191
+    cierreArticle   shift and go to state 189
     section         shift and go to state 21
     simpleSection   shift and go to state 119
 
-    SECTIONS                       shift and go to state 192
+    SECTIONS                       shift and go to state 190
     SECTION                        shift and go to state 117
     SIMPLE_SEC                     shift and go to state 118
 
@@ -3041,7 +3053,7 @@ state 116
 
     (7) ARTICLE -> article INFO CONT_A_S SECTIONS . cierreArticle
 
-    cierreArticle   shift and go to state 193
+    cierreArticle   shift and go to state 191
 
 
 state 117
@@ -3072,7 +3084,7 @@ state 117
     simpleSection   shift and go to state 119
 
     SECTION                        shift and go to state 117
-    SECTIONS                       shift and go to state 194
+    SECTIONS                       shift and go to state 192
     SIMPLE_SEC                     shift and go to state 118
 
 state 118
@@ -3103,7 +3115,7 @@ state 118
     simpleSection   shift and go to state 119
 
     SIMPLE_SEC                     shift and go to state 118
-    SECTIONS                       shift and go to state 195
+    SECTIONS                       shift and go to state 193
     SECTION                        shift and go to state 117
 
 state 119
@@ -3132,8 +3144,8 @@ state 119
     (114) SIMPARA -> . simpara CONT_SECL cierreSimpara
     (102) ADDRESS -> . address cierreAddress
     (103) ADDRESS -> . address CONT_ADDRESS cierreAddress
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
     (146) INFORMAL_TABLE -> . informalTable TABLE_MEDIA cierreInformalTable
     (147) INFORMAL_TABLE -> . informalTable TABLE_GROUP cierreInformalTable
     (116) COMMENT -> . comment CONT_SECL cierreComment
@@ -3152,10 +3164,10 @@ state 119
     comment         shift and go to state 29
     abstract        shift and go to state 30
 
-    CONT_SS                        shift and go to state 196
-    INFO                           shift and go to state 197
-    TITLE                          shift and go to state 198
-    CONT_1                         shift and go to state 199
+    CONT_SS                        shift and go to state 194
+    INFO                           shift and go to state 195
+    TITLE                          shift and go to state 196
+    CONT_1                         shift and go to state 197
     ITEMIZED_LIST                  shift and go to state 12
     IMPORTANT                      shift and go to state 13
     PARA                           shift and go to state 14
@@ -3177,7 +3189,7 @@ state 121
 
     (5) ARTICLE -> article TITLEH1 CONT_A_S SECTIONS . cierreArticle
 
-    cierreArticle   shift and go to state 200
+    cierreArticle   shift and go to state 198
 
 
 state 122
@@ -3211,7 +3223,7 @@ state 124
 
     (94) AUTHOR -> author CONT_AUTHOR . cierreAuthor
 
-    cierreAuthor    shift and go to state 201
+    cierreAuthor    shift and go to state 199
 
 
 state 125
@@ -3227,8 +3239,8 @@ state 125
     surname         shift and go to state 129
     email           shift and go to state 55
 
-    SURNAME                        shift and go to state 202
-    EMAIL                          shift and go to state 203
+    SURNAME                        shift and go to state 200
+    EMAIL                          shift and go to state 201
 
 state 126
 
@@ -3239,7 +3251,7 @@ state 126
     cierreAuthor    reduce using rule 96 (CONT_AUTHOR -> SURNAME .)
     email           shift and go to state 55
 
-    EMAIL                          shift and go to state 204
+    EMAIL                          shift and go to state 202
 
 state 127
 
@@ -3266,7 +3278,7 @@ state 128
     emphasis        shift and go to state 53
     comment         shift and go to state 29
 
-    CONT_VAR                       shift and go to state 205
+    CONT_VAR                       shift and go to state 203
     CONT_3                         shift and go to state 131
     LINK                           shift and go to state 133
     EMPHASIS                       shift and go to state 134
@@ -3290,7 +3302,7 @@ state 129
     emphasis        shift and go to state 53
     comment         shift and go to state 29
 
-    CONT_VAR                       shift and go to state 206
+    CONT_VAR                       shift and go to state 204
     CONT_3                         shift and go to state 131
     LINK                           shift and go to state 133
     EMPHASIS                       shift and go to state 134
@@ -3300,7 +3312,7 @@ state 130
 
     (143) DATE -> date CONT_VAR . cierreDate
 
-    cierreDate      shift and go to state 207
+    cierreDate      shift and go to state 205
 
 
 state 131
@@ -3333,7 +3345,7 @@ state 131
     comment         shift and go to state 29
 
     CONT_3                         shift and go to state 131
-    CONT_VAR                       shift and go to state 208
+    CONT_VAR                       shift and go to state 206
     LINK                           shift and go to state 133
     EMPHASIS                       shift and go to state 134
     COMMENT                        shift and go to state 135
@@ -3424,10 +3436,10 @@ state 136
     (113) COPYRIGHT -> copyright YEAR . HOLDER cierreCopyright
     (145) HOLDER -> . holder CONT_VAR cierreHolder
 
-    cierreCopyright shift and go to state 209
-    holder          shift and go to state 211
+    cierreCopyright shift and go to state 207
+    holder          shift and go to state 209
 
-    HOLDER                         shift and go to state 210
+    HOLDER                         shift and go to state 208
 
 state 137
 
@@ -3447,7 +3459,7 @@ state 137
     emphasis        shift and go to state 53
     comment         shift and go to state 29
 
-    CONT_VAR                       shift and go to state 212
+    CONT_VAR                       shift and go to state 210
     CONT_3                         shift and go to state 131
     LINK                           shift and go to state 133
     EMPHASIS                       shift and go to state 134
@@ -3485,21 +3497,21 @@ state 140
 
     (115) EMPHASIS -> emphasis CONT_SECL . cierreEmphasis
 
-    cierreEmphasis  shift and go to state 213
+    cierreEmphasis  shift and go to state 211
 
 
 state 141
 
     (117) LINK -> link CONT_SECL . cierreLink
 
-    cierreLink      shift and go to state 214
+    cierreLink      shift and go to state 212
 
 
 state 142
 
     (142) EMAIL -> email CONT_VAR . cierreEmail
 
-    cierreEmail     shift and go to state 215
+    cierreEmail     shift and go to state 213
 
 
 state 143
@@ -3516,7 +3528,7 @@ state 144
 
     (20) SECTION -> section CONT_A_S SECTIONS . cierreSection
 
-    cierreSection   shift and go to state 216
+    cierreSection   shift and go to state 214
 
 
 state 145
@@ -3541,11 +3553,11 @@ state 145
     (46) SIMPLE_SEC -> . simpleSection TITLE CONT_SS cierreSimpleSection
     (47) SIMPLE_SEC -> . simpleSection INFO TITLE CONT_SS cierreSimpleSection
 
-    cierreSection   shift and go to state 217
+    cierreSection   shift and go to state 215
     section         shift and go to state 21
     simpleSection   shift and go to state 119
 
-    SECTIONS                       shift and go to state 218
+    SECTIONS                       shift and go to state 216
     SECTION                        shift and go to state 117
     SIMPLE_SEC                     shift and go to state 118
 
@@ -3581,8 +3593,8 @@ state 146
     (114) SIMPARA -> . simpara CONT_SECL cierreSimpara
     (102) ADDRESS -> . address cierreAddress
     (103) ADDRESS -> . address CONT_ADDRESS cierreAddress
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
     (146) INFORMAL_TABLE -> . informalTable TABLE_MEDIA cierreInformalTable
     (147) INFORMAL_TABLE -> . informalTable TABLE_GROUP cierreInformalTable
     (116) COMMENT -> . comment CONT_SECL cierreComment
@@ -3600,7 +3612,7 @@ state 146
     comment         shift and go to state 29
     abstract        shift and go to state 30
 
-    CONT_A_S                       shift and go to state 219
+    CONT_A_S                       shift and go to state 217
     CONT_1                         shift and go to state 10
     SECTION                        shift and go to state 11
     ITEMIZED_LIST                  shift and go to state 12
@@ -3635,11 +3647,11 @@ state 147
     (46) SIMPLE_SEC -> . simpleSection TITLE CONT_SS cierreSimpleSection
     (47) SIMPLE_SEC -> . simpleSection INFO TITLE CONT_SS cierreSimpleSection
 
-    cierreSection   shift and go to state 220
+    cierreSection   shift and go to state 218
     section         shift and go to state 21
     simpleSection   shift and go to state 119
 
-    SECTIONS                       shift and go to state 221
+    SECTIONS                       shift and go to state 219
     SECTION                        shift and go to state 117
     SIMPLE_SEC                     shift and go to state 118
 
@@ -3657,7 +3669,7 @@ state 149
 
     (54) TITLEH2 -> title CONT_TITLE . cierreTitle
 
-    cierreTitle     shift and go to state 222
+    cierreTitle     shift and go to state 220
 
 
 state 150
@@ -3691,9 +3703,9 @@ state 150
 
 state 151
 
-    (91) LIST_ITEM -> LIST_ITEM listItem . CONT_ITEM cierreListItem
-    (92) CONT_ITEM -> . CONT_1
-    (93) CONT_ITEM -> . CONT_1 CONT_ITEM
+    (81) LIST_ITEM -> LIST_ITEM listItem . CONT_ITEM cierreListItem
+    (82) CONT_ITEM -> . CONT_1
+    (83) CONT_ITEM -> . CONT_1 CONT_ITEM
     (35) CONT_1 -> . ITEMIZED_LIST
     (36) CONT_1 -> . IMPORTANT
     (37) CONT_1 -> . PARA
@@ -3710,8 +3722,8 @@ state 151
     (114) SIMPARA -> . simpara CONT_SECL cierreSimpara
     (102) ADDRESS -> . address cierreAddress
     (103) ADDRESS -> . address CONT_ADDRESS cierreAddress
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
     (146) INFORMAL_TABLE -> . informalTable TABLE_MEDIA cierreInformalTable
     (147) INFORMAL_TABLE -> . informalTable TABLE_GROUP cierreInformalTable
     (116) COMMENT -> . comment CONT_SECL cierreComment
@@ -3728,7 +3740,7 @@ state 151
     comment         shift and go to state 29
     abstract        shift and go to state 30
 
-    CONT_ITEM                      shift and go to state 223
+    CONT_ITEM                      shift and go to state 221
     CONT_1                         shift and go to state 153
     ITEMIZED_LIST                  shift and go to state 12
     IMPORTANT                      shift and go to state 13
@@ -3742,17 +3754,17 @@ state 151
 
 state 152
 
-    (90) LIST_ITEM -> listItem CONT_ITEM . cierreListItem
+    (80) LIST_ITEM -> listItem CONT_ITEM . cierreListItem
 
-    cierreListItem  shift and go to state 224
+    cierreListItem  shift and go to state 222
 
 
 state 153
 
-    (92) CONT_ITEM -> CONT_1 .
-    (93) CONT_ITEM -> CONT_1 . CONT_ITEM
-    (92) CONT_ITEM -> . CONT_1
-    (93) CONT_ITEM -> . CONT_1 CONT_ITEM
+    (82) CONT_ITEM -> CONT_1 .
+    (83) CONT_ITEM -> CONT_1 . CONT_ITEM
+    (82) CONT_ITEM -> . CONT_1
+    (83) CONT_ITEM -> . CONT_1 CONT_ITEM
     (35) CONT_1 -> . ITEMIZED_LIST
     (36) CONT_1 -> . IMPORTANT
     (37) CONT_1 -> . PARA
@@ -3769,15 +3781,15 @@ state 153
     (114) SIMPARA -> . simpara CONT_SECL cierreSimpara
     (102) ADDRESS -> . address cierreAddress
     (103) ADDRESS -> . address CONT_ADDRESS cierreAddress
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
     (146) INFORMAL_TABLE -> . informalTable TABLE_MEDIA cierreInformalTable
     (147) INFORMAL_TABLE -> . informalTable TABLE_GROUP cierreInformalTable
     (116) COMMENT -> . comment CONT_SECL cierreComment
     (50) ABSTRACT -> . abstract TITLE cierreAbstract
     (51) ABSTRACT -> . abstract TITLE PARAS cierreAbstract
 
-    cierreListItem  reduce using rule 92 (CONT_ITEM -> CONT_1 .)
+    cierreListItem  reduce using rule 82 (CONT_ITEM -> CONT_1 .)
     itemizedlist    shift and go to state 22
     important       shift and go to state 23
     para            shift and go to state 24
@@ -3789,7 +3801,7 @@ state 153
     abstract        shift and go to state 30
 
     CONT_1                         shift and go to state 153
-    CONT_ITEM                      shift and go to state 225
+    CONT_ITEM                      shift and go to state 223
     ITEMIZED_LIST                  shift and go to state 12
     IMPORTANT                      shift and go to state 13
     PARA                           shift and go to state 14
@@ -3804,7 +3816,7 @@ state 154
 
     (126) IMPORTANT -> important TITLE CONT_IMPORTANT . cierreImportant
 
-    cierreImportant shift and go to state 226
+    cierreImportant shift and go to state 224
 
 
 state 155
@@ -3840,7 +3852,7 @@ state 156
 
     (52) TITLE -> title CONT_TITLE . cierreTitle
 
-    cierreTitle     shift and go to state 227
+    cierreTitle     shift and go to state 225
 
 
 state 157
@@ -3960,112 +3972,112 @@ state 164
 
     (138) STREET -> street CONT_VAR . cierreStreet
 
-    cierreStreet    shift and go to state 228
+    cierreStreet    shift and go to state 226
 
 
 state 165
 
     (139) CITY -> city CONT_VAR . cierreCity
 
-    cierreCity      shift and go to state 229
+    cierreCity      shift and go to state 227
 
 
 state 166
 
     (140) STATE -> state CONT_VAR . cierreState
 
-    cierreState     shift and go to state 230
+    cierreState     shift and go to state 228
 
 
 state 167
 
     (141) PHONE -> phone CONT_VAR . cierrePhone
 
-    cierrePhone     shift and go to state 231
+    cierrePhone     shift and go to state 229
 
 
 state 168
 
-    (80) MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT . cierreMediaObject
+    (84) MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT . cierreMediaObject
 
-    cierreMediaObject shift and go to state 232
+    cierreMediaObject shift and go to state 230
 
 
 state 169
 
-    (81) MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .
+    (85) MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .
 
-    section         reduce using rule 81 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
-    itemizedlist    reduce using rule 81 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
-    important       reduce using rule 81 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
-    para            reduce using rule 81 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
-    simpara         reduce using rule 81 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
-    address         reduce using rule 81 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
-    mediaObject     reduce using rule 81 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
-    informalTable   reduce using rule 81 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
-    comment         reduce using rule 81 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
-    abstract        reduce using rule 81 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
-    cierreArticle   reduce using rule 81 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
-    simpleSection   reduce using rule 81 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
-    author          reduce using rule 81 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
-    date            reduce using rule 81 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
-    copyright       reduce using rule 81 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
-    title           reduce using rule 81 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
-    cierreInfo      reduce using rule 81 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
-    cierreSection   reduce using rule 81 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
-    cierreImportant reduce using rule 81 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
-    contenido_texto reduce using rule 81 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
-    emphasis        reduce using rule 81 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
-    link            reduce using rule 81 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
-    email           reduce using rule 81 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
-    cierrePara      reduce using rule 81 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
-    cierreInformalTable reduce using rule 81 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
-    cierreListItem  reduce using rule 81 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
-    cierreMediaObject reduce using rule 81 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
-    cierreSimpleSection reduce using rule 81 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
-    cierreEntry     reduce using rule 81 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
+    section         reduce using rule 85 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
+    itemizedlist    reduce using rule 85 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
+    important       reduce using rule 85 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
+    para            reduce using rule 85 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
+    simpara         reduce using rule 85 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
+    address         reduce using rule 85 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
+    mediaObject     reduce using rule 85 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
+    informalTable   reduce using rule 85 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
+    comment         reduce using rule 85 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
+    abstract        reduce using rule 85 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
+    cierreArticle   reduce using rule 85 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
+    simpleSection   reduce using rule 85 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
+    author          reduce using rule 85 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
+    date            reduce using rule 85 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
+    copyright       reduce using rule 85 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
+    title           reduce using rule 85 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
+    cierreInfo      reduce using rule 85 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
+    cierreSection   reduce using rule 85 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
+    cierreImportant reduce using rule 85 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
+    contenido_texto reduce using rule 85 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
+    emphasis        reduce using rule 85 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
+    link            reduce using rule 85 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
+    email           reduce using rule 85 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
+    cierrePara      reduce using rule 85 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
+    cierreInformalTable reduce using rule 85 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
+    cierreListItem  reduce using rule 85 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
+    cierreMediaObject reduce using rule 85 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
+    cierreSimpleSection reduce using rule 85 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
+    cierreEntry     reduce using rule 85 (MEDIA_OBJECT -> mediaObject CONT_MEDIA_OBJECT cierreMediaObject .)
 
 
 state 170
 
-    (84) CONT_MEDIA_OBJECT -> IMAGE_OBJECT MEDIA_OBJECT .
+    (88) CONT_MEDIA_OBJECT -> IMAGE_OBJECT MEDIA_OBJECT .
 
-    cierreMediaObject reduce using rule 84 (CONT_MEDIA_OBJECT -> IMAGE_OBJECT MEDIA_OBJECT .)
+    cierreMediaObject reduce using rule 88 (CONT_MEDIA_OBJECT -> IMAGE_OBJECT MEDIA_OBJECT .)
 
 
 state 171
 
-    (85) CONT_MEDIA_OBJECT -> VIDEO_OBJECT MEDIA_OBJECT .
+    (89) CONT_MEDIA_OBJECT -> VIDEO_OBJECT MEDIA_OBJECT .
 
-    cierreMediaObject reduce using rule 85 (CONT_MEDIA_OBJECT -> VIDEO_OBJECT MEDIA_OBJECT .)
+    cierreMediaObject reduce using rule 89 (CONT_MEDIA_OBJECT -> VIDEO_OBJECT MEDIA_OBJECT .)
 
 
 state 172
 
-    (86) IMAGE_OBJECT -> imageObject INFO . imageData cierreImageObject
+    (90) IMAGE_OBJECT -> imageObject INFO . imageData cierreImageObject
 
-    imageData       shift and go to state 233
+    imageData       shift and go to state 231
 
 
 state 173
 
-    (87) IMAGE_OBJECT -> imageObject imageData . cierreImageObject
+    (91) IMAGE_OBJECT -> imageObject imageData . cierreImageObject
 
-    cierreImageObject shift and go to state 234
+    cierreImageObject shift and go to state 232
 
 
 state 174
 
-    (88) VIDEO_OBJECT -> videoObject INFO . imageData cierreVideoObject
+    (92) VIDEO_OBJECT -> videoObject INFO . imageData cierreVideoObject
 
-    imageData       shift and go to state 235
+    imageData       shift and go to state 233
 
 
 state 175
 
-    (89) VIDEO_OBJECT -> videoObject videoData . cierreVideoObject
+    (93) VIDEO_OBJECT -> videoObject videoData . cierreVideoObject
 
-    cierreVideoObject shift and go to state 236
+    cierreVideoObject shift and go to state 234
 
 
 state 176
@@ -4140,70 +4152,50 @@ state 179
 
 state 180
 
-    (152) TGROUP -> tgroup THEAD . TFOOT TBODY cierreTgroup
+    (152) TGROUP -> tgroup THEAD . TBODY TFOOT cierreTgroup
     (153) TGROUP -> tgroup THEAD . TBODY cierreTgroup
-    (159) TFOOT -> . tfoot CONT_T cierreTfoot
-    (160) TBODY -> . tbody CONT_T cierreTbody
+    (170) TBODY -> . tbody CONT_T cierreTbody
 
-    tfoot           shift and go to state 184
-    tbody           shift and go to state 185
+    tbody           shift and go to state 183
 
-    TFOOT                          shift and go to state 237
-    TBODY                          shift and go to state 238
+    TBODY                          shift and go to state 235
 
 state 181
 
-    (154) TGROUP -> tgroup TFOOT . TBODY cierreTgroup
-    (160) TBODY -> . tbody CONT_T cierreTbody
+    (154) TGROUP -> tgroup TBODY . TFOOT cierreTgroup
+    (155) TGROUP -> tgroup TBODY . cierreTgroup
+    (169) TFOOT -> . tfoot CONT_T cierreTfoot
 
-    tbody           shift and go to state 185
+    cierreTgroup    shift and go to state 237
+    tfoot           shift and go to state 238
 
-    TBODY                          shift and go to state 239
+    TFOOT                          shift and go to state 236
 
 state 182
 
-    (155) TGROUP -> tgroup TBODY . cierreTgroup
+    (156) THEAD -> thead . CONT_TH cierreThead
+    (157) CONT_TH -> . ROWH
+    (158) CONT_TH -> . ROWH CONT_TH
+    (159) ROWH -> . row CONT_ROWH cierreRow
 
-    cierreTgroup    shift and go to state 240
+    row             shift and go to state 241
 
+    CONT_TH                        shift and go to state 239
+    ROWH                           shift and go to state 240
 
 state 183
 
-    (158) THEAD -> thead . CONT_T cierreThead
-    (156) CONT_T -> . ROW
-    (157) CONT_T -> . ROW CONT_T
-    (161) ROW -> . row CONT_ROW cierreRow
+    (170) TBODY -> tbody . CONT_T cierreTbody
+    (167) CONT_T -> . ROW
+    (168) CONT_T -> . ROW CONT_T
+    (171) ROW -> . row CONT_ROW cierreRow
 
-    row             shift and go to state 243
+    row             shift and go to state 244
 
-    CONT_T                         shift and go to state 241
-    ROW                            shift and go to state 242
+    CONT_T                         shift and go to state 242
+    ROW                            shift and go to state 243
 
 state 184
-
-    (159) TFOOT -> tfoot . CONT_T cierreTfoot
-    (156) CONT_T -> . ROW
-    (157) CONT_T -> . ROW CONT_T
-    (161) ROW -> . row CONT_ROW cierreRow
-
-    row             shift and go to state 243
-
-    CONT_T                         shift and go to state 244
-    ROW                            shift and go to state 242
-
-state 185
-
-    (160) TBODY -> tbody . CONT_T cierreTbody
-    (156) CONT_T -> . ROW
-    (157) CONT_T -> . ROW CONT_T
-    (161) ROW -> . row CONT_ROW cierreRow
-
-    row             shift and go to state 243
-
-    CONT_T                         shift and go to state 245
-    ROW                            shift and go to state 242
-
-state 186
 
     (116) COMMENT -> comment CONT_SECL cierreComment .
 
@@ -4246,7 +4238,7 @@ state 186
     cierreEntry     reduce using rule 116 (COMMENT -> comment CONT_SECL cierreComment .)
 
 
-state 187
+state 185
 
     (50) ABSTRACT -> abstract TITLE cierreAbstract .
 
@@ -4275,14 +4267,14 @@ state 187
     cierreEntry     reduce using rule 50 (ABSTRACT -> abstract TITLE cierreAbstract .)
 
 
-state 188
+state 186
 
     (51) ABSTRACT -> abstract TITLE PARAS . cierreAbstract
 
-    cierreAbstract  shift and go to state 246
+    cierreAbstract  shift and go to state 245
 
 
-state 189
+state 187
 
     (61) PARAS -> PARA .
     (63) PARAS -> PARA . PARAS
@@ -4297,11 +4289,11 @@ state 189
     para            shift and go to state 24
     simpara         shift and go to state 25
 
-    PARA                           shift and go to state 189
-    PARAS                          shift and go to state 247
-    SIMPARA                        shift and go to state 190
+    PARA                           shift and go to state 187
+    PARAS                          shift and go to state 246
+    SIMPARA                        shift and go to state 188
 
-state 190
+state 188
 
     (62) PARAS -> SIMPARA .
     (64) PARAS -> SIMPARA . PARAS
@@ -4316,32 +4308,32 @@ state 190
     para            shift and go to state 24
     simpara         shift and go to state 25
 
-    SIMPARA                        shift and go to state 190
-    PARAS                          shift and go to state 248
-    PARA                           shift and go to state 189
+    SIMPARA                        shift and go to state 188
+    PARAS                          shift and go to state 247
+    PARA                           shift and go to state 187
 
-state 191
+state 189
 
     (2) ARTICLE -> article INFO TITLEH1 CONT_A_S cierreArticle .
 
     $end            reduce using rule 2 (ARTICLE -> article INFO TITLEH1 CONT_A_S cierreArticle .)
 
 
-state 192
+state 190
 
     (3) ARTICLE -> article INFO TITLEH1 CONT_A_S SECTIONS . cierreArticle
 
-    cierreArticle   shift and go to state 249
+    cierreArticle   shift and go to state 248
 
 
-state 193
+state 191
 
     (7) ARTICLE -> article INFO CONT_A_S SECTIONS cierreArticle .
 
     $end            reduce using rule 7 (ARTICLE -> article INFO CONT_A_S SECTIONS cierreArticle .)
 
 
-state 194
+state 192
 
     (29) SECTIONS -> SECTION SECTIONS .
 
@@ -4349,7 +4341,7 @@ state 194
     cierreSection   reduce using rule 29 (SECTIONS -> SECTION SECTIONS .)
 
 
-state 195
+state 193
 
     (31) SECTIONS -> SIMPLE_SEC SECTIONS .
 
@@ -4357,14 +4349,14 @@ state 195
     cierreSection   reduce using rule 31 (SECTIONS -> SIMPLE_SEC SECTIONS .)
 
 
-state 196
+state 194
 
     (44) SIMPLE_SEC -> simpleSection CONT_SS . cierreSimpleSection
 
-    cierreSimpleSection shift and go to state 250
+    cierreSimpleSection shift and go to state 249
 
 
-state 197
+state 195
 
     (45) SIMPLE_SEC -> simpleSection INFO . CONT_SS cierreSimpleSection
     (47) SIMPLE_SEC -> simpleSection INFO . TITLE CONT_SS cierreSimpleSection
@@ -4387,8 +4379,8 @@ state 197
     (114) SIMPARA -> . simpara CONT_SECL cierreSimpara
     (102) ADDRESS -> . address cierreAddress
     (103) ADDRESS -> . address CONT_ADDRESS cierreAddress
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
     (146) INFORMAL_TABLE -> . informalTable TABLE_MEDIA cierreInformalTable
     (147) INFORMAL_TABLE -> . informalTable TABLE_GROUP cierreInformalTable
     (116) COMMENT -> . comment CONT_SECL cierreComment
@@ -4406,9 +4398,9 @@ state 197
     comment         shift and go to state 29
     abstract        shift and go to state 30
 
-    CONT_SS                        shift and go to state 251
-    TITLE                          shift and go to state 252
-    CONT_1                         shift and go to state 199
+    CONT_SS                        shift and go to state 250
+    TITLE                          shift and go to state 251
+    CONT_1                         shift and go to state 197
     ITEMIZED_LIST                  shift and go to state 12
     IMPORTANT                      shift and go to state 13
     PARA                           shift and go to state 14
@@ -4419,7 +4411,7 @@ state 197
     COMMENT                        shift and go to state 19
     ABSTRACT                       shift and go to state 20
 
-state 198
+state 196
 
     (46) SIMPLE_SEC -> simpleSection TITLE . CONT_SS cierreSimpleSection
     (48) CONT_SS -> . CONT_1
@@ -4440,8 +4432,8 @@ state 198
     (114) SIMPARA -> . simpara CONT_SECL cierreSimpara
     (102) ADDRESS -> . address cierreAddress
     (103) ADDRESS -> . address CONT_ADDRESS cierreAddress
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
     (146) INFORMAL_TABLE -> . informalTable TABLE_MEDIA cierreInformalTable
     (147) INFORMAL_TABLE -> . informalTable TABLE_GROUP cierreInformalTable
     (116) COMMENT -> . comment CONT_SECL cierreComment
@@ -4458,8 +4450,8 @@ state 198
     comment         shift and go to state 29
     abstract        shift and go to state 30
 
-    CONT_SS                        shift and go to state 253
-    CONT_1                         shift and go to state 199
+    CONT_SS                        shift and go to state 252
+    CONT_1                         shift and go to state 197
     ITEMIZED_LIST                  shift and go to state 12
     IMPORTANT                      shift and go to state 13
     PARA                           shift and go to state 14
@@ -4470,7 +4462,7 @@ state 198
     COMMENT                        shift and go to state 19
     ABSTRACT                       shift and go to state 20
 
-state 199
+state 197
 
     (48) CONT_SS -> CONT_1 .
     (49) CONT_SS -> CONT_1 . CONT_SS
@@ -4492,8 +4484,8 @@ state 199
     (114) SIMPARA -> . simpara CONT_SECL cierreSimpara
     (102) ADDRESS -> . address cierreAddress
     (103) ADDRESS -> . address CONT_ADDRESS cierreAddress
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
     (146) INFORMAL_TABLE -> . informalTable TABLE_MEDIA cierreInformalTable
     (147) INFORMAL_TABLE -> . informalTable TABLE_GROUP cierreInformalTable
     (116) COMMENT -> . comment CONT_SECL cierreComment
@@ -4511,8 +4503,8 @@ state 199
     comment         shift and go to state 29
     abstract        shift and go to state 30
 
-    CONT_1                         shift and go to state 199
-    CONT_SS                        shift and go to state 254
+    CONT_1                         shift and go to state 197
+    CONT_SS                        shift and go to state 253
     ITEMIZED_LIST                  shift and go to state 12
     IMPORTANT                      shift and go to state 13
     PARA                           shift and go to state 14
@@ -4523,14 +4515,14 @@ state 199
     COMMENT                        shift and go to state 19
     ABSTRACT                       shift and go to state 20
 
-state 200
+state 198
 
     (5) ARTICLE -> article TITLEH1 CONT_A_S SECTIONS cierreArticle .
 
     $end            reduce using rule 5 (ARTICLE -> article TITLEH1 CONT_A_S SECTIONS cierreArticle .)
 
 
-state 201
+state 199
 
     (94) AUTHOR -> author CONT_AUTHOR cierreAuthor .
 
@@ -4557,7 +4549,7 @@ state 201
     cierreLink      reduce using rule 94 (AUTHOR -> author CONT_AUTHOR cierreAuthor .)
 
 
-state 202
+state 200
 
     (98) CONT_AUTHOR -> FIRSTNAME SURNAME .
     (101) CONT_AUTHOR -> FIRSTNAME SURNAME . EMAIL
@@ -4566,37 +4558,37 @@ state 202
     cierreAuthor    reduce using rule 98 (CONT_AUTHOR -> FIRSTNAME SURNAME .)
     email           shift and go to state 55
 
-    EMAIL                          shift and go to state 255
+    EMAIL                          shift and go to state 254
 
-state 203
+state 201
 
     (99) CONT_AUTHOR -> FIRSTNAME EMAIL .
 
     cierreAuthor    reduce using rule 99 (CONT_AUTHOR -> FIRSTNAME EMAIL .)
 
 
-state 204
+state 202
 
     (100) CONT_AUTHOR -> SURNAME EMAIL .
 
     cierreAuthor    reduce using rule 100 (CONT_AUTHOR -> SURNAME EMAIL .)
 
 
-state 205
+state 203
 
     (136) FIRSTNAME -> firstname CONT_VAR . cierreFirstname
 
-    cierreFirstname shift and go to state 256
+    cierreFirstname shift and go to state 255
 
 
-state 206
+state 204
 
     (137) SURNAME -> surname CONT_VAR . cierreSurname
 
-    cierreSurname   shift and go to state 257
+    cierreSurname   shift and go to state 256
 
 
-state 207
+state 205
 
     (143) DATE -> date CONT_VAR cierreDate .
 
@@ -4610,7 +4602,7 @@ state 207
     cierreInfo      reduce using rule 143 (DATE -> date CONT_VAR cierreDate .)
 
 
-state 208
+state 206
 
     (131) CONT_VAR -> CONT_3 CONT_VAR .
 
@@ -4626,7 +4618,7 @@ state 208
     cierreHolder    reduce using rule 131 (CONT_VAR -> CONT_3 CONT_VAR .)
 
 
-state 209
+state 207
 
     (112) COPYRIGHT -> copyright YEAR cierreCopyright .
 
@@ -4640,14 +4632,14 @@ state 209
     cierreInfo      reduce using rule 112 (COPYRIGHT -> copyright YEAR cierreCopyright .)
 
 
-state 210
+state 208
 
     (113) COPYRIGHT -> copyright YEAR HOLDER . cierreCopyright
 
-    cierreCopyright shift and go to state 258
+    cierreCopyright shift and go to state 257
 
 
-state 211
+state 209
 
     (145) HOLDER -> holder . CONT_VAR cierreHolder
     (130) CONT_VAR -> . CONT_3
@@ -4665,20 +4657,20 @@ state 211
     emphasis        shift and go to state 53
     comment         shift and go to state 29
 
-    CONT_VAR                       shift and go to state 259
+    CONT_VAR                       shift and go to state 258
     CONT_3                         shift and go to state 131
     LINK                           shift and go to state 133
     EMPHASIS                       shift and go to state 134
     COMMENT                        shift and go to state 135
 
-state 212
+state 210
 
     (144) YEAR -> year CONT_VAR . cierreYear
 
-    cierreYear      shift and go to state 260
+    cierreYear      shift and go to state 259
 
 
-state 213
+state 211
 
     (115) EMPHASIS -> emphasis CONT_SECL cierreEmphasis .
 
@@ -4711,7 +4703,7 @@ state 213
     cierreHolder    reduce using rule 115 (EMPHASIS -> emphasis CONT_SECL cierreEmphasis .)
 
 
-state 214
+state 212
 
     (117) LINK -> link CONT_SECL cierreLink .
 
@@ -4744,7 +4736,7 @@ state 214
     cierreHolder    reduce using rule 117 (LINK -> link CONT_SECL cierreLink .)
 
 
-state 215
+state 213
 
     (142) EMAIL -> email CONT_VAR cierreEmail .
 
@@ -4773,7 +4765,7 @@ state 215
     cierreLink      reduce using rule 142 (EMAIL -> email CONT_VAR cierreEmail .)
 
 
-state 216
+state 214
 
     (20) SECTION -> section CONT_A_S SECTIONS cierreSection .
 
@@ -4783,7 +4775,7 @@ state 216
     cierreSection   reduce using rule 20 (SECTION -> section CONT_A_S SECTIONS cierreSection .)
 
 
-state 217
+state 215
 
     (21) SECTION -> section INFO CONT_A_S cierreSection .
 
@@ -4793,14 +4785,14 @@ state 217
     cierreSection   reduce using rule 21 (SECTION -> section INFO CONT_A_S cierreSection .)
 
 
-state 218
+state 216
 
     (22) SECTION -> section INFO CONT_A_S SECTIONS . cierreSection
 
-    cierreSection   shift and go to state 261
+    cierreSection   shift and go to state 260
 
 
-state 219
+state 217
 
     (25) SECTION -> section INFO TITLEH2 CONT_A_S . cierreSection
     (26) SECTION -> section INFO TITLEH2 CONT_A_S . SECTIONS cierreSection
@@ -4822,15 +4814,15 @@ state 219
     (46) SIMPLE_SEC -> . simpleSection TITLE CONT_SS cierreSimpleSection
     (47) SIMPLE_SEC -> . simpleSection INFO TITLE CONT_SS cierreSimpleSection
 
-    cierreSection   shift and go to state 262
+    cierreSection   shift and go to state 261
     section         shift and go to state 21
     simpleSection   shift and go to state 119
 
-    SECTIONS                       shift and go to state 263
+    SECTIONS                       shift and go to state 262
     SECTION                        shift and go to state 117
     SIMPLE_SEC                     shift and go to state 118
 
-state 220
+state 218
 
     (23) SECTION -> section TITLEH2 CONT_A_S cierreSection .
 
@@ -4840,14 +4832,14 @@ state 220
     cierreSection   reduce using rule 23 (SECTION -> section TITLEH2 CONT_A_S cierreSection .)
 
 
-state 221
+state 219
 
     (24) SECTION -> section TITLEH2 CONT_A_S SECTIONS . cierreSection
 
-    cierreSection   shift and go to state 264
+    cierreSection   shift and go to state 263
 
 
-state 222
+state 220
 
     (54) TITLEH2 -> title CONT_TITLE cierreTitle .
 
@@ -4864,29 +4856,29 @@ state 222
     abstract        reduce using rule 54 (TITLEH2 -> title CONT_TITLE cierreTitle .)
 
 
+state 221
+
+    (81) LIST_ITEM -> LIST_ITEM listItem CONT_ITEM . cierreListItem
+
+    cierreListItem  shift and go to state 264
+
+
+state 222
+
+    (80) LIST_ITEM -> listItem CONT_ITEM cierreListItem .
+
+    cierreItemizedlist reduce using rule 80 (LIST_ITEM -> listItem CONT_ITEM cierreListItem .)
+    listItem        reduce using rule 80 (LIST_ITEM -> listItem CONT_ITEM cierreListItem .)
+
+
 state 223
 
-    (91) LIST_ITEM -> LIST_ITEM listItem CONT_ITEM . cierreListItem
+    (83) CONT_ITEM -> CONT_1 CONT_ITEM .
 
-    cierreListItem  shift and go to state 265
+    cierreListItem  reduce using rule 83 (CONT_ITEM -> CONT_1 CONT_ITEM .)
 
 
 state 224
-
-    (90) LIST_ITEM -> listItem CONT_ITEM cierreListItem .
-
-    cierreItemizedlist reduce using rule 90 (LIST_ITEM -> listItem CONT_ITEM cierreListItem .)
-    listItem        reduce using rule 90 (LIST_ITEM -> listItem CONT_ITEM cierreListItem .)
-
-
-state 225
-
-    (93) CONT_ITEM -> CONT_1 CONT_ITEM .
-
-    cierreListItem  reduce using rule 93 (CONT_ITEM -> CONT_1 CONT_ITEM .)
-
-
-state 226
 
     (126) IMPORTANT -> important TITLE CONT_IMPORTANT cierreImportant .
 
@@ -4915,7 +4907,7 @@ state 226
     cierreEntry     reduce using rule 126 (IMPORTANT -> important TITLE CONT_IMPORTANT cierreImportant .)
 
 
-state 227
+state 225
 
     (52) TITLE -> title CONT_TITLE cierreTitle .
 
@@ -4931,7 +4923,7 @@ state 227
     cierreAbstract  reduce using rule 52 (TITLE -> title CONT_TITLE cierreTitle .)
 
 
-state 228
+state 226
 
     (138) STREET -> street CONT_VAR cierreStreet .
 
@@ -4944,7 +4936,7 @@ state 228
     cierreAddress   reduce using rule 138 (STREET -> street CONT_VAR cierreStreet .)
 
 
-state 229
+state 227
 
     (139) CITY -> city CONT_VAR cierreCity .
 
@@ -4957,7 +4949,7 @@ state 229
     cierreAddress   reduce using rule 139 (CITY -> city CONT_VAR cierreCity .)
 
 
-state 230
+state 228
 
     (140) STATE -> state CONT_VAR cierreState .
 
@@ -4970,7 +4962,7 @@ state 230
     cierreAddress   reduce using rule 140 (STATE -> state CONT_VAR cierreState .)
 
 
-state 231
+state 229
 
     (141) PHONE -> phone CONT_VAR cierrePhone .
 
@@ -4983,95 +4975,90 @@ state 231
     cierreAddress   reduce using rule 141 (PHONE -> phone CONT_VAR cierrePhone .)
 
 
+state 230
+
+    (84) MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .
+
+    section         reduce using rule 84 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
+    itemizedlist    reduce using rule 84 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
+    important       reduce using rule 84 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
+    para            reduce using rule 84 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
+    simpara         reduce using rule 84 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
+    address         reduce using rule 84 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
+    mediaObject     reduce using rule 84 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
+    informalTable   reduce using rule 84 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
+    comment         reduce using rule 84 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
+    abstract        reduce using rule 84 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
+    cierreArticle   reduce using rule 84 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
+    simpleSection   reduce using rule 84 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
+    author          reduce using rule 84 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
+    date            reduce using rule 84 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
+    copyright       reduce using rule 84 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
+    title           reduce using rule 84 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
+    cierreInfo      reduce using rule 84 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
+    cierreSection   reduce using rule 84 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
+    cierreImportant reduce using rule 84 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
+    contenido_texto reduce using rule 84 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
+    emphasis        reduce using rule 84 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
+    link            reduce using rule 84 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
+    email           reduce using rule 84 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
+    cierrePara      reduce using rule 84 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
+    cierreInformalTable reduce using rule 84 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
+    cierreListItem  reduce using rule 84 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
+    cierreMediaObject reduce using rule 84 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
+    cierreSimpleSection reduce using rule 84 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
+    cierreEntry     reduce using rule 84 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
+
+
+state 231
+
+    (90) IMAGE_OBJECT -> imageObject INFO imageData . cierreImageObject
+
+    cierreImageObject shift and go to state 265
+
+
 state 232
 
-    (80) MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .
+    (91) IMAGE_OBJECT -> imageObject imageData cierreImageObject .
 
-    section         reduce using rule 80 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
-    itemizedlist    reduce using rule 80 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
-    important       reduce using rule 80 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
-    para            reduce using rule 80 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
-    simpara         reduce using rule 80 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
-    address         reduce using rule 80 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
-    mediaObject     reduce using rule 80 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
-    informalTable   reduce using rule 80 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
-    comment         reduce using rule 80 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
-    abstract        reduce using rule 80 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
-    cierreArticle   reduce using rule 80 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
-    simpleSection   reduce using rule 80 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
-    author          reduce using rule 80 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
-    date            reduce using rule 80 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
-    copyright       reduce using rule 80 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
-    title           reduce using rule 80 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
-    cierreInfo      reduce using rule 80 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
-    cierreSection   reduce using rule 80 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
-    cierreImportant reduce using rule 80 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
-    contenido_texto reduce using rule 80 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
-    emphasis        reduce using rule 80 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
-    link            reduce using rule 80 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
-    email           reduce using rule 80 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
-    cierrePara      reduce using rule 80 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
-    cierreInformalTable reduce using rule 80 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
-    cierreListItem  reduce using rule 80 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
-    cierreMediaObject reduce using rule 80 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
-    cierreSimpleSection reduce using rule 80 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
-    cierreEntry     reduce using rule 80 (MEDIA_OBJECT -> mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject .)
+    mediaObject     reduce using rule 91 (IMAGE_OBJECT -> imageObject imageData cierreImageObject .)
+    cierreMediaObject reduce using rule 91 (IMAGE_OBJECT -> imageObject imageData cierreImageObject .)
 
 
 state 233
 
-    (86) IMAGE_OBJECT -> imageObject INFO imageData . cierreImageObject
+    (92) VIDEO_OBJECT -> videoObject INFO imageData . cierreVideoObject
 
-    cierreImageObject shift and go to state 266
+    cierreVideoObject shift and go to state 266
 
 
 state 234
 
-    (87) IMAGE_OBJECT -> imageObject imageData cierreImageObject .
+    (93) VIDEO_OBJECT -> videoObject videoData cierreVideoObject .
 
-    mediaObject     reduce using rule 87 (IMAGE_OBJECT -> imageObject imageData cierreImageObject .)
-    cierreMediaObject reduce using rule 87 (IMAGE_OBJECT -> imageObject imageData cierreImageObject .)
+    mediaObject     reduce using rule 93 (VIDEO_OBJECT -> videoObject videoData cierreVideoObject .)
+    cierreMediaObject reduce using rule 93 (VIDEO_OBJECT -> videoObject videoData cierreVideoObject .)
 
 
 state 235
 
-    (88) VIDEO_OBJECT -> videoObject INFO imageData . cierreVideoObject
+    (152) TGROUP -> tgroup THEAD TBODY . TFOOT cierreTgroup
+    (153) TGROUP -> tgroup THEAD TBODY . cierreTgroup
+    (169) TFOOT -> . tfoot CONT_T cierreTfoot
 
-    cierreVideoObject shift and go to state 267
+    cierreTgroup    shift and go to state 268
+    tfoot           shift and go to state 238
 
+    TFOOT                          shift and go to state 267
 
 state 236
 
-    (89) VIDEO_OBJECT -> videoObject videoData cierreVideoObject .
-
-    mediaObject     reduce using rule 89 (VIDEO_OBJECT -> videoObject videoData cierreVideoObject .)
-    cierreMediaObject reduce using rule 89 (VIDEO_OBJECT -> videoObject videoData cierreVideoObject .)
-
-
-state 237
-
-    (152) TGROUP -> tgroup THEAD TFOOT . TBODY cierreTgroup
-    (160) TBODY -> . tbody CONT_T cierreTbody
-
-    tbody           shift and go to state 185
-
-    TBODY                          shift and go to state 268
-
-state 238
-
-    (153) TGROUP -> tgroup THEAD TBODY . cierreTgroup
+    (154) TGROUP -> tgroup TBODY TFOOT . cierreTgroup
 
     cierreTgroup    shift and go to state 269
 
 
-state 239
-
-    (154) TGROUP -> tgroup TFOOT TBODY . cierreTgroup
-
-    cierreTgroup    shift and go to state 270
-
-
-state 240
+state 237
 
     (155) TGROUP -> tgroup TBODY cierreTgroup .
 
@@ -5079,62 +5066,98 @@ state 240
     cierreInformalTable reduce using rule 155 (TGROUP -> tgroup TBODY cierreTgroup .)
 
 
-state 241
+state 238
 
-    (158) THEAD -> thead CONT_T . cierreThead
+    (169) TFOOT -> tfoot . CONT_T cierreTfoot
+    (167) CONT_T -> . ROW
+    (168) CONT_T -> . ROW CONT_T
+    (171) ROW -> . row CONT_ROW cierreRow
+
+    row             shift and go to state 244
+
+    CONT_T                         shift and go to state 270
+    ROW                            shift and go to state 243
+
+state 239
+
+    (156) THEAD -> thead CONT_TH . cierreThead
 
     cierreThead     shift and go to state 271
 
 
-state 242
+state 240
 
-    (156) CONT_T -> ROW .
-    (157) CONT_T -> ROW . CONT_T
-    (156) CONT_T -> . ROW
-    (157) CONT_T -> . ROW CONT_T
-    (161) ROW -> . row CONT_ROW cierreRow
+    (157) CONT_TH -> ROWH .
+    (158) CONT_TH -> ROWH . CONT_TH
+    (157) CONT_TH -> . ROWH
+    (158) CONT_TH -> . ROWH CONT_TH
+    (159) ROWH -> . row CONT_ROWH cierreRow
 
-    cierreThead     reduce using rule 156 (CONT_T -> ROW .)
-    cierreTfoot     reduce using rule 156 (CONT_T -> ROW .)
-    cierreTbody     reduce using rule 156 (CONT_T -> ROW .)
-    row             shift and go to state 243
+    cierreThead     reduce using rule 157 (CONT_TH -> ROWH .)
+    row             shift and go to state 241
 
-    ROW                            shift and go to state 242
-    CONT_T                         shift and go to state 272
+    ROWH                           shift and go to state 240
+    CONT_TH                        shift and go to state 272
 
-state 243
+state 241
 
-    (161) ROW -> row . CONT_ROW cierreRow
-    (162) CONT_ROW -> . ENTRY
-    (163) CONT_ROW -> . ENTRY CONT_ROW
-    (164) CONT_ROW -> . ENTRYTBL
-    (165) CONT_ROW -> . ENTRYTBL CONT_ROW
-    (166) ENTRY -> . entry CONT_ENTRY cierreEntry
-    (167) ENTRYTBL -> . entrytbl THEAD TBODY cierreEntrytbl
-    (168) ENTRYTBL -> . entrytbl TBODY cierreEntrytbl
+    (159) ROWH -> row . CONT_ROWH cierreRow
+    (160) CONT_ROWH -> . ENTRYH
+    (161) CONT_ROWH -> . ENTRYH CONT_ROWH
+    (162) CONT_ROWH -> . ENTRYTBLH
+    (163) CONT_ROWH -> . ENTRYTBLH CONT_ROWH
+    (164) ENTRYH -> . entry CONT_ENTRY cierreEntry
+    (165) ENTRYTBLH -> . entrytbl THEAD TBODY cierreEntrytbl
+    (166) ENTRYTBLH -> . entrytbl TBODY cierreEntrytbl
 
     entry           shift and go to state 276
     entrytbl        shift and go to state 277
 
-    CONT_ROW                       shift and go to state 273
-    ENTRY                          shift and go to state 274
-    ENTRYTBL                       shift and go to state 275
+    CONT_ROWH                      shift and go to state 273
+    ENTRYH                         shift and go to state 274
+    ENTRYTBLH                      shift and go to state 275
+
+state 242
+
+    (170) TBODY -> tbody CONT_T . cierreTbody
+
+    cierreTbody     shift and go to state 278
+
+
+state 243
+
+    (167) CONT_T -> ROW .
+    (168) CONT_T -> ROW . CONT_T
+    (167) CONT_T -> . ROW
+    (168) CONT_T -> . ROW CONT_T
+    (171) ROW -> . row CONT_ROW cierreRow
+
+    cierreTbody     reduce using rule 167 (CONT_T -> ROW .)
+    cierreTfoot     reduce using rule 167 (CONT_T -> ROW .)
+    row             shift and go to state 244
+
+    ROW                            shift and go to state 243
+    CONT_T                         shift and go to state 279
 
 state 244
 
-    (159) TFOOT -> tfoot CONT_T . cierreTfoot
+    (171) ROW -> row . CONT_ROW cierreRow
+    (172) CONT_ROW -> . ENTRY
+    (173) CONT_ROW -> . ENTRY CONT_ROW
+    (174) CONT_ROW -> . ENTRYTBL
+    (175) CONT_ROW -> . ENTRYTBL CONT_ROW
+    (176) ENTRY -> . entry CONT_ENTRY cierreEntry
+    (177) ENTRYTBL -> . entrytbl THEAD TBODY cierreEntrytbl
+    (178) ENTRYTBL -> . entrytbl TBODY cierreEntrytbl
 
-    cierreTfoot     shift and go to state 278
+    entry           shift and go to state 283
+    entrytbl        shift and go to state 284
 
+    CONT_ROW                       shift and go to state 280
+    ENTRY                          shift and go to state 281
+    ENTRYTBL                       shift and go to state 282
 
 state 245
-
-    (160) TBODY -> tbody CONT_T . cierreTbody
-
-    cierreTbody     shift and go to state 279
-
-
-state 246
 
     (51) ABSTRACT -> abstract TITLE PARAS cierreAbstract .
 
@@ -5163,28 +5186,28 @@ state 246
     cierreEntry     reduce using rule 51 (ABSTRACT -> abstract TITLE PARAS cierreAbstract .)
 
 
-state 247
+state 246
 
     (63) PARAS -> PARA PARAS .
 
     cierreAbstract  reduce using rule 63 (PARAS -> PARA PARAS .)
 
 
-state 248
+state 247
 
     (64) PARAS -> SIMPARA PARAS .
 
     cierreAbstract  reduce using rule 64 (PARAS -> SIMPARA PARAS .)
 
 
-state 249
+state 248
 
     (3) ARTICLE -> article INFO TITLEH1 CONT_A_S SECTIONS cierreArticle .
 
     $end            reduce using rule 3 (ARTICLE -> article INFO TITLEH1 CONT_A_S SECTIONS cierreArticle .)
 
 
-state 250
+state 249
 
     (44) SIMPLE_SEC -> simpleSection CONT_SS cierreSimpleSection .
 
@@ -5194,14 +5217,14 @@ state 250
     cierreSection   reduce using rule 44 (SIMPLE_SEC -> simpleSection CONT_SS cierreSimpleSection .)
 
 
-state 251
+state 250
 
     (45) SIMPLE_SEC -> simpleSection INFO CONT_SS . cierreSimpleSection
 
-    cierreSimpleSection shift and go to state 280
+    cierreSimpleSection shift and go to state 285
 
 
-state 252
+state 251
 
     (47) SIMPLE_SEC -> simpleSection INFO TITLE . CONT_SS cierreSimpleSection
     (48) CONT_SS -> . CONT_1
@@ -5222,8 +5245,8 @@ state 252
     (114) SIMPARA -> . simpara CONT_SECL cierreSimpara
     (102) ADDRESS -> . address cierreAddress
     (103) ADDRESS -> . address CONT_ADDRESS cierreAddress
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
     (146) INFORMAL_TABLE -> . informalTable TABLE_MEDIA cierreInformalTable
     (147) INFORMAL_TABLE -> . informalTable TABLE_GROUP cierreInformalTable
     (116) COMMENT -> . comment CONT_SECL cierreComment
@@ -5240,8 +5263,8 @@ state 252
     comment         shift and go to state 29
     abstract        shift and go to state 30
 
-    CONT_SS                        shift and go to state 281
-    CONT_1                         shift and go to state 199
+    CONT_SS                        shift and go to state 286
+    CONT_1                         shift and go to state 197
     ITEMIZED_LIST                  shift and go to state 12
     IMPORTANT                      shift and go to state 13
     PARA                           shift and go to state 14
@@ -5252,28 +5275,28 @@ state 252
     COMMENT                        shift and go to state 19
     ABSTRACT                       shift and go to state 20
 
-state 253
+state 252
 
     (46) SIMPLE_SEC -> simpleSection TITLE CONT_SS . cierreSimpleSection
 
-    cierreSimpleSection shift and go to state 282
+    cierreSimpleSection shift and go to state 287
 
 
-state 254
+state 253
 
     (49) CONT_SS -> CONT_1 CONT_SS .
 
     cierreSimpleSection reduce using rule 49 (CONT_SS -> CONT_1 CONT_SS .)
 
 
-state 255
+state 254
 
     (101) CONT_AUTHOR -> FIRSTNAME SURNAME EMAIL .
 
     cierreAuthor    reduce using rule 101 (CONT_AUTHOR -> FIRSTNAME SURNAME EMAIL .)
 
 
-state 256
+state 255
 
     (136) FIRSTNAME -> firstname CONT_VAR cierreFirstname .
 
@@ -5282,7 +5305,7 @@ state 256
     cierreAuthor    reduce using rule 136 (FIRSTNAME -> firstname CONT_VAR cierreFirstname .)
 
 
-state 257
+state 256
 
     (137) SURNAME -> surname CONT_VAR cierreSurname .
 
@@ -5290,7 +5313,7 @@ state 257
     cierreAuthor    reduce using rule 137 (SURNAME -> surname CONT_VAR cierreSurname .)
 
 
-state 258
+state 257
 
     (113) COPYRIGHT -> copyright YEAR HOLDER cierreCopyright .
 
@@ -5304,14 +5327,14 @@ state 258
     cierreInfo      reduce using rule 113 (COPYRIGHT -> copyright YEAR HOLDER cierreCopyright .)
 
 
-state 259
+state 258
 
     (145) HOLDER -> holder CONT_VAR . cierreHolder
 
-    cierreHolder    shift and go to state 283
+    cierreHolder    shift and go to state 288
 
 
-state 260
+state 259
 
     (144) YEAR -> year CONT_VAR cierreYear .
 
@@ -5319,7 +5342,7 @@ state 260
     holder          reduce using rule 144 (YEAR -> year CONT_VAR cierreYear .)
 
 
-state 261
+state 260
 
     (22) SECTION -> section INFO CONT_A_S SECTIONS cierreSection .
 
@@ -5329,7 +5352,7 @@ state 261
     cierreSection   reduce using rule 22 (SECTION -> section INFO CONT_A_S SECTIONS cierreSection .)
 
 
-state 262
+state 261
 
     (25) SECTION -> section INFO TITLEH2 CONT_A_S cierreSection .
 
@@ -5339,14 +5362,14 @@ state 262
     cierreSection   reduce using rule 25 (SECTION -> section INFO TITLEH2 CONT_A_S cierreSection .)
 
 
-state 263
+state 262
 
     (26) SECTION -> section INFO TITLEH2 CONT_A_S SECTIONS . cierreSection
 
-    cierreSection   shift and go to state 284
+    cierreSection   shift and go to state 289
 
 
-state 264
+state 263
 
     (24) SECTION -> section TITLEH2 CONT_A_S SECTIONS cierreSection .
 
@@ -5356,38 +5379,38 @@ state 264
     cierreSection   reduce using rule 24 (SECTION -> section TITLEH2 CONT_A_S SECTIONS cierreSection .)
 
 
+state 264
+
+    (81) LIST_ITEM -> LIST_ITEM listItem CONT_ITEM cierreListItem .
+
+    cierreItemizedlist reduce using rule 81 (LIST_ITEM -> LIST_ITEM listItem CONT_ITEM cierreListItem .)
+    listItem        reduce using rule 81 (LIST_ITEM -> LIST_ITEM listItem CONT_ITEM cierreListItem .)
+
+
 state 265
 
-    (91) LIST_ITEM -> LIST_ITEM listItem CONT_ITEM cierreListItem .
+    (90) IMAGE_OBJECT -> imageObject INFO imageData cierreImageObject .
 
-    cierreItemizedlist reduce using rule 91 (LIST_ITEM -> LIST_ITEM listItem CONT_ITEM cierreListItem .)
-    listItem        reduce using rule 91 (LIST_ITEM -> LIST_ITEM listItem CONT_ITEM cierreListItem .)
+    mediaObject     reduce using rule 90 (IMAGE_OBJECT -> imageObject INFO imageData cierreImageObject .)
+    cierreMediaObject reduce using rule 90 (IMAGE_OBJECT -> imageObject INFO imageData cierreImageObject .)
 
 
 state 266
 
-    (86) IMAGE_OBJECT -> imageObject INFO imageData cierreImageObject .
+    (92) VIDEO_OBJECT -> videoObject INFO imageData cierreVideoObject .
 
-    mediaObject     reduce using rule 86 (IMAGE_OBJECT -> imageObject INFO imageData cierreImageObject .)
-    cierreMediaObject reduce using rule 86 (IMAGE_OBJECT -> imageObject INFO imageData cierreImageObject .)
+    mediaObject     reduce using rule 92 (VIDEO_OBJECT -> videoObject INFO imageData cierreVideoObject .)
+    cierreMediaObject reduce using rule 92 (VIDEO_OBJECT -> videoObject INFO imageData cierreVideoObject .)
 
 
 state 267
 
-    (88) VIDEO_OBJECT -> videoObject INFO imageData cierreVideoObject .
+    (152) TGROUP -> tgroup THEAD TBODY TFOOT . cierreTgroup
 
-    mediaObject     reduce using rule 88 (VIDEO_OBJECT -> videoObject INFO imageData cierreVideoObject .)
-    cierreMediaObject reduce using rule 88 (VIDEO_OBJECT -> videoObject INFO imageData cierreVideoObject .)
+    cierreTgroup    shift and go to state 290
 
 
 state 268
-
-    (152) TGROUP -> tgroup THEAD TFOOT TBODY . cierreTgroup
-
-    cierreTgroup    shift and go to state 285
-
-
-state 269
 
     (153) TGROUP -> tgroup THEAD TBODY cierreTgroup .
 
@@ -5395,97 +5418,101 @@ state 269
     cierreInformalTable reduce using rule 153 (TGROUP -> tgroup THEAD TBODY cierreTgroup .)
 
 
+state 269
+
+    (154) TGROUP -> tgroup TBODY TFOOT cierreTgroup .
+
+    tgroup          reduce using rule 154 (TGROUP -> tgroup TBODY TFOOT cierreTgroup .)
+    cierreInformalTable reduce using rule 154 (TGROUP -> tgroup TBODY TFOOT cierreTgroup .)
+
+
 state 270
 
-    (154) TGROUP -> tgroup TFOOT TBODY cierreTgroup .
+    (169) TFOOT -> tfoot CONT_T . cierreTfoot
 
-    tgroup          reduce using rule 154 (TGROUP -> tgroup TFOOT TBODY cierreTgroup .)
-    cierreInformalTable reduce using rule 154 (TGROUP -> tgroup TFOOT TBODY cierreTgroup .)
+    cierreTfoot     shift and go to state 291
 
 
 state 271
 
-    (158) THEAD -> thead CONT_T cierreThead .
+    (156) THEAD -> thead CONT_TH cierreThead .
 
-    tfoot           reduce using rule 158 (THEAD -> thead CONT_T cierreThead .)
-    tbody           reduce using rule 158 (THEAD -> thead CONT_T cierreThead .)
+    tbody           reduce using rule 156 (THEAD -> thead CONT_TH cierreThead .)
 
 
 state 272
 
-    (157) CONT_T -> ROW CONT_T .
+    (158) CONT_TH -> ROWH CONT_TH .
 
-    cierreThead     reduce using rule 157 (CONT_T -> ROW CONT_T .)
-    cierreTfoot     reduce using rule 157 (CONT_T -> ROW CONT_T .)
-    cierreTbody     reduce using rule 157 (CONT_T -> ROW CONT_T .)
+    cierreThead     reduce using rule 158 (CONT_TH -> ROWH CONT_TH .)
 
 
 state 273
 
-    (161) ROW -> row CONT_ROW . cierreRow
+    (159) ROWH -> row CONT_ROWH . cierreRow
 
-    cierreRow       shift and go to state 286
+    cierreRow       shift and go to state 292
 
 
 state 274
 
-    (162) CONT_ROW -> ENTRY .
-    (163) CONT_ROW -> ENTRY . CONT_ROW
-    (162) CONT_ROW -> . ENTRY
-    (163) CONT_ROW -> . ENTRY CONT_ROW
-    (164) CONT_ROW -> . ENTRYTBL
-    (165) CONT_ROW -> . ENTRYTBL CONT_ROW
-    (166) ENTRY -> . entry CONT_ENTRY cierreEntry
-    (167) ENTRYTBL -> . entrytbl THEAD TBODY cierreEntrytbl
-    (168) ENTRYTBL -> . entrytbl TBODY cierreEntrytbl
+    (160) CONT_ROWH -> ENTRYH .
+    (161) CONT_ROWH -> ENTRYH . CONT_ROWH
+    (160) CONT_ROWH -> . ENTRYH
+    (161) CONT_ROWH -> . ENTRYH CONT_ROWH
+    (162) CONT_ROWH -> . ENTRYTBLH
+    (163) CONT_ROWH -> . ENTRYTBLH CONT_ROWH
+    (164) ENTRYH -> . entry CONT_ENTRY cierreEntry
+    (165) ENTRYTBLH -> . entrytbl THEAD TBODY cierreEntrytbl
+    (166) ENTRYTBLH -> . entrytbl TBODY cierreEntrytbl
 
-    cierreRow       reduce using rule 162 (CONT_ROW -> ENTRY .)
+    cierreRow       reduce using rule 160 (CONT_ROWH -> ENTRYH .)
     entry           shift and go to state 276
     entrytbl        shift and go to state 277
 
-    ENTRY                          shift and go to state 274
-    CONT_ROW                       shift and go to state 287
-    ENTRYTBL                       shift and go to state 275
+    ENTRYH                         shift and go to state 274
+    CONT_ROWH                      shift and go to state 293
+    ENTRYTBLH                      shift and go to state 275
 
 state 275
 
-    (164) CONT_ROW -> ENTRYTBL .
-    (165) CONT_ROW -> ENTRYTBL . CONT_ROW
-    (162) CONT_ROW -> . ENTRY
-    (163) CONT_ROW -> . ENTRY CONT_ROW
-    (164) CONT_ROW -> . ENTRYTBL
-    (165) CONT_ROW -> . ENTRYTBL CONT_ROW
-    (166) ENTRY -> . entry CONT_ENTRY cierreEntry
-    (167) ENTRYTBL -> . entrytbl THEAD TBODY cierreEntrytbl
-    (168) ENTRYTBL -> . entrytbl TBODY cierreEntrytbl
+    (162) CONT_ROWH -> ENTRYTBLH .
+    (163) CONT_ROWH -> ENTRYTBLH . CONT_ROWH
+    (160) CONT_ROWH -> . ENTRYH
+    (161) CONT_ROWH -> . ENTRYH CONT_ROWH
+    (162) CONT_ROWH -> . ENTRYTBLH
+    (163) CONT_ROWH -> . ENTRYTBLH CONT_ROWH
+    (164) ENTRYH -> . entry CONT_ENTRY cierreEntry
+    (165) ENTRYTBLH -> . entrytbl THEAD TBODY cierreEntrytbl
+    (166) ENTRYTBLH -> . entrytbl TBODY cierreEntrytbl
 
-    cierreRow       reduce using rule 164 (CONT_ROW -> ENTRYTBL .)
+    cierreRow       reduce using rule 162 (CONT_ROWH -> ENTRYTBLH .)
     entry           shift and go to state 276
     entrytbl        shift and go to state 277
 
-    ENTRYTBL                       shift and go to state 275
-    CONT_ROW                       shift and go to state 288
-    ENTRY                          shift and go to state 274
+    ENTRYTBLH                      shift and go to state 275
+    CONT_ROWH                      shift and go to state 294
+    ENTRYH                         shift and go to state 274
 
 state 276
 
-    (166) ENTRY -> entry . CONT_ENTRY cierreEntry
-    (169) CONT_ENTRY -> . contenido_texto
-    (170) CONT_ENTRY -> . contenido_texto CONT_ENTRY
-    (171) CONT_ENTRY -> . ITEMIZED_LIST
-    (172) CONT_ENTRY -> . ITEMIZED_LIST CONT_ENTRY
-    (173) CONT_ENTRY -> . IMPORTANT
-    (174) CONT_ENTRY -> . IMPORTANT CONT_ENTRY
-    (175) CONT_ENTRY -> . PARA
-    (176) CONT_ENTRY -> . PARA CONT_ENTRY
-    (177) CONT_ENTRY -> . SIMPARA
-    (178) CONT_ENTRY -> . SIMPARA CONT_ENTRY
-    (179) CONT_ENTRY -> . COMMENT
-    (180) CONT_ENTRY -> . COMMENT CONT_ENTRY
-    (181) CONT_ENTRY -> . ABSTRACT
-    (182) CONT_ENTRY -> . ABSTRACT CONT_ENTRY
-    (183) CONT_ENTRY -> . MEDIA_OBJECT
-    (184) CONT_ENTRY -> . MEDIA_OBJECT CONT_ENTRY
+    (164) ENTRYH -> entry . CONT_ENTRY cierreEntry
+    (179) CONT_ENTRY -> . contenido_texto
+    (180) CONT_ENTRY -> . contenido_texto CONT_ENTRY
+    (181) CONT_ENTRY -> . ITEMIZED_LIST
+    (182) CONT_ENTRY -> . ITEMIZED_LIST CONT_ENTRY
+    (183) CONT_ENTRY -> . IMPORTANT
+    (184) CONT_ENTRY -> . IMPORTANT CONT_ENTRY
+    (185) CONT_ENTRY -> . PARA
+    (186) CONT_ENTRY -> . PARA CONT_ENTRY
+    (187) CONT_ENTRY -> . SIMPARA
+    (188) CONT_ENTRY -> . SIMPARA CONT_ENTRY
+    (189) CONT_ENTRY -> . COMMENT
+    (190) CONT_ENTRY -> . COMMENT CONT_ENTRY
+    (191) CONT_ENTRY -> . ABSTRACT
+    (192) CONT_ENTRY -> . ABSTRACT CONT_ENTRY
+    (193) CONT_ENTRY -> . MEDIA_OBJECT
+    (194) CONT_ENTRY -> . MEDIA_OBJECT CONT_ENTRY
     (79) ITEMIZED_LIST -> . itemizedlist LIST_ITEM cierreItemizedlist
     (126) IMPORTANT -> . important TITLE CONT_IMPORTANT cierreImportant
     (127) IMPORTANT -> . important CONT_IMPORTANT cierreImportant
@@ -5494,10 +5521,10 @@ state 276
     (116) COMMENT -> . comment CONT_SECL cierreComment
     (50) ABSTRACT -> . abstract TITLE cierreAbstract
     (51) ABSTRACT -> . abstract TITLE PARAS cierreAbstract
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
 
-    contenido_texto shift and go to state 290
+    contenido_texto shift and go to state 296
     itemizedlist    shift and go to state 22
     important       shift and go to state 23
     para            shift and go to state 24
@@ -5506,44 +5533,154 @@ state 276
     abstract        shift and go to state 30
     mediaObject     shift and go to state 27
 
-    CONT_ENTRY                     shift and go to state 289
-    ITEMIZED_LIST                  shift and go to state 291
-    IMPORTANT                      shift and go to state 292
-    PARA                           shift and go to state 293
-    SIMPARA                        shift and go to state 294
-    COMMENT                        shift and go to state 295
-    ABSTRACT                       shift and go to state 296
-    MEDIA_OBJECT                   shift and go to state 297
+    CONT_ENTRY                     shift and go to state 295
+    ITEMIZED_LIST                  shift and go to state 297
+    IMPORTANT                      shift and go to state 298
+    PARA                           shift and go to state 299
+    SIMPARA                        shift and go to state 300
+    COMMENT                        shift and go to state 301
+    ABSTRACT                       shift and go to state 302
+    MEDIA_OBJECT                   shift and go to state 303
 
 state 277
 
-    (167) ENTRYTBL -> entrytbl . THEAD TBODY cierreEntrytbl
-    (168) ENTRYTBL -> entrytbl . TBODY cierreEntrytbl
-    (158) THEAD -> . thead CONT_T cierreThead
-    (160) TBODY -> . tbody CONT_T cierreTbody
+    (165) ENTRYTBLH -> entrytbl . THEAD TBODY cierreEntrytbl
+    (166) ENTRYTBLH -> entrytbl . TBODY cierreEntrytbl
+    (156) THEAD -> . thead CONT_TH cierreThead
+    (170) TBODY -> . tbody CONT_T cierreTbody
 
-    thead           shift and go to state 183
-    tbody           shift and go to state 185
+    thead           shift and go to state 182
+    tbody           shift and go to state 183
 
-    THEAD                          shift and go to state 298
-    TBODY                          shift and go to state 299
+    THEAD                          shift and go to state 304
+    TBODY                          shift and go to state 305
 
 state 278
 
-    (159) TFOOT -> tfoot CONT_T cierreTfoot .
+    (170) TBODY -> tbody CONT_T cierreTbody .
 
-    tbody           reduce using rule 159 (TFOOT -> tfoot CONT_T cierreTfoot .)
+    cierreTgroup    reduce using rule 170 (TBODY -> tbody CONT_T cierreTbody .)
+    tfoot           reduce using rule 170 (TBODY -> tbody CONT_T cierreTbody .)
+    cierreEntrytbl  reduce using rule 170 (TBODY -> tbody CONT_T cierreTbody .)
 
 
 state 279
 
-    (160) TBODY -> tbody CONT_T cierreTbody .
+    (168) CONT_T -> ROW CONT_T .
 
-    cierreTgroup    reduce using rule 160 (TBODY -> tbody CONT_T cierreTbody .)
-    cierreEntrytbl  reduce using rule 160 (TBODY -> tbody CONT_T cierreTbody .)
+    cierreTbody     reduce using rule 168 (CONT_T -> ROW CONT_T .)
+    cierreTfoot     reduce using rule 168 (CONT_T -> ROW CONT_T .)
 
 
 state 280
+
+    (171) ROW -> row CONT_ROW . cierreRow
+
+    cierreRow       shift and go to state 306
+
+
+state 281
+
+    (172) CONT_ROW -> ENTRY .
+    (173) CONT_ROW -> ENTRY . CONT_ROW
+    (172) CONT_ROW -> . ENTRY
+    (173) CONT_ROW -> . ENTRY CONT_ROW
+    (174) CONT_ROW -> . ENTRYTBL
+    (175) CONT_ROW -> . ENTRYTBL CONT_ROW
+    (176) ENTRY -> . entry CONT_ENTRY cierreEntry
+    (177) ENTRYTBL -> . entrytbl THEAD TBODY cierreEntrytbl
+    (178) ENTRYTBL -> . entrytbl TBODY cierreEntrytbl
+
+    cierreRow       reduce using rule 172 (CONT_ROW -> ENTRY .)
+    entry           shift and go to state 283
+    entrytbl        shift and go to state 284
+
+    ENTRY                          shift and go to state 281
+    CONT_ROW                       shift and go to state 307
+    ENTRYTBL                       shift and go to state 282
+
+state 282
+
+    (174) CONT_ROW -> ENTRYTBL .
+    (175) CONT_ROW -> ENTRYTBL . CONT_ROW
+    (172) CONT_ROW -> . ENTRY
+    (173) CONT_ROW -> . ENTRY CONT_ROW
+    (174) CONT_ROW -> . ENTRYTBL
+    (175) CONT_ROW -> . ENTRYTBL CONT_ROW
+    (176) ENTRY -> . entry CONT_ENTRY cierreEntry
+    (177) ENTRYTBL -> . entrytbl THEAD TBODY cierreEntrytbl
+    (178) ENTRYTBL -> . entrytbl TBODY cierreEntrytbl
+
+    cierreRow       reduce using rule 174 (CONT_ROW -> ENTRYTBL .)
+    entry           shift and go to state 283
+    entrytbl        shift and go to state 284
+
+    ENTRYTBL                       shift and go to state 282
+    CONT_ROW                       shift and go to state 308
+    ENTRY                          shift and go to state 281
+
+state 283
+
+    (176) ENTRY -> entry . CONT_ENTRY cierreEntry
+    (179) CONT_ENTRY -> . contenido_texto
+    (180) CONT_ENTRY -> . contenido_texto CONT_ENTRY
+    (181) CONT_ENTRY -> . ITEMIZED_LIST
+    (182) CONT_ENTRY -> . ITEMIZED_LIST CONT_ENTRY
+    (183) CONT_ENTRY -> . IMPORTANT
+    (184) CONT_ENTRY -> . IMPORTANT CONT_ENTRY
+    (185) CONT_ENTRY -> . PARA
+    (186) CONT_ENTRY -> . PARA CONT_ENTRY
+    (187) CONT_ENTRY -> . SIMPARA
+    (188) CONT_ENTRY -> . SIMPARA CONT_ENTRY
+    (189) CONT_ENTRY -> . COMMENT
+    (190) CONT_ENTRY -> . COMMENT CONT_ENTRY
+    (191) CONT_ENTRY -> . ABSTRACT
+    (192) CONT_ENTRY -> . ABSTRACT CONT_ENTRY
+    (193) CONT_ENTRY -> . MEDIA_OBJECT
+    (194) CONT_ENTRY -> . MEDIA_OBJECT CONT_ENTRY
+    (79) ITEMIZED_LIST -> . itemizedlist LIST_ITEM cierreItemizedlist
+    (126) IMPORTANT -> . important TITLE CONT_IMPORTANT cierreImportant
+    (127) IMPORTANT -> . important CONT_IMPORTANT cierreImportant
+    (65) PARA -> . para CONT_PARA cierrePara
+    (114) SIMPARA -> . simpara CONT_SECL cierreSimpara
+    (116) COMMENT -> . comment CONT_SECL cierreComment
+    (50) ABSTRACT -> . abstract TITLE cierreAbstract
+    (51) ABSTRACT -> . abstract TITLE PARAS cierreAbstract
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+
+    contenido_texto shift and go to state 296
+    itemizedlist    shift and go to state 22
+    important       shift and go to state 23
+    para            shift and go to state 24
+    simpara         shift and go to state 25
+    comment         shift and go to state 29
+    abstract        shift and go to state 30
+    mediaObject     shift and go to state 27
+
+    CONT_ENTRY                     shift and go to state 309
+    ITEMIZED_LIST                  shift and go to state 297
+    IMPORTANT                      shift and go to state 298
+    PARA                           shift and go to state 299
+    SIMPARA                        shift and go to state 300
+    COMMENT                        shift and go to state 301
+    ABSTRACT                       shift and go to state 302
+    MEDIA_OBJECT                   shift and go to state 303
+
+state 284
+
+    (177) ENTRYTBL -> entrytbl . THEAD TBODY cierreEntrytbl
+    (178) ENTRYTBL -> entrytbl . TBODY cierreEntrytbl
+    (156) THEAD -> . thead CONT_TH cierreThead
+    (170) TBODY -> . tbody CONT_T cierreTbody
+
+    thead           shift and go to state 182
+    tbody           shift and go to state 183
+
+    THEAD                          shift and go to state 310
+    TBODY                          shift and go to state 311
+
+state 285
 
     (45) SIMPLE_SEC -> simpleSection INFO CONT_SS cierreSimpleSection .
 
@@ -5553,14 +5690,14 @@ state 280
     cierreSection   reduce using rule 45 (SIMPLE_SEC -> simpleSection INFO CONT_SS cierreSimpleSection .)
 
 
-state 281
+state 286
 
     (47) SIMPLE_SEC -> simpleSection INFO TITLE CONT_SS . cierreSimpleSection
 
-    cierreSimpleSection shift and go to state 300
+    cierreSimpleSection shift and go to state 312
 
 
-state 282
+state 287
 
     (46) SIMPLE_SEC -> simpleSection TITLE CONT_SS cierreSimpleSection .
 
@@ -5570,14 +5707,14 @@ state 282
     cierreSection   reduce using rule 46 (SIMPLE_SEC -> simpleSection TITLE CONT_SS cierreSimpleSection .)
 
 
-state 283
+state 288
 
     (145) HOLDER -> holder CONT_VAR cierreHolder .
 
     cierreCopyright reduce using rule 145 (HOLDER -> holder CONT_VAR cierreHolder .)
 
 
-state 284
+state 289
 
     (26) SECTION -> section INFO TITLEH2 CONT_A_S SECTIONS cierreSection .
 
@@ -5587,365 +5724,70 @@ state 284
     cierreSection   reduce using rule 26 (SECTION -> section INFO TITLEH2 CONT_A_S SECTIONS cierreSection .)
 
 
-state 285
-
-    (152) TGROUP -> tgroup THEAD TFOOT TBODY cierreTgroup .
-
-    tgroup          reduce using rule 152 (TGROUP -> tgroup THEAD TFOOT TBODY cierreTgroup .)
-    cierreInformalTable reduce using rule 152 (TGROUP -> tgroup THEAD TFOOT TBODY cierreTgroup .)
-
-
-state 286
-
-    (161) ROW -> row CONT_ROW cierreRow .
-
-    row             reduce using rule 161 (ROW -> row CONT_ROW cierreRow .)
-    cierreThead     reduce using rule 161 (ROW -> row CONT_ROW cierreRow .)
-    cierreTfoot     reduce using rule 161 (ROW -> row CONT_ROW cierreRow .)
-    cierreTbody     reduce using rule 161 (ROW -> row CONT_ROW cierreRow .)
-
-
-state 287
-
-    (163) CONT_ROW -> ENTRY CONT_ROW .
-
-    cierreRow       reduce using rule 163 (CONT_ROW -> ENTRY CONT_ROW .)
-
-
-state 288
-
-    (165) CONT_ROW -> ENTRYTBL CONT_ROW .
-
-    cierreRow       reduce using rule 165 (CONT_ROW -> ENTRYTBL CONT_ROW .)
-
-
-state 289
-
-    (166) ENTRY -> entry CONT_ENTRY . cierreEntry
-
-    cierreEntry     shift and go to state 301
-
-
 state 290
 
-    (169) CONT_ENTRY -> contenido_texto .
-    (170) CONT_ENTRY -> contenido_texto . CONT_ENTRY
-    (169) CONT_ENTRY -> . contenido_texto
-    (170) CONT_ENTRY -> . contenido_texto CONT_ENTRY
-    (171) CONT_ENTRY -> . ITEMIZED_LIST
-    (172) CONT_ENTRY -> . ITEMIZED_LIST CONT_ENTRY
-    (173) CONT_ENTRY -> . IMPORTANT
-    (174) CONT_ENTRY -> . IMPORTANT CONT_ENTRY
-    (175) CONT_ENTRY -> . PARA
-    (176) CONT_ENTRY -> . PARA CONT_ENTRY
-    (177) CONT_ENTRY -> . SIMPARA
-    (178) CONT_ENTRY -> . SIMPARA CONT_ENTRY
-    (179) CONT_ENTRY -> . COMMENT
-    (180) CONT_ENTRY -> . COMMENT CONT_ENTRY
-    (181) CONT_ENTRY -> . ABSTRACT
-    (182) CONT_ENTRY -> . ABSTRACT CONT_ENTRY
-    (183) CONT_ENTRY -> . MEDIA_OBJECT
-    (184) CONT_ENTRY -> . MEDIA_OBJECT CONT_ENTRY
-    (79) ITEMIZED_LIST -> . itemizedlist LIST_ITEM cierreItemizedlist
-    (126) IMPORTANT -> . important TITLE CONT_IMPORTANT cierreImportant
-    (127) IMPORTANT -> . important CONT_IMPORTANT cierreImportant
-    (65) PARA -> . para CONT_PARA cierrePara
-    (114) SIMPARA -> . simpara CONT_SECL cierreSimpara
-    (116) COMMENT -> . comment CONT_SECL cierreComment
-    (50) ABSTRACT -> . abstract TITLE cierreAbstract
-    (51) ABSTRACT -> . abstract TITLE PARAS cierreAbstract
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (152) TGROUP -> tgroup THEAD TBODY TFOOT cierreTgroup .
 
-    cierreEntry     reduce using rule 169 (CONT_ENTRY -> contenido_texto .)
-    contenido_texto shift and go to state 290
-    itemizedlist    shift and go to state 22
-    important       shift and go to state 23
-    para            shift and go to state 24
-    simpara         shift and go to state 25
-    comment         shift and go to state 29
-    abstract        shift and go to state 30
-    mediaObject     shift and go to state 27
+    tgroup          reduce using rule 152 (TGROUP -> tgroup THEAD TBODY TFOOT cierreTgroup .)
+    cierreInformalTable reduce using rule 152 (TGROUP -> tgroup THEAD TBODY TFOOT cierreTgroup .)
 
-    CONT_ENTRY                     shift and go to state 302
-    ITEMIZED_LIST                  shift and go to state 291
-    IMPORTANT                      shift and go to state 292
-    PARA                           shift and go to state 293
-    SIMPARA                        shift and go to state 294
-    COMMENT                        shift and go to state 295
-    ABSTRACT                       shift and go to state 296
-    MEDIA_OBJECT                   shift and go to state 297
 
 state 291
 
-    (171) CONT_ENTRY -> ITEMIZED_LIST .
-    (172) CONT_ENTRY -> ITEMIZED_LIST . CONT_ENTRY
-    (169) CONT_ENTRY -> . contenido_texto
-    (170) CONT_ENTRY -> . contenido_texto CONT_ENTRY
-    (171) CONT_ENTRY -> . ITEMIZED_LIST
-    (172) CONT_ENTRY -> . ITEMIZED_LIST CONT_ENTRY
-    (173) CONT_ENTRY -> . IMPORTANT
-    (174) CONT_ENTRY -> . IMPORTANT CONT_ENTRY
-    (175) CONT_ENTRY -> . PARA
-    (176) CONT_ENTRY -> . PARA CONT_ENTRY
-    (177) CONT_ENTRY -> . SIMPARA
-    (178) CONT_ENTRY -> . SIMPARA CONT_ENTRY
-    (179) CONT_ENTRY -> . COMMENT
-    (180) CONT_ENTRY -> . COMMENT CONT_ENTRY
-    (181) CONT_ENTRY -> . ABSTRACT
-    (182) CONT_ENTRY -> . ABSTRACT CONT_ENTRY
-    (183) CONT_ENTRY -> . MEDIA_OBJECT
-    (184) CONT_ENTRY -> . MEDIA_OBJECT CONT_ENTRY
-    (79) ITEMIZED_LIST -> . itemizedlist LIST_ITEM cierreItemizedlist
-    (126) IMPORTANT -> . important TITLE CONT_IMPORTANT cierreImportant
-    (127) IMPORTANT -> . important CONT_IMPORTANT cierreImportant
-    (65) PARA -> . para CONT_PARA cierrePara
-    (114) SIMPARA -> . simpara CONT_SECL cierreSimpara
-    (116) COMMENT -> . comment CONT_SECL cierreComment
-    (50) ABSTRACT -> . abstract TITLE cierreAbstract
-    (51) ABSTRACT -> . abstract TITLE PARAS cierreAbstract
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (169) TFOOT -> tfoot CONT_T cierreTfoot .
 
-    cierreEntry     reduce using rule 171 (CONT_ENTRY -> ITEMIZED_LIST .)
-    contenido_texto shift and go to state 290
-    itemizedlist    shift and go to state 22
-    important       shift and go to state 23
-    para            shift and go to state 24
-    simpara         shift and go to state 25
-    comment         shift and go to state 29
-    abstract        shift and go to state 30
-    mediaObject     shift and go to state 27
+    cierreTgroup    reduce using rule 169 (TFOOT -> tfoot CONT_T cierreTfoot .)
 
-    ITEMIZED_LIST                  shift and go to state 291
-    CONT_ENTRY                     shift and go to state 303
-    IMPORTANT                      shift and go to state 292
-    PARA                           shift and go to state 293
-    SIMPARA                        shift and go to state 294
-    COMMENT                        shift and go to state 295
-    ABSTRACT                       shift and go to state 296
-    MEDIA_OBJECT                   shift and go to state 297
 
 state 292
 
-    (173) CONT_ENTRY -> IMPORTANT .
-    (174) CONT_ENTRY -> IMPORTANT . CONT_ENTRY
-    (169) CONT_ENTRY -> . contenido_texto
-    (170) CONT_ENTRY -> . contenido_texto CONT_ENTRY
-    (171) CONT_ENTRY -> . ITEMIZED_LIST
-    (172) CONT_ENTRY -> . ITEMIZED_LIST CONT_ENTRY
-    (173) CONT_ENTRY -> . IMPORTANT
-    (174) CONT_ENTRY -> . IMPORTANT CONT_ENTRY
-    (175) CONT_ENTRY -> . PARA
-    (176) CONT_ENTRY -> . PARA CONT_ENTRY
-    (177) CONT_ENTRY -> . SIMPARA
-    (178) CONT_ENTRY -> . SIMPARA CONT_ENTRY
-    (179) CONT_ENTRY -> . COMMENT
-    (180) CONT_ENTRY -> . COMMENT CONT_ENTRY
-    (181) CONT_ENTRY -> . ABSTRACT
-    (182) CONT_ENTRY -> . ABSTRACT CONT_ENTRY
-    (183) CONT_ENTRY -> . MEDIA_OBJECT
-    (184) CONT_ENTRY -> . MEDIA_OBJECT CONT_ENTRY
-    (79) ITEMIZED_LIST -> . itemizedlist LIST_ITEM cierreItemizedlist
-    (126) IMPORTANT -> . important TITLE CONT_IMPORTANT cierreImportant
-    (127) IMPORTANT -> . important CONT_IMPORTANT cierreImportant
-    (65) PARA -> . para CONT_PARA cierrePara
-    (114) SIMPARA -> . simpara CONT_SECL cierreSimpara
-    (116) COMMENT -> . comment CONT_SECL cierreComment
-    (50) ABSTRACT -> . abstract TITLE cierreAbstract
-    (51) ABSTRACT -> . abstract TITLE PARAS cierreAbstract
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (159) ROWH -> row CONT_ROWH cierreRow .
 
-    cierreEntry     reduce using rule 173 (CONT_ENTRY -> IMPORTANT .)
-    contenido_texto shift and go to state 290
-    itemizedlist    shift and go to state 22
-    important       shift and go to state 23
-    para            shift and go to state 24
-    simpara         shift and go to state 25
-    comment         shift and go to state 29
-    abstract        shift and go to state 30
-    mediaObject     shift and go to state 27
+    row             reduce using rule 159 (ROWH -> row CONT_ROWH cierreRow .)
+    cierreThead     reduce using rule 159 (ROWH -> row CONT_ROWH cierreRow .)
 
-    IMPORTANT                      shift and go to state 292
-    CONT_ENTRY                     shift and go to state 304
-    ITEMIZED_LIST                  shift and go to state 291
-    PARA                           shift and go to state 293
-    SIMPARA                        shift and go to state 294
-    COMMENT                        shift and go to state 295
-    ABSTRACT                       shift and go to state 296
-    MEDIA_OBJECT                   shift and go to state 297
 
 state 293
 
-    (175) CONT_ENTRY -> PARA .
-    (176) CONT_ENTRY -> PARA . CONT_ENTRY
-    (169) CONT_ENTRY -> . contenido_texto
-    (170) CONT_ENTRY -> . contenido_texto CONT_ENTRY
-    (171) CONT_ENTRY -> . ITEMIZED_LIST
-    (172) CONT_ENTRY -> . ITEMIZED_LIST CONT_ENTRY
-    (173) CONT_ENTRY -> . IMPORTANT
-    (174) CONT_ENTRY -> . IMPORTANT CONT_ENTRY
-    (175) CONT_ENTRY -> . PARA
-    (176) CONT_ENTRY -> . PARA CONT_ENTRY
-    (177) CONT_ENTRY -> . SIMPARA
-    (178) CONT_ENTRY -> . SIMPARA CONT_ENTRY
-    (179) CONT_ENTRY -> . COMMENT
-    (180) CONT_ENTRY -> . COMMENT CONT_ENTRY
-    (181) CONT_ENTRY -> . ABSTRACT
-    (182) CONT_ENTRY -> . ABSTRACT CONT_ENTRY
-    (183) CONT_ENTRY -> . MEDIA_OBJECT
-    (184) CONT_ENTRY -> . MEDIA_OBJECT CONT_ENTRY
-    (79) ITEMIZED_LIST -> . itemizedlist LIST_ITEM cierreItemizedlist
-    (126) IMPORTANT -> . important TITLE CONT_IMPORTANT cierreImportant
-    (127) IMPORTANT -> . important CONT_IMPORTANT cierreImportant
-    (65) PARA -> . para CONT_PARA cierrePara
-    (114) SIMPARA -> . simpara CONT_SECL cierreSimpara
-    (116) COMMENT -> . comment CONT_SECL cierreComment
-    (50) ABSTRACT -> . abstract TITLE cierreAbstract
-    (51) ABSTRACT -> . abstract TITLE PARAS cierreAbstract
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (161) CONT_ROWH -> ENTRYH CONT_ROWH .
 
-    cierreEntry     reduce using rule 175 (CONT_ENTRY -> PARA .)
-    contenido_texto shift and go to state 290
-    itemizedlist    shift and go to state 22
-    important       shift and go to state 23
-    para            shift and go to state 24
-    simpara         shift and go to state 25
-    comment         shift and go to state 29
-    abstract        shift and go to state 30
-    mediaObject     shift and go to state 27
+    cierreRow       reduce using rule 161 (CONT_ROWH -> ENTRYH CONT_ROWH .)
 
-    PARA                           shift and go to state 293
-    CONT_ENTRY                     shift and go to state 305
-    ITEMIZED_LIST                  shift and go to state 291
-    IMPORTANT                      shift and go to state 292
-    SIMPARA                        shift and go to state 294
-    COMMENT                        shift and go to state 295
-    ABSTRACT                       shift and go to state 296
-    MEDIA_OBJECT                   shift and go to state 297
 
 state 294
 
-    (177) CONT_ENTRY -> SIMPARA .
-    (178) CONT_ENTRY -> SIMPARA . CONT_ENTRY
-    (169) CONT_ENTRY -> . contenido_texto
-    (170) CONT_ENTRY -> . contenido_texto CONT_ENTRY
-    (171) CONT_ENTRY -> . ITEMIZED_LIST
-    (172) CONT_ENTRY -> . ITEMIZED_LIST CONT_ENTRY
-    (173) CONT_ENTRY -> . IMPORTANT
-    (174) CONT_ENTRY -> . IMPORTANT CONT_ENTRY
-    (175) CONT_ENTRY -> . PARA
-    (176) CONT_ENTRY -> . PARA CONT_ENTRY
-    (177) CONT_ENTRY -> . SIMPARA
-    (178) CONT_ENTRY -> . SIMPARA CONT_ENTRY
-    (179) CONT_ENTRY -> . COMMENT
-    (180) CONT_ENTRY -> . COMMENT CONT_ENTRY
-    (181) CONT_ENTRY -> . ABSTRACT
-    (182) CONT_ENTRY -> . ABSTRACT CONT_ENTRY
-    (183) CONT_ENTRY -> . MEDIA_OBJECT
-    (184) CONT_ENTRY -> . MEDIA_OBJECT CONT_ENTRY
-    (79) ITEMIZED_LIST -> . itemizedlist LIST_ITEM cierreItemizedlist
-    (126) IMPORTANT -> . important TITLE CONT_IMPORTANT cierreImportant
-    (127) IMPORTANT -> . important CONT_IMPORTANT cierreImportant
-    (65) PARA -> . para CONT_PARA cierrePara
-    (114) SIMPARA -> . simpara CONT_SECL cierreSimpara
-    (116) COMMENT -> . comment CONT_SECL cierreComment
-    (50) ABSTRACT -> . abstract TITLE cierreAbstract
-    (51) ABSTRACT -> . abstract TITLE PARAS cierreAbstract
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (163) CONT_ROWH -> ENTRYTBLH CONT_ROWH .
 
-    cierreEntry     reduce using rule 177 (CONT_ENTRY -> SIMPARA .)
-    contenido_texto shift and go to state 290
-    itemizedlist    shift and go to state 22
-    important       shift and go to state 23
-    para            shift and go to state 24
-    simpara         shift and go to state 25
-    comment         shift and go to state 29
-    abstract        shift and go to state 30
-    mediaObject     shift and go to state 27
+    cierreRow       reduce using rule 163 (CONT_ROWH -> ENTRYTBLH CONT_ROWH .)
 
-    SIMPARA                        shift and go to state 294
-    CONT_ENTRY                     shift and go to state 306
-    ITEMIZED_LIST                  shift and go to state 291
-    IMPORTANT                      shift and go to state 292
-    PARA                           shift and go to state 293
-    COMMENT                        shift and go to state 295
-    ABSTRACT                       shift and go to state 296
-    MEDIA_OBJECT                   shift and go to state 297
 
 state 295
 
-    (179) CONT_ENTRY -> COMMENT .
-    (180) CONT_ENTRY -> COMMENT . CONT_ENTRY
-    (169) CONT_ENTRY -> . contenido_texto
-    (170) CONT_ENTRY -> . contenido_texto CONT_ENTRY
-    (171) CONT_ENTRY -> . ITEMIZED_LIST
-    (172) CONT_ENTRY -> . ITEMIZED_LIST CONT_ENTRY
-    (173) CONT_ENTRY -> . IMPORTANT
-    (174) CONT_ENTRY -> . IMPORTANT CONT_ENTRY
-    (175) CONT_ENTRY -> . PARA
-    (176) CONT_ENTRY -> . PARA CONT_ENTRY
-    (177) CONT_ENTRY -> . SIMPARA
-    (178) CONT_ENTRY -> . SIMPARA CONT_ENTRY
-    (179) CONT_ENTRY -> . COMMENT
-    (180) CONT_ENTRY -> . COMMENT CONT_ENTRY
-    (181) CONT_ENTRY -> . ABSTRACT
-    (182) CONT_ENTRY -> . ABSTRACT CONT_ENTRY
-    (183) CONT_ENTRY -> . MEDIA_OBJECT
-    (184) CONT_ENTRY -> . MEDIA_OBJECT CONT_ENTRY
-    (79) ITEMIZED_LIST -> . itemizedlist LIST_ITEM cierreItemizedlist
-    (126) IMPORTANT -> . important TITLE CONT_IMPORTANT cierreImportant
-    (127) IMPORTANT -> . important CONT_IMPORTANT cierreImportant
-    (65) PARA -> . para CONT_PARA cierrePara
-    (114) SIMPARA -> . simpara CONT_SECL cierreSimpara
-    (116) COMMENT -> . comment CONT_SECL cierreComment
-    (50) ABSTRACT -> . abstract TITLE cierreAbstract
-    (51) ABSTRACT -> . abstract TITLE PARAS cierreAbstract
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (164) ENTRYH -> entry CONT_ENTRY . cierreEntry
 
-    cierreEntry     reduce using rule 179 (CONT_ENTRY -> COMMENT .)
-    contenido_texto shift and go to state 290
-    itemizedlist    shift and go to state 22
-    important       shift and go to state 23
-    para            shift and go to state 24
-    simpara         shift and go to state 25
-    comment         shift and go to state 29
-    abstract        shift and go to state 30
-    mediaObject     shift and go to state 27
+    cierreEntry     shift and go to state 313
 
-    COMMENT                        shift and go to state 295
-    CONT_ENTRY                     shift and go to state 307
-    ITEMIZED_LIST                  shift and go to state 291
-    IMPORTANT                      shift and go to state 292
-    PARA                           shift and go to state 293
-    SIMPARA                        shift and go to state 294
-    ABSTRACT                       shift and go to state 296
-    MEDIA_OBJECT                   shift and go to state 297
 
 state 296
 
-    (181) CONT_ENTRY -> ABSTRACT .
-    (182) CONT_ENTRY -> ABSTRACT . CONT_ENTRY
-    (169) CONT_ENTRY -> . contenido_texto
-    (170) CONT_ENTRY -> . contenido_texto CONT_ENTRY
-    (171) CONT_ENTRY -> . ITEMIZED_LIST
-    (172) CONT_ENTRY -> . ITEMIZED_LIST CONT_ENTRY
-    (173) CONT_ENTRY -> . IMPORTANT
-    (174) CONT_ENTRY -> . IMPORTANT CONT_ENTRY
-    (175) CONT_ENTRY -> . PARA
-    (176) CONT_ENTRY -> . PARA CONT_ENTRY
-    (177) CONT_ENTRY -> . SIMPARA
-    (178) CONT_ENTRY -> . SIMPARA CONT_ENTRY
-    (179) CONT_ENTRY -> . COMMENT
-    (180) CONT_ENTRY -> . COMMENT CONT_ENTRY
-    (181) CONT_ENTRY -> . ABSTRACT
-    (182) CONT_ENTRY -> . ABSTRACT CONT_ENTRY
-    (183) CONT_ENTRY -> . MEDIA_OBJECT
-    (184) CONT_ENTRY -> . MEDIA_OBJECT CONT_ENTRY
+    (179) CONT_ENTRY -> contenido_texto .
+    (180) CONT_ENTRY -> contenido_texto . CONT_ENTRY
+    (179) CONT_ENTRY -> . contenido_texto
+    (180) CONT_ENTRY -> . contenido_texto CONT_ENTRY
+    (181) CONT_ENTRY -> . ITEMIZED_LIST
+    (182) CONT_ENTRY -> . ITEMIZED_LIST CONT_ENTRY
+    (183) CONT_ENTRY -> . IMPORTANT
+    (184) CONT_ENTRY -> . IMPORTANT CONT_ENTRY
+    (185) CONT_ENTRY -> . PARA
+    (186) CONT_ENTRY -> . PARA CONT_ENTRY
+    (187) CONT_ENTRY -> . SIMPARA
+    (188) CONT_ENTRY -> . SIMPARA CONT_ENTRY
+    (189) CONT_ENTRY -> . COMMENT
+    (190) CONT_ENTRY -> . COMMENT CONT_ENTRY
+    (191) CONT_ENTRY -> . ABSTRACT
+    (192) CONT_ENTRY -> . ABSTRACT CONT_ENTRY
+    (193) CONT_ENTRY -> . MEDIA_OBJECT
+    (194) CONT_ENTRY -> . MEDIA_OBJECT CONT_ENTRY
     (79) ITEMIZED_LIST -> . itemizedlist LIST_ITEM cierreItemizedlist
     (126) IMPORTANT -> . important TITLE CONT_IMPORTANT cierreImportant
     (127) IMPORTANT -> . important CONT_IMPORTANT cierreImportant
@@ -5954,11 +5796,11 @@ state 296
     (116) COMMENT -> . comment CONT_SECL cierreComment
     (50) ABSTRACT -> . abstract TITLE cierreAbstract
     (51) ABSTRACT -> . abstract TITLE PARAS cierreAbstract
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
 
-    cierreEntry     reduce using rule 181 (CONT_ENTRY -> ABSTRACT .)
-    contenido_texto shift and go to state 290
+    cierreEntry     reduce using rule 179 (CONT_ENTRY -> contenido_texto .)
+    contenido_texto shift and go to state 296
     itemizedlist    shift and go to state 22
     important       shift and go to state 23
     para            shift and go to state 24
@@ -5967,35 +5809,35 @@ state 296
     abstract        shift and go to state 30
     mediaObject     shift and go to state 27
 
-    ABSTRACT                       shift and go to state 296
-    CONT_ENTRY                     shift and go to state 308
-    ITEMIZED_LIST                  shift and go to state 291
-    IMPORTANT                      shift and go to state 292
-    PARA                           shift and go to state 293
-    SIMPARA                        shift and go to state 294
-    COMMENT                        shift and go to state 295
-    MEDIA_OBJECT                   shift and go to state 297
+    CONT_ENTRY                     shift and go to state 314
+    ITEMIZED_LIST                  shift and go to state 297
+    IMPORTANT                      shift and go to state 298
+    PARA                           shift and go to state 299
+    SIMPARA                        shift and go to state 300
+    COMMENT                        shift and go to state 301
+    ABSTRACT                       shift and go to state 302
+    MEDIA_OBJECT                   shift and go to state 303
 
 state 297
 
-    (183) CONT_ENTRY -> MEDIA_OBJECT .
-    (184) CONT_ENTRY -> MEDIA_OBJECT . CONT_ENTRY
-    (169) CONT_ENTRY -> . contenido_texto
-    (170) CONT_ENTRY -> . contenido_texto CONT_ENTRY
-    (171) CONT_ENTRY -> . ITEMIZED_LIST
-    (172) CONT_ENTRY -> . ITEMIZED_LIST CONT_ENTRY
-    (173) CONT_ENTRY -> . IMPORTANT
-    (174) CONT_ENTRY -> . IMPORTANT CONT_ENTRY
-    (175) CONT_ENTRY -> . PARA
-    (176) CONT_ENTRY -> . PARA CONT_ENTRY
-    (177) CONT_ENTRY -> . SIMPARA
-    (178) CONT_ENTRY -> . SIMPARA CONT_ENTRY
-    (179) CONT_ENTRY -> . COMMENT
-    (180) CONT_ENTRY -> . COMMENT CONT_ENTRY
-    (181) CONT_ENTRY -> . ABSTRACT
-    (182) CONT_ENTRY -> . ABSTRACT CONT_ENTRY
-    (183) CONT_ENTRY -> . MEDIA_OBJECT
-    (184) CONT_ENTRY -> . MEDIA_OBJECT CONT_ENTRY
+    (181) CONT_ENTRY -> ITEMIZED_LIST .
+    (182) CONT_ENTRY -> ITEMIZED_LIST . CONT_ENTRY
+    (179) CONT_ENTRY -> . contenido_texto
+    (180) CONT_ENTRY -> . contenido_texto CONT_ENTRY
+    (181) CONT_ENTRY -> . ITEMIZED_LIST
+    (182) CONT_ENTRY -> . ITEMIZED_LIST CONT_ENTRY
+    (183) CONT_ENTRY -> . IMPORTANT
+    (184) CONT_ENTRY -> . IMPORTANT CONT_ENTRY
+    (185) CONT_ENTRY -> . PARA
+    (186) CONT_ENTRY -> . PARA CONT_ENTRY
+    (187) CONT_ENTRY -> . SIMPARA
+    (188) CONT_ENTRY -> . SIMPARA CONT_ENTRY
+    (189) CONT_ENTRY -> . COMMENT
+    (190) CONT_ENTRY -> . COMMENT CONT_ENTRY
+    (191) CONT_ENTRY -> . ABSTRACT
+    (192) CONT_ENTRY -> . ABSTRACT CONT_ENTRY
+    (193) CONT_ENTRY -> . MEDIA_OBJECT
+    (194) CONT_ENTRY -> . MEDIA_OBJECT CONT_ENTRY
     (79) ITEMIZED_LIST -> . itemizedlist LIST_ITEM cierreItemizedlist
     (126) IMPORTANT -> . important TITLE CONT_IMPORTANT cierreImportant
     (127) IMPORTANT -> . important CONT_IMPORTANT cierreImportant
@@ -6004,11 +5846,11 @@ state 297
     (116) COMMENT -> . comment CONT_SECL cierreComment
     (50) ABSTRACT -> . abstract TITLE cierreAbstract
     (51) ABSTRACT -> . abstract TITLE PARAS cierreAbstract
-    (80) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
-    (81) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
 
-    cierreEntry     reduce using rule 183 (CONT_ENTRY -> MEDIA_OBJECT .)
-    contenido_texto shift and go to state 290
+    cierreEntry     reduce using rule 181 (CONT_ENTRY -> ITEMIZED_LIST .)
+    contenido_texto shift and go to state 296
     itemizedlist    shift and go to state 22
     important       shift and go to state 23
     para            shift and go to state 24
@@ -6017,32 +5859,378 @@ state 297
     abstract        shift and go to state 30
     mediaObject     shift and go to state 27
 
-    MEDIA_OBJECT                   shift and go to state 297
-    CONT_ENTRY                     shift and go to state 309
-    ITEMIZED_LIST                  shift and go to state 291
-    IMPORTANT                      shift and go to state 292
-    PARA                           shift and go to state 293
-    SIMPARA                        shift and go to state 294
-    COMMENT                        shift and go to state 295
-    ABSTRACT                       shift and go to state 296
+    ITEMIZED_LIST                  shift and go to state 297
+    CONT_ENTRY                     shift and go to state 315
+    IMPORTANT                      shift and go to state 298
+    PARA                           shift and go to state 299
+    SIMPARA                        shift and go to state 300
+    COMMENT                        shift and go to state 301
+    ABSTRACT                       shift and go to state 302
+    MEDIA_OBJECT                   shift and go to state 303
 
 state 298
 
-    (167) ENTRYTBL -> entrytbl THEAD . TBODY cierreEntrytbl
-    (160) TBODY -> . tbody CONT_T cierreTbody
+    (183) CONT_ENTRY -> IMPORTANT .
+    (184) CONT_ENTRY -> IMPORTANT . CONT_ENTRY
+    (179) CONT_ENTRY -> . contenido_texto
+    (180) CONT_ENTRY -> . contenido_texto CONT_ENTRY
+    (181) CONT_ENTRY -> . ITEMIZED_LIST
+    (182) CONT_ENTRY -> . ITEMIZED_LIST CONT_ENTRY
+    (183) CONT_ENTRY -> . IMPORTANT
+    (184) CONT_ENTRY -> . IMPORTANT CONT_ENTRY
+    (185) CONT_ENTRY -> . PARA
+    (186) CONT_ENTRY -> . PARA CONT_ENTRY
+    (187) CONT_ENTRY -> . SIMPARA
+    (188) CONT_ENTRY -> . SIMPARA CONT_ENTRY
+    (189) CONT_ENTRY -> . COMMENT
+    (190) CONT_ENTRY -> . COMMENT CONT_ENTRY
+    (191) CONT_ENTRY -> . ABSTRACT
+    (192) CONT_ENTRY -> . ABSTRACT CONT_ENTRY
+    (193) CONT_ENTRY -> . MEDIA_OBJECT
+    (194) CONT_ENTRY -> . MEDIA_OBJECT CONT_ENTRY
+    (79) ITEMIZED_LIST -> . itemizedlist LIST_ITEM cierreItemizedlist
+    (126) IMPORTANT -> . important TITLE CONT_IMPORTANT cierreImportant
+    (127) IMPORTANT -> . important CONT_IMPORTANT cierreImportant
+    (65) PARA -> . para CONT_PARA cierrePara
+    (114) SIMPARA -> . simpara CONT_SECL cierreSimpara
+    (116) COMMENT -> . comment CONT_SECL cierreComment
+    (50) ABSTRACT -> . abstract TITLE cierreAbstract
+    (51) ABSTRACT -> . abstract TITLE PARAS cierreAbstract
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
 
-    tbody           shift and go to state 185
+    cierreEntry     reduce using rule 183 (CONT_ENTRY -> IMPORTANT .)
+    contenido_texto shift and go to state 296
+    itemizedlist    shift and go to state 22
+    important       shift and go to state 23
+    para            shift and go to state 24
+    simpara         shift and go to state 25
+    comment         shift and go to state 29
+    abstract        shift and go to state 30
+    mediaObject     shift and go to state 27
 
-    TBODY                          shift and go to state 310
+    IMPORTANT                      shift and go to state 298
+    CONT_ENTRY                     shift and go to state 316
+    ITEMIZED_LIST                  shift and go to state 297
+    PARA                           shift and go to state 299
+    SIMPARA                        shift and go to state 300
+    COMMENT                        shift and go to state 301
+    ABSTRACT                       shift and go to state 302
+    MEDIA_OBJECT                   shift and go to state 303
 
 state 299
 
-    (168) ENTRYTBL -> entrytbl TBODY . cierreEntrytbl
+    (185) CONT_ENTRY -> PARA .
+    (186) CONT_ENTRY -> PARA . CONT_ENTRY
+    (179) CONT_ENTRY -> . contenido_texto
+    (180) CONT_ENTRY -> . contenido_texto CONT_ENTRY
+    (181) CONT_ENTRY -> . ITEMIZED_LIST
+    (182) CONT_ENTRY -> . ITEMIZED_LIST CONT_ENTRY
+    (183) CONT_ENTRY -> . IMPORTANT
+    (184) CONT_ENTRY -> . IMPORTANT CONT_ENTRY
+    (185) CONT_ENTRY -> . PARA
+    (186) CONT_ENTRY -> . PARA CONT_ENTRY
+    (187) CONT_ENTRY -> . SIMPARA
+    (188) CONT_ENTRY -> . SIMPARA CONT_ENTRY
+    (189) CONT_ENTRY -> . COMMENT
+    (190) CONT_ENTRY -> . COMMENT CONT_ENTRY
+    (191) CONT_ENTRY -> . ABSTRACT
+    (192) CONT_ENTRY -> . ABSTRACT CONT_ENTRY
+    (193) CONT_ENTRY -> . MEDIA_OBJECT
+    (194) CONT_ENTRY -> . MEDIA_OBJECT CONT_ENTRY
+    (79) ITEMIZED_LIST -> . itemizedlist LIST_ITEM cierreItemizedlist
+    (126) IMPORTANT -> . important TITLE CONT_IMPORTANT cierreImportant
+    (127) IMPORTANT -> . important CONT_IMPORTANT cierreImportant
+    (65) PARA -> . para CONT_PARA cierrePara
+    (114) SIMPARA -> . simpara CONT_SECL cierreSimpara
+    (116) COMMENT -> . comment CONT_SECL cierreComment
+    (50) ABSTRACT -> . abstract TITLE cierreAbstract
+    (51) ABSTRACT -> . abstract TITLE PARAS cierreAbstract
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
 
-    cierreEntrytbl  shift and go to state 311
+    cierreEntry     reduce using rule 185 (CONT_ENTRY -> PARA .)
+    contenido_texto shift and go to state 296
+    itemizedlist    shift and go to state 22
+    important       shift and go to state 23
+    para            shift and go to state 24
+    simpara         shift and go to state 25
+    comment         shift and go to state 29
+    abstract        shift and go to state 30
+    mediaObject     shift and go to state 27
 
+    PARA                           shift and go to state 299
+    CONT_ENTRY                     shift and go to state 317
+    ITEMIZED_LIST                  shift and go to state 297
+    IMPORTANT                      shift and go to state 298
+    SIMPARA                        shift and go to state 300
+    COMMENT                        shift and go to state 301
+    ABSTRACT                       shift and go to state 302
+    MEDIA_OBJECT                   shift and go to state 303
 
 state 300
+
+    (187) CONT_ENTRY -> SIMPARA .
+    (188) CONT_ENTRY -> SIMPARA . CONT_ENTRY
+    (179) CONT_ENTRY -> . contenido_texto
+    (180) CONT_ENTRY -> . contenido_texto CONT_ENTRY
+    (181) CONT_ENTRY -> . ITEMIZED_LIST
+    (182) CONT_ENTRY -> . ITEMIZED_LIST CONT_ENTRY
+    (183) CONT_ENTRY -> . IMPORTANT
+    (184) CONT_ENTRY -> . IMPORTANT CONT_ENTRY
+    (185) CONT_ENTRY -> . PARA
+    (186) CONT_ENTRY -> . PARA CONT_ENTRY
+    (187) CONT_ENTRY -> . SIMPARA
+    (188) CONT_ENTRY -> . SIMPARA CONT_ENTRY
+    (189) CONT_ENTRY -> . COMMENT
+    (190) CONT_ENTRY -> . COMMENT CONT_ENTRY
+    (191) CONT_ENTRY -> . ABSTRACT
+    (192) CONT_ENTRY -> . ABSTRACT CONT_ENTRY
+    (193) CONT_ENTRY -> . MEDIA_OBJECT
+    (194) CONT_ENTRY -> . MEDIA_OBJECT CONT_ENTRY
+    (79) ITEMIZED_LIST -> . itemizedlist LIST_ITEM cierreItemizedlist
+    (126) IMPORTANT -> . important TITLE CONT_IMPORTANT cierreImportant
+    (127) IMPORTANT -> . important CONT_IMPORTANT cierreImportant
+    (65) PARA -> . para CONT_PARA cierrePara
+    (114) SIMPARA -> . simpara CONT_SECL cierreSimpara
+    (116) COMMENT -> . comment CONT_SECL cierreComment
+    (50) ABSTRACT -> . abstract TITLE cierreAbstract
+    (51) ABSTRACT -> . abstract TITLE PARAS cierreAbstract
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+
+    cierreEntry     reduce using rule 187 (CONT_ENTRY -> SIMPARA .)
+    contenido_texto shift and go to state 296
+    itemizedlist    shift and go to state 22
+    important       shift and go to state 23
+    para            shift and go to state 24
+    simpara         shift and go to state 25
+    comment         shift and go to state 29
+    abstract        shift and go to state 30
+    mediaObject     shift and go to state 27
+
+    SIMPARA                        shift and go to state 300
+    CONT_ENTRY                     shift and go to state 318
+    ITEMIZED_LIST                  shift and go to state 297
+    IMPORTANT                      shift and go to state 298
+    PARA                           shift and go to state 299
+    COMMENT                        shift and go to state 301
+    ABSTRACT                       shift and go to state 302
+    MEDIA_OBJECT                   shift and go to state 303
+
+state 301
+
+    (189) CONT_ENTRY -> COMMENT .
+    (190) CONT_ENTRY -> COMMENT . CONT_ENTRY
+    (179) CONT_ENTRY -> . contenido_texto
+    (180) CONT_ENTRY -> . contenido_texto CONT_ENTRY
+    (181) CONT_ENTRY -> . ITEMIZED_LIST
+    (182) CONT_ENTRY -> . ITEMIZED_LIST CONT_ENTRY
+    (183) CONT_ENTRY -> . IMPORTANT
+    (184) CONT_ENTRY -> . IMPORTANT CONT_ENTRY
+    (185) CONT_ENTRY -> . PARA
+    (186) CONT_ENTRY -> . PARA CONT_ENTRY
+    (187) CONT_ENTRY -> . SIMPARA
+    (188) CONT_ENTRY -> . SIMPARA CONT_ENTRY
+    (189) CONT_ENTRY -> . COMMENT
+    (190) CONT_ENTRY -> . COMMENT CONT_ENTRY
+    (191) CONT_ENTRY -> . ABSTRACT
+    (192) CONT_ENTRY -> . ABSTRACT CONT_ENTRY
+    (193) CONT_ENTRY -> . MEDIA_OBJECT
+    (194) CONT_ENTRY -> . MEDIA_OBJECT CONT_ENTRY
+    (79) ITEMIZED_LIST -> . itemizedlist LIST_ITEM cierreItemizedlist
+    (126) IMPORTANT -> . important TITLE CONT_IMPORTANT cierreImportant
+    (127) IMPORTANT -> . important CONT_IMPORTANT cierreImportant
+    (65) PARA -> . para CONT_PARA cierrePara
+    (114) SIMPARA -> . simpara CONT_SECL cierreSimpara
+    (116) COMMENT -> . comment CONT_SECL cierreComment
+    (50) ABSTRACT -> . abstract TITLE cierreAbstract
+    (51) ABSTRACT -> . abstract TITLE PARAS cierreAbstract
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+
+    cierreEntry     reduce using rule 189 (CONT_ENTRY -> COMMENT .)
+    contenido_texto shift and go to state 296
+    itemizedlist    shift and go to state 22
+    important       shift and go to state 23
+    para            shift and go to state 24
+    simpara         shift and go to state 25
+    comment         shift and go to state 29
+    abstract        shift and go to state 30
+    mediaObject     shift and go to state 27
+
+    COMMENT                        shift and go to state 301
+    CONT_ENTRY                     shift and go to state 319
+    ITEMIZED_LIST                  shift and go to state 297
+    IMPORTANT                      shift and go to state 298
+    PARA                           shift and go to state 299
+    SIMPARA                        shift and go to state 300
+    ABSTRACT                       shift and go to state 302
+    MEDIA_OBJECT                   shift and go to state 303
+
+state 302
+
+    (191) CONT_ENTRY -> ABSTRACT .
+    (192) CONT_ENTRY -> ABSTRACT . CONT_ENTRY
+    (179) CONT_ENTRY -> . contenido_texto
+    (180) CONT_ENTRY -> . contenido_texto CONT_ENTRY
+    (181) CONT_ENTRY -> . ITEMIZED_LIST
+    (182) CONT_ENTRY -> . ITEMIZED_LIST CONT_ENTRY
+    (183) CONT_ENTRY -> . IMPORTANT
+    (184) CONT_ENTRY -> . IMPORTANT CONT_ENTRY
+    (185) CONT_ENTRY -> . PARA
+    (186) CONT_ENTRY -> . PARA CONT_ENTRY
+    (187) CONT_ENTRY -> . SIMPARA
+    (188) CONT_ENTRY -> . SIMPARA CONT_ENTRY
+    (189) CONT_ENTRY -> . COMMENT
+    (190) CONT_ENTRY -> . COMMENT CONT_ENTRY
+    (191) CONT_ENTRY -> . ABSTRACT
+    (192) CONT_ENTRY -> . ABSTRACT CONT_ENTRY
+    (193) CONT_ENTRY -> . MEDIA_OBJECT
+    (194) CONT_ENTRY -> . MEDIA_OBJECT CONT_ENTRY
+    (79) ITEMIZED_LIST -> . itemizedlist LIST_ITEM cierreItemizedlist
+    (126) IMPORTANT -> . important TITLE CONT_IMPORTANT cierreImportant
+    (127) IMPORTANT -> . important CONT_IMPORTANT cierreImportant
+    (65) PARA -> . para CONT_PARA cierrePara
+    (114) SIMPARA -> . simpara CONT_SECL cierreSimpara
+    (116) COMMENT -> . comment CONT_SECL cierreComment
+    (50) ABSTRACT -> . abstract TITLE cierreAbstract
+    (51) ABSTRACT -> . abstract TITLE PARAS cierreAbstract
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+
+    cierreEntry     reduce using rule 191 (CONT_ENTRY -> ABSTRACT .)
+    contenido_texto shift and go to state 296
+    itemizedlist    shift and go to state 22
+    important       shift and go to state 23
+    para            shift and go to state 24
+    simpara         shift and go to state 25
+    comment         shift and go to state 29
+    abstract        shift and go to state 30
+    mediaObject     shift and go to state 27
+
+    ABSTRACT                       shift and go to state 302
+    CONT_ENTRY                     shift and go to state 320
+    ITEMIZED_LIST                  shift and go to state 297
+    IMPORTANT                      shift and go to state 298
+    PARA                           shift and go to state 299
+    SIMPARA                        shift and go to state 300
+    COMMENT                        shift and go to state 301
+    MEDIA_OBJECT                   shift and go to state 303
+
+state 303
+
+    (193) CONT_ENTRY -> MEDIA_OBJECT .
+    (194) CONT_ENTRY -> MEDIA_OBJECT . CONT_ENTRY
+    (179) CONT_ENTRY -> . contenido_texto
+    (180) CONT_ENTRY -> . contenido_texto CONT_ENTRY
+    (181) CONT_ENTRY -> . ITEMIZED_LIST
+    (182) CONT_ENTRY -> . ITEMIZED_LIST CONT_ENTRY
+    (183) CONT_ENTRY -> . IMPORTANT
+    (184) CONT_ENTRY -> . IMPORTANT CONT_ENTRY
+    (185) CONT_ENTRY -> . PARA
+    (186) CONT_ENTRY -> . PARA CONT_ENTRY
+    (187) CONT_ENTRY -> . SIMPARA
+    (188) CONT_ENTRY -> . SIMPARA CONT_ENTRY
+    (189) CONT_ENTRY -> . COMMENT
+    (190) CONT_ENTRY -> . COMMENT CONT_ENTRY
+    (191) CONT_ENTRY -> . ABSTRACT
+    (192) CONT_ENTRY -> . ABSTRACT CONT_ENTRY
+    (193) CONT_ENTRY -> . MEDIA_OBJECT
+    (194) CONT_ENTRY -> . MEDIA_OBJECT CONT_ENTRY
+    (79) ITEMIZED_LIST -> . itemizedlist LIST_ITEM cierreItemizedlist
+    (126) IMPORTANT -> . important TITLE CONT_IMPORTANT cierreImportant
+    (127) IMPORTANT -> . important CONT_IMPORTANT cierreImportant
+    (65) PARA -> . para CONT_PARA cierrePara
+    (114) SIMPARA -> . simpara CONT_SECL cierreSimpara
+    (116) COMMENT -> . comment CONT_SECL cierreComment
+    (50) ABSTRACT -> . abstract TITLE cierreAbstract
+    (51) ABSTRACT -> . abstract TITLE PARAS cierreAbstract
+    (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
+    (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
+
+    cierreEntry     reduce using rule 193 (CONT_ENTRY -> MEDIA_OBJECT .)
+    contenido_texto shift and go to state 296
+    itemizedlist    shift and go to state 22
+    important       shift and go to state 23
+    para            shift and go to state 24
+    simpara         shift and go to state 25
+    comment         shift and go to state 29
+    abstract        shift and go to state 30
+    mediaObject     shift and go to state 27
+
+    MEDIA_OBJECT                   shift and go to state 303
+    CONT_ENTRY                     shift and go to state 321
+    ITEMIZED_LIST                  shift and go to state 297
+    IMPORTANT                      shift and go to state 298
+    PARA                           shift and go to state 299
+    SIMPARA                        shift and go to state 300
+    COMMENT                        shift and go to state 301
+    ABSTRACT                       shift and go to state 302
+
+state 304
+
+    (165) ENTRYTBLH -> entrytbl THEAD . TBODY cierreEntrytbl
+    (170) TBODY -> . tbody CONT_T cierreTbody
+
+    tbody           shift and go to state 183
+
+    TBODY                          shift and go to state 322
+
+state 305
+
+    (166) ENTRYTBLH -> entrytbl TBODY . cierreEntrytbl
+
+    cierreEntrytbl  shift and go to state 323
+
+
+state 306
+
+    (171) ROW -> row CONT_ROW cierreRow .
+
+    row             reduce using rule 171 (ROW -> row CONT_ROW cierreRow .)
+    cierreTbody     reduce using rule 171 (ROW -> row CONT_ROW cierreRow .)
+    cierreTfoot     reduce using rule 171 (ROW -> row CONT_ROW cierreRow .)
+
+
+state 307
+
+    (173) CONT_ROW -> ENTRY CONT_ROW .
+
+    cierreRow       reduce using rule 173 (CONT_ROW -> ENTRY CONT_ROW .)
+
+
+state 308
+
+    (175) CONT_ROW -> ENTRYTBL CONT_ROW .
+
+    cierreRow       reduce using rule 175 (CONT_ROW -> ENTRYTBL CONT_ROW .)
+
+
+state 309
+
+    (176) ENTRY -> entry CONT_ENTRY . cierreEntry
+
+    cierreEntry     shift and go to state 324
+
+
+state 310
+
+    (177) ENTRYTBL -> entrytbl THEAD . TBODY cierreEntrytbl
+    (170) TBODY -> . tbody CONT_T cierreTbody
+
+    tbody           shift and go to state 183
+
+    TBODY                          shift and go to state 325
+
+state 311
+
+    (178) ENTRYTBL -> entrytbl TBODY . cierreEntrytbl
+
+    cierreEntrytbl  shift and go to state 326
+
+
+state 312
 
     (47) SIMPLE_SEC -> simpleSection INFO TITLE CONT_SS cierreSimpleSection .
 
@@ -6052,94 +6240,128 @@ state 300
     cierreSection   reduce using rule 47 (SIMPLE_SEC -> simpleSection INFO TITLE CONT_SS cierreSimpleSection .)
 
 
-state 301
+state 313
 
-    (166) ENTRY -> entry CONT_ENTRY cierreEntry .
+    (164) ENTRYH -> entry CONT_ENTRY cierreEntry .
 
-    entry           reduce using rule 166 (ENTRY -> entry CONT_ENTRY cierreEntry .)
-    entrytbl        reduce using rule 166 (ENTRY -> entry CONT_ENTRY cierreEntry .)
-    cierreRow       reduce using rule 166 (ENTRY -> entry CONT_ENTRY cierreEntry .)
-
-
-state 302
-
-    (170) CONT_ENTRY -> contenido_texto CONT_ENTRY .
-
-    cierreEntry     reduce using rule 170 (CONT_ENTRY -> contenido_texto CONT_ENTRY .)
+    entry           reduce using rule 164 (ENTRYH -> entry CONT_ENTRY cierreEntry .)
+    entrytbl        reduce using rule 164 (ENTRYH -> entry CONT_ENTRY cierreEntry .)
+    cierreRow       reduce using rule 164 (ENTRYH -> entry CONT_ENTRY cierreEntry .)
 
 
-state 303
+state 314
 
-    (172) CONT_ENTRY -> ITEMIZED_LIST CONT_ENTRY .
+    (180) CONT_ENTRY -> contenido_texto CONT_ENTRY .
 
-    cierreEntry     reduce using rule 172 (CONT_ENTRY -> ITEMIZED_LIST CONT_ENTRY .)
-
-
-state 304
-
-    (174) CONT_ENTRY -> IMPORTANT CONT_ENTRY .
-
-    cierreEntry     reduce using rule 174 (CONT_ENTRY -> IMPORTANT CONT_ENTRY .)
+    cierreEntry     reduce using rule 180 (CONT_ENTRY -> contenido_texto CONT_ENTRY .)
 
 
-state 305
+state 315
 
-    (176) CONT_ENTRY -> PARA CONT_ENTRY .
+    (182) CONT_ENTRY -> ITEMIZED_LIST CONT_ENTRY .
 
-    cierreEntry     reduce using rule 176 (CONT_ENTRY -> PARA CONT_ENTRY .)
-
-
-state 306
-
-    (178) CONT_ENTRY -> SIMPARA CONT_ENTRY .
-
-    cierreEntry     reduce using rule 178 (CONT_ENTRY -> SIMPARA CONT_ENTRY .)
+    cierreEntry     reduce using rule 182 (CONT_ENTRY -> ITEMIZED_LIST CONT_ENTRY .)
 
 
-state 307
+state 316
 
-    (180) CONT_ENTRY -> COMMENT CONT_ENTRY .
+    (184) CONT_ENTRY -> IMPORTANT CONT_ENTRY .
 
-    cierreEntry     reduce using rule 180 (CONT_ENTRY -> COMMENT CONT_ENTRY .)
-
-
-state 308
-
-    (182) CONT_ENTRY -> ABSTRACT CONT_ENTRY .
-
-    cierreEntry     reduce using rule 182 (CONT_ENTRY -> ABSTRACT CONT_ENTRY .)
+    cierreEntry     reduce using rule 184 (CONT_ENTRY -> IMPORTANT CONT_ENTRY .)
 
 
-state 309
+state 317
 
-    (184) CONT_ENTRY -> MEDIA_OBJECT CONT_ENTRY .
+    (186) CONT_ENTRY -> PARA CONT_ENTRY .
 
-    cierreEntry     reduce using rule 184 (CONT_ENTRY -> MEDIA_OBJECT CONT_ENTRY .)
-
-
-state 310
-
-    (167) ENTRYTBL -> entrytbl THEAD TBODY . cierreEntrytbl
-
-    cierreEntrytbl  shift and go to state 312
+    cierreEntry     reduce using rule 186 (CONT_ENTRY -> PARA CONT_ENTRY .)
 
 
-state 311
+state 318
 
-    (168) ENTRYTBL -> entrytbl TBODY cierreEntrytbl .
+    (188) CONT_ENTRY -> SIMPARA CONT_ENTRY .
 
-    entry           reduce using rule 168 (ENTRYTBL -> entrytbl TBODY cierreEntrytbl .)
-    entrytbl        reduce using rule 168 (ENTRYTBL -> entrytbl TBODY cierreEntrytbl .)
-    cierreRow       reduce using rule 168 (ENTRYTBL -> entrytbl TBODY cierreEntrytbl .)
+    cierreEntry     reduce using rule 188 (CONT_ENTRY -> SIMPARA CONT_ENTRY .)
 
 
-state 312
+state 319
 
-    (167) ENTRYTBL -> entrytbl THEAD TBODY cierreEntrytbl .
+    (190) CONT_ENTRY -> COMMENT CONT_ENTRY .
 
-    entry           reduce using rule 167 (ENTRYTBL -> entrytbl THEAD TBODY cierreEntrytbl .)
-    entrytbl        reduce using rule 167 (ENTRYTBL -> entrytbl THEAD TBODY cierreEntrytbl .)
-    cierreRow       reduce using rule 167 (ENTRYTBL -> entrytbl THEAD TBODY cierreEntrytbl .)
+    cierreEntry     reduce using rule 190 (CONT_ENTRY -> COMMENT CONT_ENTRY .)
+
+
+state 320
+
+    (192) CONT_ENTRY -> ABSTRACT CONT_ENTRY .
+
+    cierreEntry     reduce using rule 192 (CONT_ENTRY -> ABSTRACT CONT_ENTRY .)
+
+
+state 321
+
+    (194) CONT_ENTRY -> MEDIA_OBJECT CONT_ENTRY .
+
+    cierreEntry     reduce using rule 194 (CONT_ENTRY -> MEDIA_OBJECT CONT_ENTRY .)
+
+
+state 322
+
+    (165) ENTRYTBLH -> entrytbl THEAD TBODY . cierreEntrytbl
+
+    cierreEntrytbl  shift and go to state 327
+
+
+state 323
+
+    (166) ENTRYTBLH -> entrytbl TBODY cierreEntrytbl .
+
+    entry           reduce using rule 166 (ENTRYTBLH -> entrytbl TBODY cierreEntrytbl .)
+    entrytbl        reduce using rule 166 (ENTRYTBLH -> entrytbl TBODY cierreEntrytbl .)
+    cierreRow       reduce using rule 166 (ENTRYTBLH -> entrytbl TBODY cierreEntrytbl .)
+
+
+state 324
+
+    (176) ENTRY -> entry CONT_ENTRY cierreEntry .
+
+    entry           reduce using rule 176 (ENTRY -> entry CONT_ENTRY cierreEntry .)
+    entrytbl        reduce using rule 176 (ENTRY -> entry CONT_ENTRY cierreEntry .)
+    cierreRow       reduce using rule 176 (ENTRY -> entry CONT_ENTRY cierreEntry .)
+
+
+state 325
+
+    (177) ENTRYTBL -> entrytbl THEAD TBODY . cierreEntrytbl
+
+    cierreEntrytbl  shift and go to state 328
+
+
+state 326
+
+    (178) ENTRYTBL -> entrytbl TBODY cierreEntrytbl .
+
+    entry           reduce using rule 178 (ENTRYTBL -> entrytbl TBODY cierreEntrytbl .)
+    entrytbl        reduce using rule 178 (ENTRYTBL -> entrytbl TBODY cierreEntrytbl .)
+    cierreRow       reduce using rule 178 (ENTRYTBL -> entrytbl TBODY cierreEntrytbl .)
+
+
+state 327
+
+    (165) ENTRYTBLH -> entrytbl THEAD TBODY cierreEntrytbl .
+
+    entry           reduce using rule 165 (ENTRYTBLH -> entrytbl THEAD TBODY cierreEntrytbl .)
+    entrytbl        reduce using rule 165 (ENTRYTBLH -> entrytbl THEAD TBODY cierreEntrytbl .)
+    cierreRow       reduce using rule 165 (ENTRYTBLH -> entrytbl THEAD TBODY cierreEntrytbl .)
+
+
+state 328
+
+    (177) ENTRYTBL -> entrytbl THEAD TBODY cierreEntrytbl .
+
+    entry           reduce using rule 177 (ENTRYTBL -> entrytbl THEAD TBODY cierreEntrytbl .)
+    entrytbl        reduce using rule 177 (ENTRYTBL -> entrytbl THEAD TBODY cierreEntrytbl .)
+    cierreRow       reduce using rule 177 (ENTRYTBL -> entrytbl THEAD TBODY cierreEntrytbl .)
 
 WARNING: 
 WARNING: Conflicts:

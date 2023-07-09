@@ -260,20 +260,14 @@ def t_cierreImageObject(t): r'</imageobject>'; return (t);
 
 def t_imageData(t):
     r'<imagedata\s+fileref=["\']((?:(http[s]?|ftp[s]?)://)?(?:[\w.-]+/)*[\w.-]+\.[\w.-]+(?:\S+)?)["\']\s*/>'
-    pattern = r'<imagedata\s+fileref=["\']((?:(http[s]?|ftp[s]?)://)?(?:[\w.-]+/)*[\w.-]+\.[\w.-]+(?:\S+)?)["\']\s*/>'
-    attr_value = re.match(pattern, t.value).group(1)
     return (t)
 
 def t_videoData(t):
     r'<videodata\s+fileref=["\']((?:(http[s]?|ftp[s]?)://)?(?:[\w.-]+/)*[\w.-]+\.[\w.-]+(?:\S+)?)["\']\s*/>'
-    pattern = r'<videodata\s+fileref=["\']((?:(http[s]?|ftp[s]?)://)?(?:[\w.-]+/)*[\w.-]+\.[\w.-]+(?:\S+)?)["\']\s*/>'
-    attr_value = re.match(pattern, t.value).group(1)
     return (t)
 
 def t_link(t):
     r'<link\s+xlink:href=["\']((?:(http[s]?|ftp[s]?)://)?(?:[\w.-]+/)*[\w.-]+\.[\w.-]+(?:\S+)?)["\']\s*>'
-    pattern = r'<link\s+xlink:href=["\'](?:(http[s]?|ftp[s]?)://)?(?:[\w.-]+/)*[\w.-]+\.[\w.-]+(?:\S+)?["\']\s*>'
-    attr_value = re.match(pattern, t.value).group(1)
     return (t)
 
 def t_cierreLink(t): r'</link>'; return (t);
