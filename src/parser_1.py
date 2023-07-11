@@ -83,7 +83,7 @@ def p_SECTION(p):                                                   # TODO TITUL
                 | section TITLEH2 cierreSection
     '''
     if(len(p) == 4):
-        p[0] = f'<div>{p[2]}</div'
+        p[0] = f'<div>{p[2]}</div>'
     elif(len(p) == 5):
         p[0] = f'<div>{p[2]}\n{p[3]}</div>'
     elif(len(p) == 6):
@@ -136,11 +136,11 @@ def p_SIMPLE_SEC(p):
                 | simpleSection INFO TITLE CONT_SS cierreSimpleSection
     '''
     if len(p)==4:
-        p[0] = f'<div>{p[2]}</div'
+        p[0] = f'<div>{p[2]}</div>'
     elif len(p)==5:
-        p[0] = f'<div>{p[2]}\n{p[3]}</div'
+        p[0] = f'<div>{p[2]}\n{p[3]}</div>'
     else:
-        p[0] = f'<div>{p[2]}\n{p[3]}\n{p[4]}</div'
+        p[0] = f'<div>{p[2]}\n{p[3]}\n{p[4]}</div>'
     exportarTxt.append(['Prod. SIMPLE_SEC -->', p.slice])
 
 def p_CONT_SS(p):
@@ -507,7 +507,7 @@ def p_PHONE(p):
 def p_EMAIL(p):
     '''EMAIL : email CONT_VAR cierreEmail
     '''
-    p[0]=f'<a href="{p[2]}'
+    p[0]=f''
     exportarTxt.append(['Prod. EMAIL -->', p.slice])
 
 def p_DATE(p):

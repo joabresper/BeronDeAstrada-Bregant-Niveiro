@@ -201,9 +201,9 @@ otras cosas. Por ahora, solo agregaremos el título del artículo y el
 nombre del autor.</para>
 </listitem>
 <listitem>
-<para>Luego del encabezado aparecen las secciones de primer nivel,
+<para> <link xlink:href="https://google.com" >  Luego del encabezado aparecen las secciones de primer nivel,
 se pueden agregar secciones y subsecciones,ressetando el orden de
-prioridad.</para>
+prioridad. </link> </para>
 </listitem>
 </itemizedlist>
 </section>
