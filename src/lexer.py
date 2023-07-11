@@ -272,18 +272,26 @@ def t_link(t):
 
 def t_cierreLink(t): r'</link>'; return (t);
 
-def t_contenido_texto(t): r'([\w\W])+?(?=<)'; return (t)
+def t_contenido_texto(t): r'[^<>\n\r]+'; return (t)
 
 # token que ignora los saltos de linea y tabulaciones
-t_ignore = ' \t\n'
+t_ignore = ' \t\r'
 
 # Funcion que se ejecuta al encontrar un error lexico
 def t_error(t):
     global contadorErrores
-    print(f'Caracter ilegal! : \'{t.value[0]}\'.')
-    print(f'En linea: {t.lineno}. Posición: {t.lexpos}')
+    line_start = t.lexer.lexdata.rfind('\n', 0, t.lexpos) + 1
+    column = find_column(t.lexer.lexdata, t)
+    print(f'Caracter ilegal! : \'{t.value[0]}\'| En linea: {t.lineno} | Posición: {column}')
     contadorErrores += 1
     t.lexer.skip(1)
+
+def find_column(text, token):
+    last_cr = text.rfind('\n', 0, token.lexpos)
+    if last_cr < 0:
+        last_cr = 0
+    column = (token.lexpos - last_cr)
+    return column
 
 def t_newline(t):
     r'\n+'

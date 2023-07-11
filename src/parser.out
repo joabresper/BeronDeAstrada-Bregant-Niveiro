@@ -20,7 +20,7 @@ Rule 14    ELEM_INFO -> ADDRESS
 Rule 15    ELEM_INFO -> AUTHOR
 Rule 16    ELEM_INFO -> DATE
 Rule 17    ELEM_INFO -> COPYRIGHT
-Rule 18    ELEM_INFO -> TITLEH1
+Rule 18    ELEM_INFO -> TITLE
 Rule 19    SECTION -> section CONT_A_S cierreSection
 Rule 20    SECTION -> section CONT_A_S SECTIONS cierreSection
 Rule 21    SECTION -> section INFO CONT_A_S cierreSection
@@ -351,8 +351,8 @@ TBODY                : 152 153 154 155 165 166 177 178
 TFOOT                : 152 154
 TGROUP               : 150 151
 THEAD                : 152 153 165 177
-TITLE                : 46 47 50 51 126
-TITLEH1              : 2 3 4 5 18
+TITLE                : 18 46 47 50 51 126
+TITLEH1              : 2 3 4 5
 TITLEH2              : 23 24 25 26 27
 VIDEO_OBJECT         : 87 89
 YEAR                 : 112 113
@@ -622,7 +622,7 @@ state 8
     (15) ELEM_INFO -> . AUTHOR
     (16) ELEM_INFO -> . DATE
     (17) ELEM_INFO -> . COPYRIGHT
-    (18) ELEM_INFO -> . TITLEH1
+    (18) ELEM_INFO -> . TITLE
     (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
     (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
     (50) ABSTRACT -> . abstract TITLE cierreAbstract
@@ -633,7 +633,7 @@ state 8
     (143) DATE -> . date CONT_VAR cierreDate
     (112) COPYRIGHT -> . copyright YEAR cierreCopyright
     (113) COPYRIGHT -> . copyright YEAR HOLDER cierreCopyright
-    (53) TITLEH1 -> . title CONT_TITLE cierreTitle
+    (52) TITLE -> . title CONT_TITLE cierreTitle
 
     mediaObject     shift and go to state 27
     abstract        shift and go to state 30
@@ -641,7 +641,7 @@ state 8
     author          shift and go to state 44
     date            shift and go to state 45
     copyright       shift and go to state 46
-    title           shift and go to state 9
+    title           shift and go to state 47
 
     CONT_INFO                      shift and go to state 35
     ELEM_INFO                      shift and go to state 36
@@ -651,7 +651,7 @@ state 8
     AUTHOR                         shift and go to state 40
     DATE                           shift and go to state 41
     COPYRIGHT                      shift and go to state 42
-    TITLEH1                        shift and go to state 43
+    TITLE                          shift and go to state 43
 
 state 9
 
@@ -666,16 +666,16 @@ state 9
     (117) LINK -> . link CONT_SECL cierreLink
     (142) EMAIL -> . email CONT_VAR cierreEmail
 
-    contenido_texto shift and go to state 49
-    emphasis        shift and go to state 53
-    link            shift and go to state 54
-    email           shift and go to state 55
+    contenido_texto shift and go to state 50
+    emphasis        shift and go to state 54
+    link            shift and go to state 55
+    email           shift and go to state 56
 
-    CONT_TITLE                     shift and go to state 47
-    ELEM_TITLE                     shift and go to state 48
-    EMPHASIS                       shift and go to state 50
-    LINK                           shift and go to state 51
-    EMAIL                          shift and go to state 52
+    CONT_TITLE                     shift and go to state 48
+    ELEM_TITLE                     shift and go to state 49
+    EMPHASIS                       shift and go to state 51
+    LINK                           shift and go to state 52
+    EMAIL                          shift and go to state 53
 
 state 10
 
@@ -735,7 +735,7 @@ state 10
   ! section         [ reduce using rule 32 (CONT_A_S -> CONT_1 .) ]
 
     CONT_1                         shift and go to state 10
-    CONT_A_S                       shift and go to state 56
+    CONT_A_S                       shift and go to state 57
     SECTION                        shift and go to state 11
     ITEMIZED_LIST                  shift and go to state 12
     IMPORTANT                      shift and go to state 13
@@ -1005,7 +1005,7 @@ state 21
     (51) ABSTRACT -> . abstract TITLE PARAS cierreAbstract
 
     info            shift and go to state 8
-    title           shift and go to state 60
+    title           shift and go to state 61
     section         shift and go to state 21
     itemizedlist    shift and go to state 22
     important       shift and go to state 23
@@ -1017,9 +1017,9 @@ state 21
     comment         shift and go to state 29
     abstract        shift and go to state 30
 
-    CONT_A_S                       shift and go to state 57
-    INFO                           shift and go to state 58
-    TITLEH2                        shift and go to state 59
+    CONT_A_S                       shift and go to state 58
+    INFO                           shift and go to state 59
+    TITLEH2                        shift and go to state 60
     CONT_1                         shift and go to state 10
     SECTION                        shift and go to state 11
     ITEMIZED_LIST                  shift and go to state 12
@@ -1038,9 +1038,9 @@ state 22
     (80) LIST_ITEM -> . listItem CONT_ITEM cierreListItem
     (81) LIST_ITEM -> . LIST_ITEM listItem CONT_ITEM cierreListItem
 
-    listItem        shift and go to state 62
+    listItem        shift and go to state 63
 
-    LIST_ITEM                      shift and go to state 61
+    LIST_ITEM                      shift and go to state 62
 
 state 23
 
@@ -1073,7 +1073,7 @@ state 23
     (50) ABSTRACT -> . abstract TITLE cierreAbstract
     (51) ABSTRACT -> . abstract TITLE PARAS cierreAbstract
 
-    title           shift and go to state 65
+    title           shift and go to state 47
     itemizedlist    shift and go to state 22
     important       shift and go to state 23
     para            shift and go to state 24
@@ -1084,8 +1084,8 @@ state 23
     comment         shift and go to state 29
     abstract        shift and go to state 30
 
-    TITLE                          shift and go to state 63
-    CONT_IMPORTANT                 shift and go to state 64
+    TITLE                          shift and go to state 64
+    CONT_IMPORTANT                 shift and go to state 65
     CONT_1                         shift and go to state 66
     ITEMIZED_LIST                  shift and go to state 12
     IMPORTANT                      shift and go to state 13
@@ -1129,9 +1129,9 @@ state 24
     (147) INFORMAL_TABLE -> . informalTable TABLE_GROUP cierreInformalTable
 
     contenido_texto shift and go to state 69
-    emphasis        shift and go to state 53
-    link            shift and go to state 54
-    email           shift and go to state 55
+    emphasis        shift and go to state 54
+    link            shift and go to state 55
+    email           shift and go to state 56
     author          shift and go to state 44
     comment         shift and go to state 29
     itemizedlist    shift and go to state 22
@@ -1171,9 +1171,9 @@ state 25
     (116) COMMENT -> . comment CONT_SECL cierreComment
 
     contenido_texto shift and go to state 82
-    emphasis        shift and go to state 53
-    link            shift and go to state 54
-    email           shift and go to state 55
+    emphasis        shift and go to state 54
+    link            shift and go to state 55
+    email           shift and go to state 56
     author          shift and go to state 44
     comment         shift and go to state 29
 
@@ -1209,7 +1209,7 @@ state 26
     city            shift and go to state 98
     state           shift and go to state 99
     phone           shift and go to state 100
-    email           shift and go to state 55
+    email           shift and go to state 56
 
     CONT_ADDRESS                   shift and go to state 89
     ELEM_ADDRESS                   shift and go to state 90
@@ -1283,9 +1283,9 @@ state 29
     (116) COMMENT -> . comment CONT_SECL cierreComment
 
     contenido_texto shift and go to state 82
-    emphasis        shift and go to state 53
-    link            shift and go to state 54
-    email           shift and go to state 55
+    emphasis        shift and go to state 54
+    link            shift and go to state 55
+    email           shift and go to state 56
     author          shift and go to state 44
     comment         shift and go to state 29
 
@@ -1303,7 +1303,7 @@ state 30
     (51) ABSTRACT -> abstract . TITLE PARAS cierreAbstract
     (52) TITLE -> . title CONT_TITLE cierreTitle
 
-    title           shift and go to state 65
+    title           shift and go to state 47
 
     TITLE                          shift and go to state 113
 
@@ -1457,7 +1457,7 @@ state 36
     (15) ELEM_INFO -> . AUTHOR
     (16) ELEM_INFO -> . DATE
     (17) ELEM_INFO -> . COPYRIGHT
-    (18) ELEM_INFO -> . TITLEH1
+    (18) ELEM_INFO -> . TITLE
     (84) MEDIA_OBJECT -> . mediaObject INFO CONT_MEDIA_OBJECT cierreMediaObject
     (85) MEDIA_OBJECT -> . mediaObject CONT_MEDIA_OBJECT cierreMediaObject
     (50) ABSTRACT -> . abstract TITLE cierreAbstract
@@ -1468,7 +1468,7 @@ state 36
     (143) DATE -> . date CONT_VAR cierreDate
     (112) COPYRIGHT -> . copyright YEAR cierreCopyright
     (113) COPYRIGHT -> . copyright YEAR HOLDER cierreCopyright
-    (53) TITLEH1 -> . title CONT_TITLE cierreTitle
+    (52) TITLE -> . title CONT_TITLE cierreTitle
 
     cierreInfo      reduce using rule 11 (CONT_INFO -> ELEM_INFO .)
     mediaObject     shift and go to state 27
@@ -1477,7 +1477,7 @@ state 36
     author          shift and go to state 44
     date            shift and go to state 45
     copyright       shift and go to state 46
-    title           shift and go to state 9
+    title           shift and go to state 47
 
     ELEM_INFO                      shift and go to state 36
     CONT_INFO                      shift and go to state 123
@@ -1487,7 +1487,7 @@ state 36
     AUTHOR                         shift and go to state 40
     DATE                           shift and go to state 41
     COPYRIGHT                      shift and go to state 42
-    TITLEH1                        shift and go to state 43
+    TITLE                          shift and go to state 43
 
 state 37
 
@@ -1575,16 +1575,16 @@ state 42
 
 state 43
 
-    (18) ELEM_INFO -> TITLEH1 .
+    (18) ELEM_INFO -> TITLE .
 
-    mediaObject     reduce using rule 18 (ELEM_INFO -> TITLEH1 .)
-    abstract        reduce using rule 18 (ELEM_INFO -> TITLEH1 .)
-    address         reduce using rule 18 (ELEM_INFO -> TITLEH1 .)
-    author          reduce using rule 18 (ELEM_INFO -> TITLEH1 .)
-    date            reduce using rule 18 (ELEM_INFO -> TITLEH1 .)
-    copyright       reduce using rule 18 (ELEM_INFO -> TITLEH1 .)
-    title           reduce using rule 18 (ELEM_INFO -> TITLEH1 .)
-    cierreInfo      reduce using rule 18 (ELEM_INFO -> TITLEH1 .)
+    mediaObject     reduce using rule 18 (ELEM_INFO -> TITLE .)
+    abstract        reduce using rule 18 (ELEM_INFO -> TITLE .)
+    address         reduce using rule 18 (ELEM_INFO -> TITLE .)
+    author          reduce using rule 18 (ELEM_INFO -> TITLE .)
+    date            reduce using rule 18 (ELEM_INFO -> TITLE .)
+    copyright       reduce using rule 18 (ELEM_INFO -> TITLE .)
+    title           reduce using rule 18 (ELEM_INFO -> TITLE .)
+    cierreInfo      reduce using rule 18 (ELEM_INFO -> TITLE .)
 
 
 state 44
@@ -1603,7 +1603,7 @@ state 44
 
     firstname       shift and go to state 128
     surname         shift and go to state 129
-    email           shift and go to state 55
+    email           shift and go to state 56
 
     CONT_AUTHOR                    shift and go to state 124
     FIRSTNAME                      shift and go to state 125
@@ -1624,8 +1624,8 @@ state 45
     (116) COMMENT -> . comment CONT_SECL cierreComment
 
     contenido_texto shift and go to state 132
-    link            shift and go to state 54
-    emphasis        shift and go to state 53
+    link            shift and go to state 55
+    emphasis        shift and go to state 54
     comment         shift and go to state 29
 
     CONT_VAR                       shift and go to state 130
@@ -1646,12 +1646,36 @@ state 46
 
 state 47
 
-    (53) TITLEH1 -> title CONT_TITLE . cierreTitle
+    (52) TITLE -> title . CONT_TITLE cierreTitle
+    (55) CONT_TITLE -> . ELEM_TITLE
+    (56) CONT_TITLE -> . ELEM_TITLE CONT_TITLE
+    (57) ELEM_TITLE -> . contenido_texto
+    (58) ELEM_TITLE -> . EMPHASIS
+    (59) ELEM_TITLE -> . LINK
+    (60) ELEM_TITLE -> . EMAIL
+    (115) EMPHASIS -> . emphasis CONT_SECL cierreEmphasis
+    (117) LINK -> . link CONT_SECL cierreLink
+    (142) EMAIL -> . email CONT_VAR cierreEmail
 
-    cierreTitle     shift and go to state 138
+    contenido_texto shift and go to state 50
+    emphasis        shift and go to state 54
+    link            shift and go to state 55
+    email           shift and go to state 56
 
+    CONT_TITLE                     shift and go to state 138
+    ELEM_TITLE                     shift and go to state 49
+    EMPHASIS                       shift and go to state 51
+    LINK                           shift and go to state 52
+    EMAIL                          shift and go to state 53
 
 state 48
+
+    (53) TITLEH1 -> title CONT_TITLE . cierreTitle
+
+    cierreTitle     shift and go to state 139
+
+
+state 49
 
     (55) CONT_TITLE -> ELEM_TITLE .
     (56) CONT_TITLE -> ELEM_TITLE . CONT_TITLE
@@ -1666,18 +1690,18 @@ state 48
     (142) EMAIL -> . email CONT_VAR cierreEmail
 
     cierreTitle     reduce using rule 55 (CONT_TITLE -> ELEM_TITLE .)
-    contenido_texto shift and go to state 49
-    emphasis        shift and go to state 53
-    link            shift and go to state 54
-    email           shift and go to state 55
+    contenido_texto shift and go to state 50
+    emphasis        shift and go to state 54
+    link            shift and go to state 55
+    email           shift and go to state 56
 
-    ELEM_TITLE                     shift and go to state 48
-    CONT_TITLE                     shift and go to state 139
-    EMPHASIS                       shift and go to state 50
-    LINK                           shift and go to state 51
-    EMAIL                          shift and go to state 52
+    ELEM_TITLE                     shift and go to state 49
+    CONT_TITLE                     shift and go to state 140
+    EMPHASIS                       shift and go to state 51
+    LINK                           shift and go to state 52
+    EMAIL                          shift and go to state 53
 
-state 49
+state 50
 
     (57) ELEM_TITLE -> contenido_texto .
 
@@ -1688,7 +1712,7 @@ state 49
     cierreTitle     reduce using rule 57 (ELEM_TITLE -> contenido_texto .)
 
 
-state 50
+state 51
 
     (58) ELEM_TITLE -> EMPHASIS .
 
@@ -1699,7 +1723,7 @@ state 50
     cierreTitle     reduce using rule 58 (ELEM_TITLE -> EMPHASIS .)
 
 
-state 51
+state 52
 
     (59) ELEM_TITLE -> LINK .
 
@@ -1710,7 +1734,7 @@ state 51
     cierreTitle     reduce using rule 59 (ELEM_TITLE -> LINK .)
 
 
-state 52
+state 53
 
     (60) ELEM_TITLE -> EMAIL .
 
@@ -1721,7 +1745,7 @@ state 52
     cierreTitle     reduce using rule 60 (ELEM_TITLE -> EMAIL .)
 
 
-state 53
+state 54
 
     (115) EMPHASIS -> emphasis . CONT_SECL cierreEmphasis
     (118) CONT_SECL -> . CONT_2
@@ -1739,13 +1763,13 @@ state 53
     (116) COMMENT -> . comment CONT_SECL cierreComment
 
     contenido_texto shift and go to state 82
-    emphasis        shift and go to state 53
-    link            shift and go to state 54
-    email           shift and go to state 55
+    emphasis        shift and go to state 54
+    link            shift and go to state 55
+    email           shift and go to state 56
     author          shift and go to state 44
     comment         shift and go to state 29
 
-    CONT_SECL                      shift and go to state 140
+    CONT_SECL                      shift and go to state 141
     CONT_2                         shift and go to state 81
     EMPHASIS                       shift and go to state 83
     LINK                           shift and go to state 84
@@ -1753,7 +1777,7 @@ state 53
     AUTHOR                         shift and go to state 86
     COMMENT                        shift and go to state 87
 
-state 54
+state 55
 
     (117) LINK -> link . CONT_SECL cierreLink
     (118) CONT_SECL -> . CONT_2
@@ -1771,13 +1795,13 @@ state 54
     (116) COMMENT -> . comment CONT_SECL cierreComment
 
     contenido_texto shift and go to state 82
-    emphasis        shift and go to state 53
-    link            shift and go to state 54
-    email           shift and go to state 55
+    emphasis        shift and go to state 54
+    link            shift and go to state 55
+    email           shift and go to state 56
     author          shift and go to state 44
     comment         shift and go to state 29
 
-    CONT_SECL                      shift and go to state 141
+    CONT_SECL                      shift and go to state 142
     CONT_2                         shift and go to state 81
     EMPHASIS                       shift and go to state 83
     LINK                           shift and go to state 84
@@ -1785,7 +1809,7 @@ state 54
     AUTHOR                         shift and go to state 86
     COMMENT                        shift and go to state 87
 
-state 55
+state 56
 
     (142) EMAIL -> email . CONT_VAR cierreEmail
     (130) CONT_VAR -> . CONT_3
@@ -1799,17 +1823,17 @@ state 55
     (116) COMMENT -> . comment CONT_SECL cierreComment
 
     contenido_texto shift and go to state 132
-    link            shift and go to state 54
-    emphasis        shift and go to state 53
+    link            shift and go to state 55
+    emphasis        shift and go to state 54
     comment         shift and go to state 29
 
-    CONT_VAR                       shift and go to state 142
+    CONT_VAR                       shift and go to state 143
     CONT_3                         shift and go to state 131
     LINK                           shift and go to state 133
     EMPHASIS                       shift and go to state 134
     COMMENT                        shift and go to state 135
 
-state 56
+state 57
 
     (33) CONT_A_S -> CONT_1 CONT_A_S .
 
@@ -1819,7 +1843,7 @@ state 56
     cierreSection   reduce using rule 33 (CONT_A_S -> CONT_1 CONT_A_S .)
 
 
-state 57
+state 58
 
     (19) SECTION -> section CONT_A_S . cierreSection
     (20) SECTION -> section CONT_A_S . SECTIONS cierreSection
@@ -1841,15 +1865,15 @@ state 57
     (46) SIMPLE_SEC -> . simpleSection TITLE CONT_SS cierreSimpleSection
     (47) SIMPLE_SEC -> . simpleSection INFO TITLE CONT_SS cierreSimpleSection
 
-    cierreSection   shift and go to state 143
+    cierreSection   shift and go to state 144
     section         shift and go to state 21
     simpleSection   shift and go to state 119
 
-    SECTIONS                       shift and go to state 144
+    SECTIONS                       shift and go to state 145
     SECTION                        shift and go to state 117
     SIMPLE_SEC                     shift and go to state 118
 
-state 58
+state 59
 
     (21) SECTION -> section INFO . CONT_A_S cierreSection
     (22) SECTION -> section INFO . CONT_A_S SECTIONS cierreSection
@@ -1892,7 +1916,7 @@ state 58
     (50) ABSTRACT -> . abstract TITLE cierreAbstract
     (51) ABSTRACT -> . abstract TITLE PARAS cierreAbstract
 
-    title           shift and go to state 60
+    title           shift and go to state 61
     section         shift and go to state 21
     itemizedlist    shift and go to state 22
     important       shift and go to state 23
@@ -1904,8 +1928,8 @@ state 58
     comment         shift and go to state 29
     abstract        shift and go to state 30
 
-    CONT_A_S                       shift and go to state 145
-    TITLEH2                        shift and go to state 146
+    CONT_A_S                       shift and go to state 146
+    TITLEH2                        shift and go to state 147
     CONT_1                         shift and go to state 10
     SECTION                        shift and go to state 11
     ITEMIZED_LIST                  shift and go to state 12
@@ -1918,7 +1942,7 @@ state 58
     COMMENT                        shift and go to state 19
     ABSTRACT                       shift and go to state 20
 
-state 59
+state 60
 
     (23) SECTION -> section TITLEH2 . CONT_A_S cierreSection
     (24) SECTION -> section TITLEH2 . CONT_A_S SECTIONS cierreSection
@@ -1959,7 +1983,7 @@ state 59
     (50) ABSTRACT -> . abstract TITLE cierreAbstract
     (51) ABSTRACT -> . abstract TITLE PARAS cierreAbstract
 
-    cierreSection   shift and go to state 148
+    cierreSection   shift and go to state 149
     section         shift and go to state 21
     itemizedlist    shift and go to state 22
     important       shift and go to state 23
@@ -1971,7 +1995,7 @@ state 59
     comment         shift and go to state 29
     abstract        shift and go to state 30
 
-    CONT_A_S                       shift and go to state 147
+    CONT_A_S                       shift and go to state 148
     CONT_1                         shift and go to state 10
     SECTION                        shift and go to state 11
     ITEMIZED_LIST                  shift and go to state 12
@@ -1984,7 +2008,7 @@ state 59
     COMMENT                        shift and go to state 19
     ABSTRACT                       shift and go to state 20
 
-state 60
+state 61
 
     (54) TITLEH2 -> title . CONT_TITLE cierreTitle
     (55) CONT_TITLE -> . ELEM_TITLE
@@ -1997,27 +2021,27 @@ state 60
     (117) LINK -> . link CONT_SECL cierreLink
     (142) EMAIL -> . email CONT_VAR cierreEmail
 
-    contenido_texto shift and go to state 49
-    emphasis        shift and go to state 53
-    link            shift and go to state 54
-    email           shift and go to state 55
+    contenido_texto shift and go to state 50
+    emphasis        shift and go to state 54
+    link            shift and go to state 55
+    email           shift and go to state 56
 
-    CONT_TITLE                     shift and go to state 149
-    ELEM_TITLE                     shift and go to state 48
-    EMPHASIS                       shift and go to state 50
-    LINK                           shift and go to state 51
-    EMAIL                          shift and go to state 52
+    CONT_TITLE                     shift and go to state 150
+    ELEM_TITLE                     shift and go to state 49
+    EMPHASIS                       shift and go to state 51
+    LINK                           shift and go to state 52
+    EMAIL                          shift and go to state 53
 
-state 61
+state 62
 
     (79) ITEMIZED_LIST -> itemizedlist LIST_ITEM . cierreItemizedlist
     (81) LIST_ITEM -> LIST_ITEM . listItem CONT_ITEM cierreListItem
 
-    cierreItemizedlist shift and go to state 150
-    listItem        shift and go to state 151
+    cierreItemizedlist shift and go to state 151
+    listItem        shift and go to state 152
 
 
-state 62
+state 63
 
     (80) LIST_ITEM -> listItem . CONT_ITEM cierreListItem
     (82) CONT_ITEM -> . CONT_1
@@ -2056,8 +2080,8 @@ state 62
     comment         shift and go to state 29
     abstract        shift and go to state 30
 
-    CONT_ITEM                      shift and go to state 152
-    CONT_1                         shift and go to state 153
+    CONT_ITEM                      shift and go to state 153
+    CONT_1                         shift and go to state 154
     ITEMIZED_LIST                  shift and go to state 12
     IMPORTANT                      shift and go to state 13
     PARA                           shift and go to state 14
@@ -2068,7 +2092,7 @@ state 62
     COMMENT                        shift and go to state 19
     ABSTRACT                       shift and go to state 20
 
-state 63
+state 64
 
     (126) IMPORTANT -> important TITLE . CONT_IMPORTANT cierreImportant
     (128) CONT_IMPORTANT -> . CONT_1
@@ -2107,7 +2131,7 @@ state 63
     comment         shift and go to state 29
     abstract        shift and go to state 30
 
-    CONT_IMPORTANT                 shift and go to state 154
+    CONT_IMPORTANT                 shift and go to state 155
     CONT_1                         shift and go to state 66
     ITEMIZED_LIST                  shift and go to state 12
     IMPORTANT                      shift and go to state 13
@@ -2119,36 +2143,12 @@ state 63
     COMMENT                        shift and go to state 19
     ABSTRACT                       shift and go to state 20
 
-state 64
+state 65
 
     (127) IMPORTANT -> important CONT_IMPORTANT . cierreImportant
 
-    cierreImportant shift and go to state 155
+    cierreImportant shift and go to state 156
 
-
-state 65
-
-    (52) TITLE -> title . CONT_TITLE cierreTitle
-    (55) CONT_TITLE -> . ELEM_TITLE
-    (56) CONT_TITLE -> . ELEM_TITLE CONT_TITLE
-    (57) ELEM_TITLE -> . contenido_texto
-    (58) ELEM_TITLE -> . EMPHASIS
-    (59) ELEM_TITLE -> . LINK
-    (60) ELEM_TITLE -> . EMAIL
-    (115) EMPHASIS -> . emphasis CONT_SECL cierreEmphasis
-    (117) LINK -> . link CONT_SECL cierreLink
-    (142) EMAIL -> . email CONT_VAR cierreEmail
-
-    contenido_texto shift and go to state 49
-    emphasis        shift and go to state 53
-    link            shift and go to state 54
-    email           shift and go to state 55
-
-    CONT_TITLE                     shift and go to state 156
-    ELEM_TITLE                     shift and go to state 48
-    EMPHASIS                       shift and go to state 50
-    LINK                           shift and go to state 51
-    EMAIL                          shift and go to state 52
 
 state 66
 
@@ -2244,9 +2244,9 @@ state 68
 
     cierrePara      reduce using rule 66 (CONT_PARA -> ELEM_PARA .)
     contenido_texto shift and go to state 69
-    emphasis        shift and go to state 53
-    link            shift and go to state 54
-    email           shift and go to state 55
+    emphasis        shift and go to state 54
+    link            shift and go to state 55
+    email           shift and go to state 56
     author          shift and go to state 44
     comment         shift and go to state 29
     itemizedlist    shift and go to state 22
@@ -2496,9 +2496,9 @@ state 81
     cierreEmphasis  reduce using rule 118 (CONT_SECL -> CONT_2 .)
     cierreLink      reduce using rule 118 (CONT_SECL -> CONT_2 .)
     contenido_texto shift and go to state 82
-    emphasis        shift and go to state 53
-    link            shift and go to state 54
-    email           shift and go to state 55
+    emphasis        shift and go to state 54
+    link            shift and go to state 55
+    email           shift and go to state 56
     author          shift and go to state 44
     comment         shift and go to state 29
 
@@ -2669,7 +2669,7 @@ state 90
     city            shift and go to state 98
     state           shift and go to state 99
     phone           shift and go to state 100
-    email           shift and go to state 55
+    email           shift and go to state 56
 
     ELEM_ADDRESS                   shift and go to state 90
     CONT_ADDRESS                   shift and go to state 163
@@ -2771,8 +2771,8 @@ state 97
     (116) COMMENT -> . comment CONT_SECL cierreComment
 
     contenido_texto shift and go to state 132
-    link            shift and go to state 54
-    emphasis        shift and go to state 53
+    link            shift and go to state 55
+    emphasis        shift and go to state 54
     comment         shift and go to state 29
 
     CONT_VAR                       shift and go to state 164
@@ -2795,8 +2795,8 @@ state 98
     (116) COMMENT -> . comment CONT_SECL cierreComment
 
     contenido_texto shift and go to state 132
-    link            shift and go to state 54
-    emphasis        shift and go to state 53
+    link            shift and go to state 55
+    emphasis        shift and go to state 54
     comment         shift and go to state 29
 
     CONT_VAR                       shift and go to state 165
@@ -2819,8 +2819,8 @@ state 99
     (116) COMMENT -> . comment CONT_SECL cierreComment
 
     contenido_texto shift and go to state 132
-    link            shift and go to state 54
-    emphasis        shift and go to state 53
+    link            shift and go to state 55
+    emphasis        shift and go to state 54
     comment         shift and go to state 29
 
     CONT_VAR                       shift and go to state 166
@@ -2843,8 +2843,8 @@ state 100
     (116) COMMENT -> . comment CONT_SECL cierreComment
 
     contenido_texto shift and go to state 132
-    link            shift and go to state 54
-    emphasis        shift and go to state 53
+    link            shift and go to state 55
+    emphasis        shift and go to state 54
     comment         shift and go to state 29
 
     CONT_VAR                       shift and go to state 167
@@ -3153,7 +3153,7 @@ state 119
     (51) ABSTRACT -> . abstract TITLE PARAS cierreAbstract
 
     info            shift and go to state 8
-    title           shift and go to state 65
+    title           shift and go to state 47
     itemizedlist    shift and go to state 22
     important       shift and go to state 23
     para            shift and go to state 24
@@ -3237,7 +3237,7 @@ state 125
 
     cierreAuthor    reduce using rule 95 (CONT_AUTHOR -> FIRSTNAME .)
     surname         shift and go to state 129
-    email           shift and go to state 55
+    email           shift and go to state 56
 
     SURNAME                        shift and go to state 200
     EMAIL                          shift and go to state 201
@@ -3249,7 +3249,7 @@ state 126
     (142) EMAIL -> . email CONT_VAR cierreEmail
 
     cierreAuthor    reduce using rule 96 (CONT_AUTHOR -> SURNAME .)
-    email           shift and go to state 55
+    email           shift and go to state 56
 
     EMAIL                          shift and go to state 202
 
@@ -3274,8 +3274,8 @@ state 128
     (116) COMMENT -> . comment CONT_SECL cierreComment
 
     contenido_texto shift and go to state 132
-    link            shift and go to state 54
-    emphasis        shift and go to state 53
+    link            shift and go to state 55
+    emphasis        shift and go to state 54
     comment         shift and go to state 29
 
     CONT_VAR                       shift and go to state 203
@@ -3298,8 +3298,8 @@ state 129
     (116) COMMENT -> . comment CONT_SECL cierreComment
 
     contenido_texto shift and go to state 132
-    link            shift and go to state 54
-    emphasis        shift and go to state 53
+    link            shift and go to state 55
+    emphasis        shift and go to state 54
     comment         shift and go to state 29
 
     CONT_VAR                       shift and go to state 204
@@ -3340,8 +3340,8 @@ state 131
     cierreYear      reduce using rule 130 (CONT_VAR -> CONT_3 .)
     cierreHolder    reduce using rule 130 (CONT_VAR -> CONT_3 .)
     contenido_texto shift and go to state 132
-    link            shift and go to state 54
-    emphasis        shift and go to state 53
+    link            shift and go to state 55
+    emphasis        shift and go to state 54
     comment         shift and go to state 29
 
     CONT_3                         shift and go to state 131
@@ -3455,8 +3455,8 @@ state 137
     (116) COMMENT -> . comment CONT_SECL cierreComment
 
     contenido_texto shift and go to state 132
-    link            shift and go to state 54
-    emphasis        shift and go to state 53
+    link            shift and go to state 55
+    emphasis        shift and go to state 54
     comment         shift and go to state 29
 
     CONT_VAR                       shift and go to state 210
@@ -3466,6 +3466,13 @@ state 137
     COMMENT                        shift and go to state 135
 
 state 138
+
+    (52) TITLE -> title CONT_TITLE . cierreTitle
+
+    cierreTitle     shift and go to state 211
+
+
+state 139
 
     (53) TITLEH1 -> title CONT_TITLE cierreTitle .
 
@@ -3479,42 +3486,37 @@ state 138
     informalTable   reduce using rule 53 (TITLEH1 -> title CONT_TITLE cierreTitle .)
     comment         reduce using rule 53 (TITLEH1 -> title CONT_TITLE cierreTitle .)
     abstract        reduce using rule 53 (TITLEH1 -> title CONT_TITLE cierreTitle .)
-    author          reduce using rule 53 (TITLEH1 -> title CONT_TITLE cierreTitle .)
-    date            reduce using rule 53 (TITLEH1 -> title CONT_TITLE cierreTitle .)
-    copyright       reduce using rule 53 (TITLEH1 -> title CONT_TITLE cierreTitle .)
-    title           reduce using rule 53 (TITLEH1 -> title CONT_TITLE cierreTitle .)
-    cierreInfo      reduce using rule 53 (TITLEH1 -> title CONT_TITLE cierreTitle .)
 
 
-state 139
+state 140
 
     (56) CONT_TITLE -> ELEM_TITLE CONT_TITLE .
 
     cierreTitle     reduce using rule 56 (CONT_TITLE -> ELEM_TITLE CONT_TITLE .)
 
 
-state 140
+state 141
 
     (115) EMPHASIS -> emphasis CONT_SECL . cierreEmphasis
 
-    cierreEmphasis  shift and go to state 211
-
-
-state 141
-
-    (117) LINK -> link CONT_SECL . cierreLink
-
-    cierreLink      shift and go to state 212
+    cierreEmphasis  shift and go to state 212
 
 
 state 142
 
-    (142) EMAIL -> email CONT_VAR . cierreEmail
+    (117) LINK -> link CONT_SECL . cierreLink
 
-    cierreEmail     shift and go to state 213
+    cierreLink      shift and go to state 213
 
 
 state 143
+
+    (142) EMAIL -> email CONT_VAR . cierreEmail
+
+    cierreEmail     shift and go to state 214
+
+
+state 144
 
     (19) SECTION -> section CONT_A_S cierreSection .
 
@@ -3524,14 +3526,14 @@ state 143
     cierreSection   reduce using rule 19 (SECTION -> section CONT_A_S cierreSection .)
 
 
-state 144
+state 145
 
     (20) SECTION -> section CONT_A_S SECTIONS . cierreSection
 
-    cierreSection   shift and go to state 214
+    cierreSection   shift and go to state 215
 
 
-state 145
+state 146
 
     (21) SECTION -> section INFO CONT_A_S . cierreSection
     (22) SECTION -> section INFO CONT_A_S . SECTIONS cierreSection
@@ -3553,15 +3555,15 @@ state 145
     (46) SIMPLE_SEC -> . simpleSection TITLE CONT_SS cierreSimpleSection
     (47) SIMPLE_SEC -> . simpleSection INFO TITLE CONT_SS cierreSimpleSection
 
-    cierreSection   shift and go to state 215
+    cierreSection   shift and go to state 216
     section         shift and go to state 21
     simpleSection   shift and go to state 119
 
-    SECTIONS                       shift and go to state 216
+    SECTIONS                       shift and go to state 217
     SECTION                        shift and go to state 117
     SIMPLE_SEC                     shift and go to state 118
 
-state 146
+state 147
 
     (25) SECTION -> section INFO TITLEH2 . CONT_A_S cierreSection
     (26) SECTION -> section INFO TITLEH2 . CONT_A_S SECTIONS cierreSection
@@ -3612,7 +3614,7 @@ state 146
     comment         shift and go to state 29
     abstract        shift and go to state 30
 
-    CONT_A_S                       shift and go to state 217
+    CONT_A_S                       shift and go to state 218
     CONT_1                         shift and go to state 10
     SECTION                        shift and go to state 11
     ITEMIZED_LIST                  shift and go to state 12
@@ -3625,7 +3627,7 @@ state 146
     COMMENT                        shift and go to state 19
     ABSTRACT                       shift and go to state 20
 
-state 147
+state 148
 
     (23) SECTION -> section TITLEH2 CONT_A_S . cierreSection
     (24) SECTION -> section TITLEH2 CONT_A_S . SECTIONS cierreSection
@@ -3647,15 +3649,15 @@ state 147
     (46) SIMPLE_SEC -> . simpleSection TITLE CONT_SS cierreSimpleSection
     (47) SIMPLE_SEC -> . simpleSection INFO TITLE CONT_SS cierreSimpleSection
 
-    cierreSection   shift and go to state 218
+    cierreSection   shift and go to state 219
     section         shift and go to state 21
     simpleSection   shift and go to state 119
 
-    SECTIONS                       shift and go to state 219
+    SECTIONS                       shift and go to state 220
     SECTION                        shift and go to state 117
     SIMPLE_SEC                     shift and go to state 118
 
-state 148
+state 149
 
     (27) SECTION -> section TITLEH2 cierreSection .
 
@@ -3665,14 +3667,14 @@ state 148
     cierreSection   reduce using rule 27 (SECTION -> section TITLEH2 cierreSection .)
 
 
-state 149
+state 150
 
     (54) TITLEH2 -> title CONT_TITLE . cierreTitle
 
-    cierreTitle     shift and go to state 220
+    cierreTitle     shift and go to state 221
 
 
-state 150
+state 151
 
     (79) ITEMIZED_LIST -> itemizedlist LIST_ITEM cierreItemizedlist .
 
@@ -3701,7 +3703,7 @@ state 150
     cierreEntry     reduce using rule 79 (ITEMIZED_LIST -> itemizedlist LIST_ITEM cierreItemizedlist .)
 
 
-state 151
+state 152
 
     (81) LIST_ITEM -> LIST_ITEM listItem . CONT_ITEM cierreListItem
     (82) CONT_ITEM -> . CONT_1
@@ -3740,8 +3742,8 @@ state 151
     comment         shift and go to state 29
     abstract        shift and go to state 30
 
-    CONT_ITEM                      shift and go to state 221
-    CONT_1                         shift and go to state 153
+    CONT_ITEM                      shift and go to state 222
+    CONT_1                         shift and go to state 154
     ITEMIZED_LIST                  shift and go to state 12
     IMPORTANT                      shift and go to state 13
     PARA                           shift and go to state 14
@@ -3752,14 +3754,14 @@ state 151
     COMMENT                        shift and go to state 19
     ABSTRACT                       shift and go to state 20
 
-state 152
+state 153
 
     (80) LIST_ITEM -> listItem CONT_ITEM . cierreListItem
 
-    cierreListItem  shift and go to state 222
+    cierreListItem  shift and go to state 223
 
 
-state 153
+state 154
 
     (82) CONT_ITEM -> CONT_1 .
     (83) CONT_ITEM -> CONT_1 . CONT_ITEM
@@ -3800,8 +3802,8 @@ state 153
     comment         shift and go to state 29
     abstract        shift and go to state 30
 
-    CONT_1                         shift and go to state 153
-    CONT_ITEM                      shift and go to state 223
+    CONT_1                         shift and go to state 154
+    CONT_ITEM                      shift and go to state 224
     ITEMIZED_LIST                  shift and go to state 12
     IMPORTANT                      shift and go to state 13
     PARA                           shift and go to state 14
@@ -3812,14 +3814,14 @@ state 153
     COMMENT                        shift and go to state 19
     ABSTRACT                       shift and go to state 20
 
-state 154
+state 155
 
     (126) IMPORTANT -> important TITLE CONT_IMPORTANT . cierreImportant
 
-    cierreImportant shift and go to state 224
+    cierreImportant shift and go to state 225
 
 
-state 155
+state 156
 
     (127) IMPORTANT -> important CONT_IMPORTANT cierreImportant .
 
@@ -3846,13 +3848,6 @@ state 155
     cierreListItem  reduce using rule 127 (IMPORTANT -> important CONT_IMPORTANT cierreImportant .)
     cierreSimpleSection reduce using rule 127 (IMPORTANT -> important CONT_IMPORTANT cierreImportant .)
     cierreEntry     reduce using rule 127 (IMPORTANT -> important CONT_IMPORTANT cierreImportant .)
-
-
-state 156
-
-    (52) TITLE -> title CONT_TITLE . cierreTitle
-
-    cierreTitle     shift and go to state 225
 
 
 state 157
@@ -4387,7 +4382,7 @@ state 195
     (50) ABSTRACT -> . abstract TITLE cierreAbstract
     (51) ABSTRACT -> . abstract TITLE PARAS cierreAbstract
 
-    title           shift and go to state 65
+    title           shift and go to state 47
     itemizedlist    shift and go to state 22
     important       shift and go to state 23
     para            shift and go to state 24
@@ -4556,7 +4551,7 @@ state 200
     (142) EMAIL -> . email CONT_VAR cierreEmail
 
     cierreAuthor    reduce using rule 98 (CONT_AUTHOR -> FIRSTNAME SURNAME .)
-    email           shift and go to state 55
+    email           shift and go to state 56
 
     EMAIL                          shift and go to state 254
 
@@ -4653,8 +4648,8 @@ state 209
     (116) COMMENT -> . comment CONT_SECL cierreComment
 
     contenido_texto shift and go to state 132
-    link            shift and go to state 54
-    emphasis        shift and go to state 53
+    link            shift and go to state 55
+    emphasis        shift and go to state 54
     comment         shift and go to state 29
 
     CONT_VAR                       shift and go to state 258
@@ -4671,6 +4666,27 @@ state 210
 
 
 state 211
+
+    (52) TITLE -> title CONT_TITLE cierreTitle .
+
+    mediaObject     reduce using rule 52 (TITLE -> title CONT_TITLE cierreTitle .)
+    abstract        reduce using rule 52 (TITLE -> title CONT_TITLE cierreTitle .)
+    address         reduce using rule 52 (TITLE -> title CONT_TITLE cierreTitle .)
+    author          reduce using rule 52 (TITLE -> title CONT_TITLE cierreTitle .)
+    date            reduce using rule 52 (TITLE -> title CONT_TITLE cierreTitle .)
+    copyright       reduce using rule 52 (TITLE -> title CONT_TITLE cierreTitle .)
+    title           reduce using rule 52 (TITLE -> title CONT_TITLE cierreTitle .)
+    cierreInfo      reduce using rule 52 (TITLE -> title CONT_TITLE cierreTitle .)
+    itemizedlist    reduce using rule 52 (TITLE -> title CONT_TITLE cierreTitle .)
+    important       reduce using rule 52 (TITLE -> title CONT_TITLE cierreTitle .)
+    para            reduce using rule 52 (TITLE -> title CONT_TITLE cierreTitle .)
+    simpara         reduce using rule 52 (TITLE -> title CONT_TITLE cierreTitle .)
+    informalTable   reduce using rule 52 (TITLE -> title CONT_TITLE cierreTitle .)
+    comment         reduce using rule 52 (TITLE -> title CONT_TITLE cierreTitle .)
+    cierreAbstract  reduce using rule 52 (TITLE -> title CONT_TITLE cierreTitle .)
+
+
+state 212
 
     (115) EMPHASIS -> emphasis CONT_SECL cierreEmphasis .
 
@@ -4703,7 +4719,7 @@ state 211
     cierreHolder    reduce using rule 115 (EMPHASIS -> emphasis CONT_SECL cierreEmphasis .)
 
 
-state 212
+state 213
 
     (117) LINK -> link CONT_SECL cierreLink .
 
@@ -4736,7 +4752,7 @@ state 212
     cierreHolder    reduce using rule 117 (LINK -> link CONT_SECL cierreLink .)
 
 
-state 213
+state 214
 
     (142) EMAIL -> email CONT_VAR cierreEmail .
 
@@ -4765,7 +4781,7 @@ state 213
     cierreLink      reduce using rule 142 (EMAIL -> email CONT_VAR cierreEmail .)
 
 
-state 214
+state 215
 
     (20) SECTION -> section CONT_A_S SECTIONS cierreSection .
 
@@ -4775,7 +4791,7 @@ state 214
     cierreSection   reduce using rule 20 (SECTION -> section CONT_A_S SECTIONS cierreSection .)
 
 
-state 215
+state 216
 
     (21) SECTION -> section INFO CONT_A_S cierreSection .
 
@@ -4785,14 +4801,14 @@ state 215
     cierreSection   reduce using rule 21 (SECTION -> section INFO CONT_A_S cierreSection .)
 
 
-state 216
+state 217
 
     (22) SECTION -> section INFO CONT_A_S SECTIONS . cierreSection
 
     cierreSection   shift and go to state 260
 
 
-state 217
+state 218
 
     (25) SECTION -> section INFO TITLEH2 CONT_A_S . cierreSection
     (26) SECTION -> section INFO TITLEH2 CONT_A_S . SECTIONS cierreSection
@@ -4822,7 +4838,7 @@ state 217
     SECTION                        shift and go to state 117
     SIMPLE_SEC                     shift and go to state 118
 
-state 218
+state 219
 
     (23) SECTION -> section TITLEH2 CONT_A_S cierreSection .
 
@@ -4832,14 +4848,14 @@ state 218
     cierreSection   reduce using rule 23 (SECTION -> section TITLEH2 CONT_A_S cierreSection .)
 
 
-state 219
+state 220
 
     (24) SECTION -> section TITLEH2 CONT_A_S SECTIONS . cierreSection
 
     cierreSection   shift and go to state 263
 
 
-state 220
+state 221
 
     (54) TITLEH2 -> title CONT_TITLE cierreTitle .
 
@@ -4856,14 +4872,14 @@ state 220
     abstract        reduce using rule 54 (TITLEH2 -> title CONT_TITLE cierreTitle .)
 
 
-state 221
+state 222
 
     (81) LIST_ITEM -> LIST_ITEM listItem CONT_ITEM . cierreListItem
 
     cierreListItem  shift and go to state 264
 
 
-state 222
+state 223
 
     (80) LIST_ITEM -> listItem CONT_ITEM cierreListItem .
 
@@ -4871,14 +4887,14 @@ state 222
     listItem        reduce using rule 80 (LIST_ITEM -> listItem CONT_ITEM cierreListItem .)
 
 
-state 223
+state 224
 
     (83) CONT_ITEM -> CONT_1 CONT_ITEM .
 
     cierreListItem  reduce using rule 83 (CONT_ITEM -> CONT_1 CONT_ITEM .)
 
 
-state 224
+state 225
 
     (126) IMPORTANT -> important TITLE CONT_IMPORTANT cierreImportant .
 
@@ -4905,22 +4921,6 @@ state 224
     cierreListItem  reduce using rule 126 (IMPORTANT -> important TITLE CONT_IMPORTANT cierreImportant .)
     cierreSimpleSection reduce using rule 126 (IMPORTANT -> important TITLE CONT_IMPORTANT cierreImportant .)
     cierreEntry     reduce using rule 126 (IMPORTANT -> important TITLE CONT_IMPORTANT cierreImportant .)
-
-
-state 225
-
-    (52) TITLE -> title CONT_TITLE cierreTitle .
-
-    itemizedlist    reduce using rule 52 (TITLE -> title CONT_TITLE cierreTitle .)
-    important       reduce using rule 52 (TITLE -> title CONT_TITLE cierreTitle .)
-    para            reduce using rule 52 (TITLE -> title CONT_TITLE cierreTitle .)
-    simpara         reduce using rule 52 (TITLE -> title CONT_TITLE cierreTitle .)
-    address         reduce using rule 52 (TITLE -> title CONT_TITLE cierreTitle .)
-    mediaObject     reduce using rule 52 (TITLE -> title CONT_TITLE cierreTitle .)
-    informalTable   reduce using rule 52 (TITLE -> title CONT_TITLE cierreTitle .)
-    comment         reduce using rule 52 (TITLE -> title CONT_TITLE cierreTitle .)
-    abstract        reduce using rule 52 (TITLE -> title CONT_TITLE cierreTitle .)
-    cierreAbstract  reduce using rule 52 (TITLE -> title CONT_TITLE cierreTitle .)
 
 
 state 226

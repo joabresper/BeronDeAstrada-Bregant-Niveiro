@@ -39,7 +39,7 @@ def p_ARTICLE(p):                                                           # SI
     elif(len(p) == 6):
         p[0] = f'{p[2]}\n{p[3]}\n{p[4]}'
     elif(len(p) == 7):
-        p[0] = f'{p[2]}\n{p[3]}\n{p[4]}\n{p[5]}'   
+        p[0] = f'{p[2]}\n{p[3]}\n{p[4]}\n{p[5]}'
     exportarTxt.append(['Prod. ARTICLE -->', p.slice])
     
 def p_INFO(p):
@@ -66,7 +66,7 @@ def p_ELEM_INFO(p):                     # SUPONEMOS QUE TODO TITLE AFUERA DE UN 
                 | AUTHOR
                 | DATE
                 | COPYRIGHT
-                | TITLEH1
+                | TITLE
     '''
     exportarTxt.append(['Prod. ELEM_INFO -->', p.slice])
     p[0] = f'{p[1]}'
@@ -166,7 +166,7 @@ def p_ABSTRACT(p):
 def p_TITLE(p):
     '''TITLE : title CONT_TITLE cierreTitle
     '''
-    p[0] = f'<h3>{p[2]}</h3>'
+    p[0] = f'{p[2]}'
     exportarTxt.append(['Prod. TITLE -->', p.slice])
     
 def p_TITLEH1(p):
@@ -247,7 +247,7 @@ def p_ELEM_PARA(p):
 def p_ITEMIZED_LIST(p):
     '''ITEMIZED_LIST : itemizedlist LIST_ITEM cierreItemizedlist
     '''
-    p[0] = f'<ul>\n\t{p[2]}\n</ul>'
+    p[0] = f'<ul>\n{p[2]}\n</ul>'
     exportarTxt.append(['Prod. ITEMIZED_LIST -->', p.slice])
 
 def p_LIST_ITEM(p):
@@ -255,9 +255,9 @@ def p_LIST_ITEM(p):
                 |  LIST_ITEM listItem CONT_ITEM cierreListItem
     '''
     if len(p)==4:
-        p[0] = f'<li>\n\t{p[2]}\n</li>'
+        p[0] = f'<li>\n{p[2]}\n</li>'
     else:
-        p[0] = f'{p[1]}\n<li>\v{p[3]}\n</li>'
+        p[0] = f'{p[1]}\n<li>{p[3]}\n</li>'
     exportarTxt.append(['Prod. LIST_ITEM -->', p.slice])
 
 def p_CONT_ITEM(p):
@@ -733,7 +733,6 @@ def analizarPorRuta():
         strings = file.read()
         file.close()
         result = parser.parse(strings)
-        print("Esto es lo q se encuentra\n", result) 
         try:
             with open(f'producciones-analizadas.txt', 'w', encoding='UTF8') as f:
                 f.write('Producciones analizadas por el parser:\n====================\n')
