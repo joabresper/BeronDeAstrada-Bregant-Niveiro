@@ -4,7 +4,7 @@
 <info>
 <title>Trabajo Práctico Integrador: Diseño e implementación de Lexer y Parser</title>
 <abstract>
-<title>Ejemplo TPI</title>
+<title>Ejemplo TPI</title> <section>
 <para>Aceptor DocBook/XML y Conversor a HTML</para>
 <simpara>Simple Parrafo: Aceptor DocBook/XML y Conversor a
 HTML</simpara>
@@ -14,12 +14,12 @@ HTML</simpara>
 <surname>Vigll</surname>
 </author>
 <date>2023</date>
-<address><city>Resistencia</city><state>Chaco</state><postcode>H3500</postcode><street>French
+<address><city>Resistencia</city><state>Chaco</state><street>French
 414</street><email>ssl@gmail.com</email><phone>3624888888s</phone></address>
 </info>
 <title>Trabajo Práctico Integrador: Diseño e implementación de Lexer y</title>
 <section>
-<title>Objetivo<section>asd</section></title>
+<title>Objetivo</title>
 <para>Utilizando algún lenguaje de programación o algún generador de lexer
 
 y parser para determinado lenguaje de programación deberán construir los
@@ -48,7 +48,7 @@ de lxx y yacc.</para>
 como para el sintáctico, generando parsers descendentes recursivos.
 Ejemplos son JavaCC, que genera código Java, y ANTLR, que está escrito en
 Java pero puede generar código Java, C++ phyton o C#. ANTLR se puede
-conseguir en http://www.antlr.org/.
+conseguir en <link xlink:href="http://www.antlr.org/">link</link>
 https://en.wikipedia.org/wiki/Comparison_of_parser_generators</para>
 </section>
 <section>

@@ -749,8 +749,9 @@ def analizarPorRuta():
         if contadorErrores > 0:
             print('(⨉) Ocurrió un error sintáctico.')
             # Resetear contador
-            contadorErrores = 0
+            contadorErrores = 0		
             reload(lexer)
+            reload(yacc)
         else:
             print('✅ El archivo es sintacticamente correcto!')
             # Ejecutar exportacion de html
@@ -775,6 +776,8 @@ def analizarPorRuta():
             
             print('(✅) Sintácticamente correcto.')
             print('(!) Se exportó un .txt con las producciones analizadas.')
+            reload(lexer)
+            reload(yacc)
     except IOError:
         print('Ocurrió un error leyendo archivo:', cleanPath)
 
